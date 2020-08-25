@@ -52,6 +52,9 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func viewDidLoad() {
@@ -78,19 +81,10 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         viewContainer.addBorder(1)
         viewContainer.backgroundColor = Theme.currentTheme.backgroundColor
         
-        tableView.rowHeight = 92
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
-    
-    //    func extraTopborderLine() {
-    //        let frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1 / UIScreen.main.scale)
-    //        let line = UIView(frame: frame)
-    //        tableView.tableHeaderView = line
-    //        line.backgroundColor = UIColor.separator
-    //    }
-    
-    
+ 
     
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -139,6 +133,7 @@ extension ViewController: AddData {
         userWorkout.duration = duration
         userWorkout.colorTag = colorType
         userWorkout.date = Date()
+        print(userWorkout.date!)
         workoutData.append(userWorkout)
         update(with: workoutData)
     }
@@ -173,6 +168,13 @@ extension ViewController {
             cell.workoutData = workoutData
             cell.backgroundColor = Theme.currentTheme.backgroundColor
             cell.selectionStyle = .none
+            
+            /// get an estimation of the height of the cell base on the detailLabel.text
+            let detailLabelSize = CGSize(width: 289, height: 1000)
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
+            let estimatedFrame = NSString(string: workoutData.detail).boundingRect(with: detailLabelSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+            tableView.rowHeight = estimatedFrame.height + 60
+            
             return cell
         }
     }
@@ -197,6 +199,8 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected!")
     }
+    
+  
 }
 
 

@@ -25,6 +25,10 @@ class WorkoutTableViewCell: UITableViewCell {
             //activityName.textColor = UIColor(named: workoutData.colorTag)
             
             activityDetail.text = workoutData.detail
+            activityDetail.numberOfLines = 0
+            activityDetail.sizeToFit()
+            activityDetail.frame = CGRect(x: 0, y: 0, width: 288, height: CGFloat.greatestFiniteMagnitude)
+        
             intensityLabel.text = workoutData.effortType
             durationLabel.text = workoutData.duration
             effortProgress.drawProgress(selectedType: intensityLabel.text!)
@@ -39,7 +43,9 @@ class WorkoutTableViewCell: UITableViewCell {
             locationLabel.layer.masksToBounds = true
             locationLabel.textColor = UIColor.applyColor(AssetsColor.paleBrown)
             
-            dateLabel.text = DateFormatter().string(from: workoutData.date!)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateLabel.text = dateFormatter.string(from: workoutData.date!)
             dateLabel.textColor = UIColor.applyColor(AssetsColor.paleBrown)
             
         }
