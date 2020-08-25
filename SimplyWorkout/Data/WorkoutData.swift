@@ -9,7 +9,8 @@
 import Foundation
 
 struct WorkoutData: Hashable {
-    //let date: Date
+    
+    var date: Date?
     var activityName: String = ""
     var detail: String = ""
     var duration: String = ""

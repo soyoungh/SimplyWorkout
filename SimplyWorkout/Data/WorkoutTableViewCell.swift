@@ -17,6 +17,7 @@ class WorkoutTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var workoutData : WorkoutData! {
         didSet {
@@ -32,11 +33,14 @@ class WorkoutTableViewCell: UITableViewCell {
             colorTag.backgroundColor = UIColor(named: workoutData.colorTag)
             
             locationLabel.layer.borderColor = UIColor.applyColor(AssetsColor.paleBrown)?.cgColor
-            locationLabel.text = " Location "
+            locationLabel.text = " Outside "
             locationLabel.layer.borderWidth = 1.0
             locationLabel.layer.cornerRadius = 5.0
             locationLabel.layer.masksToBounds = true
             locationLabel.textColor = UIColor.applyColor(AssetsColor.paleBrown)
+            
+            dateLabel.text = DateFormatter().string(from: workoutData.date!)
+            dateLabel.textColor = UIColor.applyColor(AssetsColor.paleBrown)
             
         }
     }

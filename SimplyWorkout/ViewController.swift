@@ -138,6 +138,7 @@ extension ViewController: AddData {
         userWorkout.effortType = effortType
         userWorkout.duration = duration
         userWorkout.colorTag = colorType
+        userWorkout.date = Date()
         workoutData.append(userWorkout)
         update(with: workoutData)
     }
