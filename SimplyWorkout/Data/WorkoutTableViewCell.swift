@@ -28,7 +28,7 @@ class WorkoutTableViewCell: UITableViewCell {
             activityDetail.numberOfLines = 0
             activityDetail.sizeToFit()
             activityDetail.frame = CGRect(x: 0, y: 0, width: 288, height: CGFloat.greatestFiniteMagnitude)
-        
+            
             intensityLabel.text = workoutData.effortType
             durationLabel.text = workoutData.duration
             effortProgress.drawProgress(selectedType: intensityLabel.text!)
@@ -37,7 +37,7 @@ class WorkoutTableViewCell: UITableViewCell {
             colorTag.backgroundColor = UIColor(named: workoutData.colorTag)
             
             locationLabel.layer.borderColor = UIColor.applyColor(AssetsColor.paleBrown)?.cgColor
-            locationLabel.text = " Outside "
+            locationLabel.text = workoutData.location
             locationLabel.layer.borderWidth = 1.0
             locationLabel.layer.cornerRadius = 5.0
             locationLabel.layer.masksToBounds = true

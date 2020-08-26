@@ -14,7 +14,7 @@ struct WorkoutData: Hashable {
     var activityName: String = ""
     var detail: String = ""
     var duration: String = ""
-    var place: String = ""
+    var location: String = ""
     var effortType: String = ""
     var effortValue: Float = 0.1
     var colorTag: String = ""

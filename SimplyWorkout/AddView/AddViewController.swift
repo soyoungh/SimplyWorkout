@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddData {
-    func addWorkoutData (activity: String, detail: String, effortType: String, duration: String, colorType: String)
+    func addWorkoutData (activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String)
 }
 
 class AddViewController: UIViewController {
@@ -22,23 +22,23 @@ class AddViewController: UIViewController {
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var activityFiled: UITextField!
     @IBOutlet weak var detailField: UITextField!
+    @IBOutlet weak var locationPickView: UISegmentedControl!
     
-    // Sending Datas
+    /// Sending Datas
     var addDataDelegate: AddData?
-    //var workoutRecord = [WorkoutData]()
     var activityLabel: String?
     var detailLabel: String?
     var effortLabel: String?
     var durationLabel: String?
+    var locationLabel: String?
     
-    //
+    /// DurationPickerView Properties
     var durationString: String?
     let hoursNum = Array(0...24)
     let minuteNum = Array(0...59)
 
-    // Related Controller Connection
+    /// Related Controller Connection
     var effortScaleCtrl = EffortScalePicker()
-    //var durationCtrl = DurationPickerController()
     var colorTagCtrl = ColorTagCtrl()
     var progressBarCtrl = ProgressBar()
     var firstSelectionIndexPath: IndexPath?
@@ -50,6 +50,19 @@ class AddViewController: UIViewController {
     
     @IBAction func doneTapped(_ sender: UIButton) {
         dismissCheck()
+    }
+    
+    @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            locationLabel = " Gym "
+        }
+        else if sender.selectedSegmentIndex == 1 {
+            locationLabel = " Home "
+        }
+        else if sender.selectedSegmentIndex == 2 {
+            locationLabel = " Outside "
+        }
     }
     
     override func viewDidLoad() {
@@ -68,9 +81,8 @@ class AddViewController: UIViewController {
         
         durationPickView.selectRow(0, inComponent: 0, animated: true)
         durationPickView.selectRow(0, inComponent: 2, animated: true)
-    
+        
     }
-
 
     // MARK: - make rounded corners of view layers and drop shadow
     private func viewLayerSet() {
@@ -84,18 +96,18 @@ class AddViewController: UIViewController {
     }
     
     func dismissCheck() {
-        // Activity and detail Field Check First!
+        /// Activity and detail Field Check First!
         if activityFiled?.text != "" || detailField.text != "" {
-            // Save datas and deliver the blief to the table View
+            /// Save datas and deliver the blief to the table View
             guard let del = addDataDelegate else {
                 return
             }
             activityLabel = activityFiled.text
             detailLabel = detailField.text
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagCtrl.selectedColor ?? "butterRum")
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagCtrl.selectedColor ?? "butterRum", location: locationLabel ?? " Gym ")
             
-            // TO DO: Create an event on the calendar
+            /// TO DO: Create an event on the calendar
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
@@ -105,7 +117,7 @@ class AddViewController: UIViewController {
     }
     
     func nilValueCheck() {
-        // check for the Duration Label
+        /// check for the Duration Label
         if durationString == nil {
             durationLabel = "0h 0min"
         }
@@ -113,17 +125,17 @@ class AddViewController: UIViewController {
             durationLabel = durationString!
         }
 
-        // check for the Effort Scale Label
+        /// check for the Effort Scale Label
         if effortScaleCtrl.userEffortScale == nil {
             effortLabel = "Moderate"
         }
         else {
             effortLabel = effortScaleCtrl.userEffortScale!
         }
-        
     }
 }
 
+// MARK: - Duration PickerView Delegation
 extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -224,8 +236,5 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             hourLabel.text = "hours"
         }
     }
-    
-
-    
 }
 

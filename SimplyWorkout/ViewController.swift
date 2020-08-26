@@ -53,7 +53,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        tableView.estimatedRowHeight = 200
+        //tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -77,14 +77,14 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         self.view.backgroundColor = Theme.currentTheme.backgroundColor
         
         calendar.backgroundColor = Theme.currentTheme.backgroundColor
- 
+        
         viewContainer.addBorder(1)
         viewContainer.backgroundColor = Theme.currentTheme.backgroundColor
         
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
- 
+    
     
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -125,7 +125,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 // MARK: - AddData Delegate
 extension ViewController: AddData {
     
-    func addWorkoutData(activity: String, detail: String, effortType: String, duration: String, colorType: String) {
+    func addWorkoutData(activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String) {
         var userWorkout = WorkoutData()
         userWorkout.activityName = activity
         userWorkout.detail = detail
@@ -133,6 +133,7 @@ extension ViewController: AddData {
         userWorkout.duration = duration
         userWorkout.colorTag = colorType
         userWorkout.date = Date()
+        userWorkout.location = location
         print(userWorkout.date!)
         workoutData.append(userWorkout)
         update(with: workoutData)
@@ -173,7 +174,25 @@ extension ViewController {
             let detailLabelSize = CGSize(width: 289, height: 1000)
             let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
             let estimatedFrame = NSString(string: workoutData.detail).boundingRect(with: detailLabelSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            tableView.rowHeight = estimatedFrame.height + 60
+            //print(estimatedFrame.height)
+            
+            if estimatedFrame.height < 34 {
+                if estimatedFrame.height < 18 {
+                    tableView.rowHeight = 96
+                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 29.5)
+                    cell.addConstraint(verticalSpace)
+                }
+                else if estimatedFrame.height > 18 && estimatedFrame.height < 34 {
+                    tableView.rowHeight = 96
+                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 13)
+                    cell.addConstraint(verticalSpace)
+                }
+            }
+            else {
+                tableView.rowHeight = estimatedFrame.height + 60
+                let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 10)
+                cell.addConstraint(verticalSpace)
+            }
             
             return cell
         }
@@ -194,13 +213,13 @@ extension ViewController: UITableViewDelegate {
         }
         deleteAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [deleteAction])
-     }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected!")
     }
     
-  
+    
 }
 
 
