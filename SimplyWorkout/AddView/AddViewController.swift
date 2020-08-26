@@ -21,7 +21,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var activityFiled: UITextField!
-    @IBOutlet weak var detailField: UITextField!
+    @IBOutlet weak var detailField: UITextView!
     @IBOutlet weak var locationPickView: UISegmentedControl!
     
     /// Sending Datas
@@ -82,33 +82,38 @@ class AddViewController: UIViewController {
         durationPickView.selectRow(0, inComponent: 0, animated: true)
         durationPickView.selectRow(0, inComponent: 2, animated: true)
         
+        activityFiled.delegate = self
+        detailField.delegate = self
     }
 
     // MARK: - make rounded corners of view layers and drop shadow
     private func viewLayerSet() {
         activityFiled.placeholder = "Add an activity title here."
-        detailField.placeholder = "Give some detailes. (optional)"
         doneBtn.titleLabel!.text = "Done"
         
         colorTagView.customView()
         cancelBtn.roundedCornerBtn()
         doneBtn.roundedCornerBtn()
+        
+        detailField.layer.masksToBounds = true
+        detailField.layer.cornerRadius = 5
+        detailField.layer.borderWidth = 1
+        detailField.layer.borderColor = UIColor.systemGray4.cgColor
+        detailField.font = UIFont.systemFont(ofSize: 14.0)
+        detailField.text = "Give some details.(optional)"
+        detailField.textColor = UIColor.systemGray3
     }
     
     func dismissCheck() {
         /// Activity and detail Field Check First!
-        if activityFiled?.text != "" || detailField.text != "" {
+        if activityFiled.text != "" || detailField.text != "" {
             /// Save datas and deliver the blief to the table View
             guard let del = addDataDelegate else {
                 return
             }
-            activityLabel = activityFiled.text
-            detailLabel = detailField.text
             nilValueCheck()
             del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagCtrl.selectedColor ?? "butterRum", location: locationLabel ?? " Gym ")
-            
-            /// TO DO: Create an event on the calendar
-            
+
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         else {
@@ -117,6 +122,22 @@ class AddViewController: UIViewController {
     }
     
     func nilValueCheck() {
+        /// check for the activity Label
+        if activityFiled.text == "" {
+            activityLabel = "  "
+        }
+        else {
+            activityLabel = activityFiled.text
+        }
+        
+        ///check for the detail Label
+        if detailField.text == "Give some details.(optional)" {
+            detailLabel = "  "
+        }
+        else {
+            detailLabel = detailField.text
+        }
+        
         /// check for the Duration Label
         if durationString == nil {
             durationLabel = "0h 0min"
@@ -132,6 +153,35 @@ class AddViewController: UIViewController {
         else {
             effortLabel = effortScaleCtrl.userEffortScale!
         }
+    }
+}
+
+// MARK: - UITextField Delegation
+extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("here")
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        /// Combine the textView text and the replacement text to create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        /// If updated text view will be empty, add the placeholder and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+        /// Else if the text view's placeholder is showing and the length of the replacement string is greater than 0, set the text color to black then set its text to the replacement string
+         else if textView.textColor == UIColor.systemGray3 && !text.isEmpty {
+            textView.textColor = UIColor.black
+            textView.text = text
+        }
+        /// For every other case, the text should change with the usual behavior...
+        else {
+            return true
+        }
+        /// ...otherwise return false since the updates have already been made
+        return false
     }
 }
 
