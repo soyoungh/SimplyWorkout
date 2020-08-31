@@ -46,7 +46,7 @@ extension UICollectionView {
         
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.systemGray4.cgColor
-        layer.cornerRadius = 10
+        layer.cornerRadius = 5
     }
 }
 
@@ -59,5 +59,15 @@ extension UIView {
         //border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
         border.opacity = 0.8
         self.layer.addSublayer(border)
+    }
+}
+
+extension UITextView {
+    
+    func customTextView() {
+        layer.masksToBounds = true
+        layer.cornerRadius = 5
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.systemGray4.cgColor
     }
 }

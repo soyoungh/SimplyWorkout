@@ -95,10 +95,10 @@ class AddViewController: UIViewController {
         cancelBtn.roundedCornerBtn()
         doneBtn.roundedCornerBtn()
         
-        detailField.layer.masksToBounds = true
-        detailField.layer.cornerRadius = 5
-        detailField.layer.borderWidth = 1
-        detailField.layer.borderColor = UIColor.systemGray4.cgColor
+        activityFiled.layer.borderColor = UIColor.systemGray4.cgColor
+        activityFiled.layer.borderWidth = 1
+        
+        detailField.customTextView()
         detailField.font = UIFont.systemFont(ofSize: 14.0)
         detailField.text = "Give some details.(optional)"
         detailField.textColor = UIColor.systemGray3
@@ -106,7 +106,7 @@ class AddViewController: UIViewController {
     
     func dismissCheck() {
         /// Activity and detail Field Check First!
-        if activityFiled.text != "" || detailField.text != "" {
+        if activityFiled.text != "" || detailField.text != "Give some details.(optional)" {
             /// Save datas and deliver the blief to the table View
             guard let del = addDataDelegate else {
                 return
@@ -233,10 +233,10 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             return 40
         }
         else if component == 2 {
-            return 40
+            return 50
         }
         else {
-            return 180
+            return 170
         }
     }
     

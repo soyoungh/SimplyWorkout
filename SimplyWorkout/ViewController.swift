@@ -120,9 +120,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         /// TO DO: if user selects the date, the data is shown on the table view. the data can be multiple.
     }
     
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        <#code#>
-    }
+  
     
 }
 
