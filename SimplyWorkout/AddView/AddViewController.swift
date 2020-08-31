@@ -84,6 +84,8 @@ class AddViewController: UIViewController {
         
         activityFiled.delegate = self
         detailField.delegate = self
+        
+        confitureTapGesture()
     }
 
     // MARK: - make rounded corners of view layers and drop shadow
@@ -154,15 +156,25 @@ class AddViewController: UIViewController {
             effortLabel = effortScaleCtrl.userEffortScale!
         }
     }
+    
+    private func confitureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
 }
 
 // MARK: - UITextField Delegation
 extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("here")
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
-    
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        activityFiled.resignFirstResponder()
+        return true
+    }
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         /// Combine the textView text and the replacement text to create the updated text string
         let currentText:String = textView.text
