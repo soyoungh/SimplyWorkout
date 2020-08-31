@@ -84,8 +84,6 @@ class AddViewController: UIViewController {
         
         activityFiled.delegate = self
         detailField.delegate = self
-        
-        confitureTapGesture()
     }
 
     // MARK: - make rounded corners of view layers and drop shadow
@@ -168,6 +166,10 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        confitureTapGesture()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
