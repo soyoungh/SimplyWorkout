@@ -45,7 +45,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }()
     
     /// Collecting User's Workout Data
-    var workoutData = [WorkoutData]()
+    //var workoutData = [WorkoutData]()
     var checkBorder: Bool = true
     private var diffableDataSource: UITableViewDiffableDataSource<Section, WorkoutDataCD>!
     
@@ -115,7 +115,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
-    
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
@@ -174,9 +173,8 @@ extension ViewController: AddData {
             try self.context.save()
         }
         catch {
-            
         }
-        
+    
         /// Re-Fetch the data
         setupFetchedResultsData()
     }
@@ -247,7 +245,6 @@ extension ViewController: UITableViewDelegate {
                 try self.context.save()
             }
             catch {
-                
             }
             
             /// Re-Fetch the data
@@ -262,10 +259,7 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected!")
     }
-    
-    
 }
-
 
 
 
