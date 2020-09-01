@@ -26,6 +26,7 @@
 		F872188524FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188124FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift */; };
 		F872188624FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188224FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift */; };
 		F872188724FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188324FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift */; };
+		F872188824FE04FF002BF29C /* SimplyWorkout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */; };
 		F8AD190624B9C34B004298D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190424B9C34B004298D0 /* Main.storyboard */; };
 		F8AD190E24B9C34E004298D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190C24B9C34E004298D0 /* LaunchScreen.storyboard */; };
 		F8AD192424BBD814004298D0 /* colorPalatte.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192324BBD814004298D0 /* colorPalatte.xcassets */; };
@@ -316,6 +317,7 @@
 				F801C0FF24BC3BE9006FFF2E /* ConfigurationController.swift in Sources */,
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
+				F872188824FE04FF002BF29C /* SimplyWorkout.xcdatamodeld in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
 				F872188724FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift in Sources */,
 				F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */,

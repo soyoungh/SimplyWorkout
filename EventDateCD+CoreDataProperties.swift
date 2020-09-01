@@ -13,7 +13,7 @@ import CoreData
 
 extension EventDateCD {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<EventDateCD> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<EventDateCD> {
         return NSFetchRequest<EventDateCD>(entityName: "EventDateCD")
     }
 

@@ -19,7 +19,7 @@ class WorkoutTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    var workoutData : WorkoutData! {
+    var workoutData : WorkoutDataCD! {
         didSet {
             activityName.text = workoutData.activityName
             //activityName.textColor = UIColor(named: workoutData.colorTag)
@@ -34,7 +34,7 @@ class WorkoutTableViewCell: UITableViewCell {
             effortProgress.drawProgress(selectedType: intensityLabel.text!)
             
             colorTag.layer.cornerRadius = 5
-            colorTag.backgroundColor = UIColor(named: workoutData.colorTag)
+            colorTag.backgroundColor = UIColor(named: workoutData.colorTag!)
             
             locationLabel.layer.borderColor = UIColor.applyColor(AssetsColor.paleBrown)?.cgColor
             locationLabel.text = workoutData.location
@@ -45,7 +45,7 @@ class WorkoutTableViewCell: UITableViewCell {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            dateLabel.text = dateFormatter.string(from: workoutData.date!)
+            dateLabel.text = dateFormatter.string(from: workoutData.created!)
             dateLabel.textColor = UIColor.applyColor(AssetsColor.paleBrown)
             
         }

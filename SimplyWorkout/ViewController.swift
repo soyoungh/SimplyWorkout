@@ -8,12 +8,13 @@
 
 import UIKit
 import FSCalendar
+import CoreData
 
 enum Section {
     case main
 }
 
-class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
@@ -43,17 +44,19 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         return panGesture
         }()
     
-    // Collecting User's Workout Data
+    /// Collecting User's Workout Data
     var workoutData = [WorkoutData]()
     var checkBorder: Bool = true
-    private var diffableDataSource: UITableViewDiffableDataSource<Section, WorkoutData>!
+    private var diffableDataSource: UITableViewDiffableDataSource<Section, WorkoutDataCD>!
     
-    // Make the navigation bar hidden.
+    /// CoreData Stack
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var fetchedResultsCtrl: NSFetchedResultsController<WorkoutDataCD>!
+    
+    /// Make the navigation bar hidden.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        //tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -64,12 +67,39 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         self.calendar.scope = .month
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
-        
+
         configureDataSource()
         preSetUp()
         plusBtn.customPlusButton()
         tableView.tableFooterView = UIView()
         
+        setupFetchedResultsData()
+    }
+    
+    func setupFetchedResultsData() {
+        let request = WorkoutDataCD.createFetchRequest()
+        let sort = NSSortDescriptor(key: "created", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        fetchedResultsCtrl = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "toEventDate.activityDate", cacheName: nil)
+        
+        fetchedResultsCtrl.delegate = self
+        
+        do {
+            try fetchedResultsCtrl.performFetch()
+            
+            DispatchQueue.main.async {
+                self.updateSnapshot()
+                self.tableView.reloadData()
+            }
+        }
+        catch {
+            print("Fetch failed")
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        updateSnapshot()
     }
     
     func preSetUp() {
@@ -119,31 +149,41 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
         /// TO DO: if user selects the date, the data is shown on the table view. the data can be multiple.
     }
-    
-  
-    
+
 }
 
 // MARK: - AddData Delegate
 extension ViewController: AddData {
     
     func addWorkoutData(activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String) {
-        var userWorkout = WorkoutData()
+        let userWorkout = WorkoutDataCD(context: context)
         userWorkout.activityName = activity
         userWorkout.detail = detail
         userWorkout.effortType = effortType
         userWorkout.duration = duration
         userWorkout.colorTag = colorType
-        userWorkout.date = Date()
+        userWorkout.created = Date()
         userWorkout.location = location
-        print(userWorkout.date!)
-        workoutData.append(userWorkout)
-        update(with: workoutData)
+        
+        let eventDate = EventDateCD(context: userWorkout.managedObjectContext!)
+        eventDate.activityDate = dateFormatter.string(from: calendar.selectedDate!)
+        eventDate.addToToWorkoutData(userWorkout)
+        
+        /// save the data
+        do {
+            try self.context.save()
+        }
+        catch {
+            
+        }
+        
+        /// Re-Fetch the data
+        setupFetchedResultsData()
     }
 }
 
 // MARK: - UITableViewDiffable DataSource
-class WorkoutDataSource: UITableViewDiffableDataSource<Section, WorkoutData> {
+class WorkoutDataSource: UITableViewDiffableDataSource<Section, WorkoutDataCD> {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -151,19 +191,13 @@ class WorkoutDataSource: UITableViewDiffableDataSource<Section, WorkoutData> {
 
 extension ViewController {
     
-    func update(with workoutData: [WorkoutData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, WorkoutData>()
+    func updateSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, WorkoutDataCD>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(workoutData)
+        snapshot.appendItems(fetchedResultsCtrl.fetchedObjects ?? [], toSection: .main)
         diffableDataSource.apply(snapshot, animatingDifferences: true)
     }
-    
-    func remove(_ workoutData: [WorkoutData]) {
-        var snapshot = diffableDataSource.snapshot()
-        snapshot.deleteItems(workoutData)
-        diffableDataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
+
     func configureDataSource() {
         diffableDataSource = WorkoutDataSource(tableView: tableView) { (tableView, indexPath, workoutData) -> UITableViewCell? in
             
@@ -175,7 +209,7 @@ extension ViewController {
             /// get an estimation of the height of the cell base on the detailLabel.text
             let detailLabelSize = CGSize(width: 289, height: 1000)
             let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
-            let estimatedFrame = NSString(string: workoutData.detail).boundingRect(with: detailLabelSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+            let estimatedFrame = NSString(string: workoutData.detail!).boundingRect(with: detailLabelSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             //print(estimatedFrame.height)
             
             if estimatedFrame.height < 34 {
@@ -207,10 +241,18 @@ extension ViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completion) in
             /// figure out the data to delete
             guard let data = self.diffableDataSource.itemIdentifier(for: indexPath) else { return }
+            self.context.delete(data)
+            /// save the data
+            do {
+                try self.context.save()
+            }
+            catch {
+                
+            }
             
-            self.remove([data])
-            print("the deleted index is \(indexPath.row)")
-            
+            /// Re-Fetch the data
+            self.setupFetchedResultsData()
+            //print("the deleted index is \(indexPath.row)"
             completion(true)
         }
         deleteAction.image = UIImage(systemName: "trash.fill")

@@ -12,10 +12,11 @@
         <attribute name="duration" optional="YES" attributeType="String"/>
         <attribute name="effortType" optional="YES" attributeType="String"/>
         <attribute name="effortValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
         <relationship name="toEventDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventDateCD" inverseName="toWorkoutData" inverseEntity="EventDateCD"/>
     </entity>
     <elements>
-        <element name="WorkoutDataCD" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="WorkoutDataCD" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="EventDateCD" positionX="-54" positionY="45" width="128" height="73"/>
     </elements>
 </model>

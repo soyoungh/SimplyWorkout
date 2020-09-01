@@ -13,7 +13,7 @@ import CoreData
 
 extension WorkoutDataCD {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<WorkoutDataCD> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<WorkoutDataCD> {
         return NSFetchRequest<WorkoutDataCD>(entityName: "WorkoutDataCD")
     }
 
@@ -24,6 +24,7 @@ extension WorkoutDataCD {
     @NSManaged public var effortType: String?
     @NSManaged public var effortValue: Float
     @NSManaged public var colorTag: String?
+    @NSManaged public var location: String?
     @NSManaged public var toEventDate: EventDateCD?
 
 }
