@@ -211,23 +211,30 @@ extension ViewController {
             //print(estimatedFrame.height)
             
             if estimatedFrame.height < 34 {
-                if estimatedFrame.height < 18 {
-                    tableView.rowHeight = 96
-                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 29.5)
-                    cell.addConstraint(verticalSpace)
-                }
-                else if estimatedFrame.height > 18 && estimatedFrame.height < 34 {
-                    tableView.rowHeight = 96
-                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 13)
-                    cell.addConstraint(verticalSpace)
-                }
+                tableView.rowHeight = 96
             }
             else {
-                tableView.rowHeight = estimatedFrame.height + 60
-                let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 10)
-                cell.addConstraint(verticalSpace)
+                 tableView.rowHeight = estimatedFrame.height + 60
             }
             
+//            if estimatedFrame.height < 34 {
+//                if estimatedFrame.height < 18 {
+//                    tableView.rowHeight = 96
+//                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 29.5)
+//                    cell.addConstraint(verticalSpace)
+//                }
+//                else if estimatedFrame.height > 18 && estimatedFrame.height < 34 {
+//                    tableView.rowHeight = 96
+//                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 13)
+//                    cell.addConstraint(verticalSpace)
+//                }
+//            }
+//            else {
+//                tableView.rowHeight = estimatedFrame.height + 60
+//                let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 10)
+//                cell.addConstraint(verticalSpace)
+//            }
+//
             return cell
         }
     }

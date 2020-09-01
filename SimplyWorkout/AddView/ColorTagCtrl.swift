@@ -86,11 +86,23 @@ extension ColorTagCtrl: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
         return UIEdgeInsets(top: 10, left: 17, bottom: 10, right: 17)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 25
+        
+        var space = CGFloat()
+        
+        if collectionView.frame.size.width > 340 {
+            
+            space = 25
+        }
+        else {
+            space = 16
+        }
+        
+        return space
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
