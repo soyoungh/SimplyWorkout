@@ -22,6 +22,10 @@
 		F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */; };
 		F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */; };
 		F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84E333524CAB1F3003D320D /* WorkoutData.swift */; };
+		F872188424FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188024FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift */; };
+		F872188524FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188124FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift */; };
+		F872188624FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188224FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift */; };
+		F872188724FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188324FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift */; };
 		F8AD190624B9C34B004298D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190424B9C34B004298D0 /* Main.storyboard */; };
 		F8AD190E24B9C34E004298D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190C24B9C34E004298D0 /* LaunchScreen.storyboard */; };
 		F8AD192424BBD814004298D0 /* colorPalatte.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192324BBD814004298D0 /* colorPalatte.xcassets */; };
@@ -40,6 +44,10 @@
 		F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCell.swift; sourceTree = "<group>"; };
 		F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffortScalePicker.swift; sourceTree = "<group>"; };
 		F84E333524CAB1F3003D320D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
+		F872188024FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F872188124FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		F872188224FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F872188324FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		F8AD18FB24B9C34B004298D0 /* SimplyWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8AD190024B9C34B004298D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 		F866869924D7922A007054E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F872188024FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift */,
+				F872188124FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift */,
+				F872188224FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift */,
+				F872188324FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift */,
 				F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */,
 				F84E333524CAB1F3003D320D /* WorkoutData.swift */,
 			);
@@ -295,6 +307,7 @@
 				F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */,
 				F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */,
 				F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */,
+				F872188624FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift in Sources */,
 				F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */,
 				F804DC6524C52F9D00C3F67E /* ColorTagCtrl.swift in Sources */,
 				F801C0FC24BC3BE0006FFF2E /* Theme.swift in Sources */,
@@ -304,9 +317,12 @@
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
+				F872188724FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift in Sources */,
 				F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */,
 				F801C10724BC9E1A006FFF2E /* Customization.swift in Sources */,
 				F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */,
+				F872188424FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift in Sources */,
+				F872188524FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift in Sources */,
 				F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

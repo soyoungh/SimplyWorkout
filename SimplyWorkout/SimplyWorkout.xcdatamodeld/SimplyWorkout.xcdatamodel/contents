@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G3020" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EventDateCD" representedClassName="EventDateCD" syncable="YES">
+        <attribute name="activityDate" optional="YES" attributeType="String"/>
+        <relationship name="toWorkoutData" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkoutDataCD" inverseName="toEventDate" inverseEntity="WorkoutDataCD"/>
+    </entity>
+    <entity name="WorkoutDataCD" representedClassName="WorkoutDataCD" syncable="YES">
+        <attribute name="activityName" optional="YES" attributeType="String"/>
+        <attribute name="colorTag" optional="YES" attributeType="String"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="effortType" optional="YES" attributeType="String"/>
+        <attribute name="effortValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="toEventDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventDateCD" inverseName="toWorkoutData" inverseEntity="EventDateCD"/>
+    </entity>
+    <elements>
+        <element name="WorkoutDataCD" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="EventDateCD" positionX="-54" positionY="45" width="128" height="73"/>
+    </elements>
 </model>
