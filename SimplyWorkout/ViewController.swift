@@ -52,6 +52,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsCtrl: NSFetchedResultsController<WorkoutDataCD>!
+    var selectedDate: String?
     
     /// Make the navigation bar hidden.
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +80,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     func setupFetchedResultsData() {
         let request = WorkoutDataCD.createFetchRequest()
         let sort = NSSortDescriptor(key: "created", ascending: true)
+        let predicate = NSPredicate(format: "toEventDate.activityDate CONTAINS %@", selectedDate!)
+        request.predicate = predicate
         request.sortDescriptors = [sort]
         
         fetchedResultsCtrl = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "toEventDate.activityDate", cacheName: nil)
@@ -91,6 +94,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             DispatchQueue.main.async {
                 self.updateSnapshot()
                 self.tableView.reloadData()
+                self.calendar.layoutIfNeeded()
             }
         }
         catch {
@@ -105,6 +109,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     func preSetUp() {
         Theme.calendar = calendar
         self.view.backgroundColor = Theme.currentTheme.backgroundColor
+        self.selectedDate = dateFormatter.string(from: self.calendar.today!)
         
         calendar.backgroundColor = Theme.currentTheme.backgroundColor
         
@@ -138,15 +143,17 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
+//        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+//        print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
         if calendar.gregorian.isDateInToday(date) == false {
             calendar.appearance.titleTodayColor = UIColor.applyColor(AssetsColor.vivacious)
         }
-        /// TO DO: if user selects the date, the data is shown on the table view. the data can be multiple.
+        /// if user selects the date, the data is shown on the table view. the data can be multiple.
+        selectedDate = dateFormatter.string(from: date)
+        setupFetchedResultsData()
     }
 
 }
@@ -217,24 +224,6 @@ extension ViewController {
                  tableView.rowHeight = estimatedFrame.height + 60
             }
             
-//            if estimatedFrame.height < 34 {
-//                if estimatedFrame.height < 18 {
-//                    tableView.rowHeight = 96
-//                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 29.5)
-//                    cell.addConstraint(verticalSpace)
-//                }
-//                else if estimatedFrame.height > 18 && estimatedFrame.height < 34 {
-//                    tableView.rowHeight = 96
-//                    let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 13)
-//                    cell.addConstraint(verticalSpace)
-//                }
-//            }
-//            else {
-//                tableView.rowHeight = estimatedFrame.height + 60
-//                let verticalSpace = NSLayoutConstraint(item: cell.dateLabel!, attribute: .top, relatedBy: .equal, toItem: cell.activityDetail, attribute: .bottom, multiplier: 1, constant: 10)
-//                cell.addConstraint(verticalSpace)
-//            }
-//
             return cell
         }
     }
