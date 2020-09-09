@@ -14,7 +14,7 @@ enum Section {
     case main
 }
 
-class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate, NSFetchedResultsControllerDelegate {
+class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate, NSFetchedResultsControllerDelegate, FSCalendarDelegateAppearance {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
@@ -44,15 +44,11 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         return panGesture
         }()
     
-    /// Collecting User's Workout Data
-    //var workoutData = [WorkoutData]()
-    var checkBorder: Bool = true
-    private var diffableDataSource: UITableViewDiffableDataSource<Section, WorkoutDataCD>!
-    
     /// CoreData Stack
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var context = PersistentStorage.shared.persistentContainer.viewContext
     var fetchedResultsCtrl: NSFetchedResultsController<WorkoutDataCD>!
     var selectedDate: String?
+    var numberOfObjectsInCurrentSection: Int?
     
     /// Make the navigation bar hidden.
     override func viewWillAppear(_ animated: Bool) {
@@ -64,35 +60,38 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.selectedDate = dateFormatter.string(from: self.calendar.today!)
+        setupFetchedResultsData()
+        
         self.calendar.select(Date())
         self.calendar.scope = .month
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
-
-        configureDataSource()
+        
         preSetUp()
         plusBtn.customPlusButton()
         tableView.tableFooterView = UIView()
-        
-        setupFetchedResultsData()
+  
     }
-    
+   
     func setupFetchedResultsData() {
-        let request = WorkoutDataCD.createFetchRequest()
-        let sort = NSSortDescriptor(key: "created", ascending: true)
+        if fetchedResultsCtrl == nil {
+            let request = WorkoutDataCD.createFetchRequest()
+            let sort = NSSortDescriptor(key: "created", ascending: true)
+            request.sortDescriptors = [sort]
+            
+            fetchedResultsCtrl = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "toEventDate.activityDate", cacheName: nil)
+            
+            fetchedResultsCtrl.delegate = self
+        }
+        
         let predicate = NSPredicate(format: "toEventDate.activityDate CONTAINS %@", selectedDate!)
-        request.predicate = predicate
-        request.sortDescriptors = [sort]
-        
-        fetchedResultsCtrl = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "toEventDate.activityDate", cacheName: nil)
-        
-        fetchedResultsCtrl.delegate = self
+        fetchedResultsCtrl.fetchRequest.predicate = predicate
         
         do {
             try fetchedResultsCtrl.performFetch()
             
             DispatchQueue.main.async {
-                self.updateSnapshot()
                 self.tableView.reloadData()
                 self.calendar.layoutIfNeeded()
             }
@@ -102,14 +101,9 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
     }
     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        updateSnapshot()
-    }
-    
     func preSetUp() {
         Theme.calendar = calendar
         self.view.backgroundColor = Theme.currentTheme.backgroundColor
-        self.selectedDate = dateFormatter.string(from: self.calendar.today!)
         
         calendar.backgroundColor = Theme.currentTheme.backgroundColor
         
@@ -118,6 +112,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        
     }
     
     // MARK: - UIGestureRecognizerDelegate
@@ -143,8 +138,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-//        print("selected dates is \(selectedDates)")
+        //        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        //        print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -155,7 +150,13 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         selectedDate = dateFormatter.string(from: date)
         setupFetchedResultsData()
     }
-
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+//        let dateString = dateFormatter.string(from: date)
+      
+        return 0
+        
+    }
 }
 
 // MARK: - AddData Delegate
@@ -181,79 +182,107 @@ extension ViewController: AddData {
         }
         catch {
         }
-    
+        
         /// Re-Fetch the data
         setupFetchedResultsData()
     }
 }
 
-// MARK: - UITableViewDiffable DataSource
-class WorkoutDataSource: UITableViewDiffableDataSource<Section, WorkoutDataCD> {
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-}
-
-extension ViewController {
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, WorkoutDataCD>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(fetchedResultsCtrl.fetchedObjects ?? [], toSection: .main)
-        diffableDataSource.apply(snapshot, animatingDifferences: true)
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsCtrl.sections?.count ?? 0
     }
-
-    func configureDataSource() {
-        diffableDataSource = WorkoutDataSource(tableView: tableView) { (tableView, indexPath, workoutData) -> UITableViewCell? in
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutTableViewCell
-            cell.workoutData = workoutData
-            cell.backgroundColor = Theme.currentTheme.backgroundColor
-            cell.selectionStyle = .none
-            
-            /// get an estimation of the height of the cell base on the detailLabel.text
-            let detailLabelSize = CGSize(width: 289, height: 1000)
-            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
-            let estimatedFrame = NSString(string: workoutData.detail!).boundingRect(with: detailLabelSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            //print(estimatedFrame.height)
-            
-            if estimatedFrame.height < 34 {
-                tableView.rowHeight = 96
-            }
-            else {
-                 tableView.rowHeight = estimatedFrame.height + 60
-            }
-            
-            return cell
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return fetchedResultsCtrl.sections![section].name
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionInfo = fetchedResultsCtrl.sections![section]
+        return sectionInfo.numberOfObjects
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutTableViewCell
+        let workoutData = fetchedResultsCtrl.object(at: indexPath)
+        cell.workoutData = workoutData
+        cell.backgroundColor = Theme.currentTheme.backgroundColor
+        cell.selectionStyle = .none
+        
+        /// get an estimation of the height of the cell base on the detailLabel.text
+        let detailLabelSize = CGSize(width: 289, height: 1000)
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
+        let estimatedFrame = NSString(string: workoutData.detail!).boundingRect(with: detailLabelSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        //print(estimatedFrame.height)
+        
+        if estimatedFrame.height < 34 {
+            tableView.rowHeight = 96
         }
-    }
-}
+        else {
+            tableView.rowHeight = estimatedFrame.height + 60
+        }
 
-extension ViewController: UITableViewDelegate {
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /// TO DO: update the selected Data
+        //        if let vc = storyboard?.instantiateViewController(withIdentifier: "") as? AddViewController {
+        //            vc.
+        //
+      
+        print("selected")
+    }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completion) in
-            /// figure out the data to delete
-            guard let data = self.diffableDataSource.itemIdentifier(for: indexPath) else { return }
-            self.context.delete(data)
+            let workoutData = self.fetchedResultsCtrl.object(at: indexPath)
+            
+            let section = self.fetchedResultsCtrl.sections![indexPath.section]
+            self.numberOfObjectsInCurrentSection = section.numberOfObjects
+            
+            self.context.delete(workoutData)
+          
             /// save the data
             do {
                 try self.context.save()
             }
             catch {
             }
-            
-            /// Re-Fetch the data
-            self.setupFetchedResultsData()
-            //print("the deleted index is \(indexPath.row)"
             completion(true)
+            
         }
+        
         deleteAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected!")
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            tableView.beginUpdates()
+            
+            if numberOfObjectsInCurrentSection! > 1 {
+                tableView.deleteRows(at: [indexPath!], with: .automatic)
+            } else {
+                let indexSet = NSMutableIndexSet()
+                indexSet.add(indexPath!.section)
+                tableView.deleteSections(indexSet as IndexSet, with: .fade)
+            }
+            
+            tableView.endUpdates()
+
+        default:
+            break
+        }
+    }
+}
+
+extension Sequence where Element: Hashable {
+    var frequency: [Element: Int] { reduce(into: [:]) { $0[$1, default: 0] += 1 } }
+    func frequency(of element: Element) -> Int {
+        return frequency[element] ?? 0
     }
 }
 

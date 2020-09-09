@@ -33,6 +33,7 @@
 		F8AD192D24BC328E004298D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192C24BC328E004298D0 /* Assets.xcassets */; };
 		F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */; };
 		F8EA031524C69864000756E9 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA031424C69864000756E9 /* ProgressBar.swift */; };
+		F8F0B2022506762B00A28241 /* PersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B2012506762B00A28241 /* PersistentStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		F8AD192C24BC328E004298D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		F8EA031424C69864000756E9 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		F8F0B2012506762B00A28241 /* PersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				F866869924D7922A007054E6 /* Data */,
 				F8EA031624C7BDD3000756E9 /* AddView */,
 				F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */,
+				F8F0B2012506762B00A28241 /* PersistentStorage.swift */,
 				F8AD190024B9C34B004298D0 /* SceneDelegate.swift */,
 				F8AD190224B9C34B004298D0 /* ViewController.swift */,
 				F8AD192724BC2857004298D0 /* Theme */,
@@ -325,6 +328,7 @@
 				F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */,
 				F872188424FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift in Sources */,
 				F872188524FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift in Sources */,
+				F8F0B2022506762B00A28241 /* PersistentStorage.swift in Sources */,
 				F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
