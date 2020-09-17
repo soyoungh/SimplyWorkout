@@ -2,7 +2,7 @@
 //  WorkoutDataCD+CoreDataProperties.swift
 //  SimplyWorkout
 //
-//  Created by Soyoung Hyun on 2020/09/01.
+//  Created by Soyoung Hyun on 2020/09/17.
 //  Copyright © 2020 soyoung hyun. All rights reserved.
 //
 //
@@ -17,13 +17,13 @@ extension WorkoutDataCD {
         return NSFetchRequest<WorkoutDataCD>(entityName: "WorkoutDataCD")
     }
 
-    @NSManaged public var created: Date?
     @NSManaged public var activityName: String?
+    @NSManaged public var colorTag: String?
+    @NSManaged public var created: Date?
     @NSManaged public var detail: String?
     @NSManaged public var duration: String?
     @NSManaged public var effortType: String?
     @NSManaged public var effortValue: Float
-    @NSManaged public var colorTag: String?
     @NSManaged public var location: String?
     @NSManaged public var toEventDate: EventDateCD?
 

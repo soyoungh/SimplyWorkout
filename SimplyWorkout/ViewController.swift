@@ -14,7 +14,7 @@ enum Section {
     case main
 }
 
-class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate, NSFetchedResultsControllerDelegate {
+class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate, NSFetchedResultsControllerDelegate, FSCalendarDelegateAppearance {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
@@ -68,7 +68,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         self.calendar.scope = .month
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
-
+        
         configureDataSource()
         preSetUp()
         plusBtn.customPlusButton()
@@ -143,8 +143,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-//        print("selected dates is \(selectedDates)")
+        //        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        //        print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -155,7 +155,65 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         selectedDate = dateFormatter.string(from: date)
         setupFetchedResultsData()
     }
-
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        let dateString = dateFormatter.string(from: date)
+        let reqeust = WorkoutDataCD.createFetchRequest()
+        
+        do {
+            let dataResults = try context.fetch(reqeust)
+            let count = dataResults.filter{ $0.toEventDate!.activityDate! == dateString }.count
+            return count
+        }
+        catch let err {
+            print(err)
+        }
+        return 0
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+        let dateString = dateFormatter.string(from: date)
+        let reqeust = WorkoutDataCD.createFetchRequest()
+        
+        do {
+            let dataResults = try context.fetch(reqeust)
+            let key = dataResults.filter{ $0.toEventDate!.activityDate! == dateString }
+            var colorArray = [UIColor]()
+            for data in key {
+                let colorName = data.colorTag!
+                colorArray.append(UIColor(named: colorName)!)
+                print(colorArray)
+            }
+            return colorArray
+        }
+        catch let err {
+            print(err)
+        }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
+        let dateString = dateFormatter.string(from: date)
+        let reqeust = WorkoutDataCD.createFetchRequest()
+        
+        do {
+            let dataResults = try context.fetch(reqeust)
+            let key = dataResults.filter{ $0.toEventDate!.activityDate! == dateString }
+            var colorArray = [UIColor]()
+            for data in key {
+                let colorName = data.colorTag!
+                colorArray.append(UIColor(named: colorName)!)
+                print(colorArray)
+            }
+            return colorArray
+        }
+        catch let err {
+            print(err)
+        }
+        return nil
+    }
+    
 }
 
 // MARK: - AddData Delegate
@@ -181,9 +239,10 @@ extension ViewController: AddData {
         }
         catch {
         }
-    
+        
         /// Re-Fetch the data
         setupFetchedResultsData()
+        calendar.reloadData()
     }
 }
 
@@ -202,7 +261,7 @@ extension ViewController {
         snapshot.appendItems(fetchedResultsCtrl.fetchedObjects ?? [], toSection: .main)
         diffableDataSource.apply(snapshot, animatingDifferences: true)
     }
-
+    
     func configureDataSource() {
         diffableDataSource = WorkoutDataSource(tableView: tableView) { (tableView, indexPath, workoutData) -> UITableViewCell? in
             
@@ -221,7 +280,7 @@ extension ViewController {
                 tableView.rowHeight = 96
             }
             else {
-                 tableView.rowHeight = estimatedFrame.height + 60
+                tableView.rowHeight = estimatedFrame.height + 60
             }
             
             return cell
@@ -245,6 +304,7 @@ extension ViewController: UITableViewDelegate {
             
             /// Re-Fetch the data
             self.setupFetchedResultsData()
+            self.calendar.reloadData()
             //print("the deleted index is \(indexPath.row)"
             completion(true)
         }

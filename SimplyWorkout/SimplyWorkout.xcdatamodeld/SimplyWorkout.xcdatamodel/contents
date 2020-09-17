@@ -16,7 +16,7 @@
         <relationship name="toEventDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventDateCD" inverseName="toWorkoutData" inverseEntity="EventDateCD"/>
     </entity>
     <elements>
-        <element name="WorkoutDataCD" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="EventDateCD" positionX="-54" positionY="45" width="128" height="73"/>
+        <element name="WorkoutDataCD" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>
