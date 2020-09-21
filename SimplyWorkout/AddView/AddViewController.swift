@@ -49,7 +49,7 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: UIButton) {
-        dismissCheck()
+            dismissCheck()
     }
     
     @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
@@ -64,7 +64,7 @@ class AddViewController: UIViewController {
             locationLabel = " Outside "
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewLayerSet()
@@ -299,6 +299,7 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         } else {
             hourLabel.text = "hours"
         }
+        pickerView.reloadAllComponents()
     }
 }
 

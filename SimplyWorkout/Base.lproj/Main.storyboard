@@ -442,7 +442,6 @@
                                                         </segments>
                                                         <connections>
                                                             <action selector="didChangeSegment:" destination="82v-b0-2BV" eventType="valueChanged" id="pzu-A5-vVG"/>
-                                                            <action selector="didChangeSegment:" destination="mTu-H0-FyN" eventType="valueChanged" id="udV-Bc-FOE"/>
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
@@ -534,7 +533,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAY-je-TvN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="mTu-H0-FyN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="915.94202898550736" y="137.94642857142856"/>
         </scene>
