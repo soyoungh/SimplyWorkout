@@ -32,6 +32,7 @@ class WorkoutTableViewCell: UITableViewCell {
             intensityLabel.text = workoutData.effortType
             durationLabel.text = workoutData.duration
             effortProgress.drawProgress(selectedType: intensityLabel.text!)
+            effortProgress.backgroundColor = UIColor.clear
             
             colorTag.layer.cornerRadius = 5
             colorTag.backgroundColor = UIColor(named: workoutData.colorTag!)

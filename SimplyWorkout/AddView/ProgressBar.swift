@@ -22,8 +22,8 @@ class ProgressBar: UIView {
         let height = rect.height
         let lineWidth = 0.2 * min(width, height)
         
-        bgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.systemGray5.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
-        fgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.red.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
+        bgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.applyColor(AssetsColor.baseProgress)!.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
+        fgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.applyColor(AssetsColor.baseProgress)!.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
         
         fgLayer.strokeEnd = CGFloat(progress)
         

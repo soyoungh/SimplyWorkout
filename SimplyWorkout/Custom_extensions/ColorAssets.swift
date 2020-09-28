@@ -31,6 +31,7 @@ enum AssetsColor: String {
     case butterRum = "butterRum"
     case notWhite
     case softGrey
+    case baseProgress
 }
 
 extension UIColor {
@@ -82,6 +83,8 @@ extension UIColor {
             return UIColor(named: "notWhite")
         case .softGrey:
             return UIColor(named: "softGrey")
+        case .baseProgress:
+            return UIColor(named: "baseProgress")
         }
     }
 }

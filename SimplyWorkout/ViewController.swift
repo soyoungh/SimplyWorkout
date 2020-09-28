@@ -28,6 +28,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         vc.addDataDelegate = self
     }
     
+    @IBAction func settingBtnTapped(_ sender: Any) {
+        print("push")
+//        performSegue(withIdentifier: "settingPage", sender: self)
+    }
+    
+    
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -105,6 +111,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         updateSnapshot()
+        calendar.reloadData()
     }
     
     func preSetUp() {
@@ -114,7 +121,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         calendar.backgroundColor = Theme.currentTheme.backgroundColor
         
-        viewContainer.addBorder(1)
+        viewContainer.addTopBorder(1)
         viewContainer.backgroundColor = Theme.currentTheme.backgroundColor
         
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
@@ -214,7 +221,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
         return nil
     }
-    
 }
 
 // MARK: - AddData Delegate
@@ -308,6 +314,7 @@ extension ViewController: UITableViewDelegate {
             /// figure out the data to delete
             guard let data = self.diffableDataSource.itemIdentifier(for: indexPath) else { return }
             self.context.delete(data)
+            self.context.delete(data.toEventDate!)
             /// save the data
             do {
                 try self.context.save()

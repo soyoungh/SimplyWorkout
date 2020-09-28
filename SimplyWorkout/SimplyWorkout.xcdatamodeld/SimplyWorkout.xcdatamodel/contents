@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="EventDateCD" representedClassName="EventDateCD" syncable="YES">
         <attribute name="activityDate" optional="YES" attributeType="String"/>
         <relationship name="toWorkoutData" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkoutDataCD" inverseName="toEventDate" inverseEntity="WorkoutDataCD"/>

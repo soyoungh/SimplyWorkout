@@ -52,13 +52,22 @@ extension UICollectionView {
 
 extension UIView {
 
-    func addBorder(_ width: CGFloat) {
+    func addTopBorder(_ width: CGFloat) {
        let border = CALayer()
         border.backgroundColor = UIColor.separator.cgColor
         border.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
         //border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
         border.opacity = 0.8
         self.layer.addSublayer(border)
+    }
+    
+    func addBottomBorder(_ width: CGFloat) {
+    let border = CALayer()
+     border.backgroundColor = UIColor.separator.cgColor
+     border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+     border.opacity = 0.8
+     self.layer.addSublayer(border)
+        
     }
 }
 
