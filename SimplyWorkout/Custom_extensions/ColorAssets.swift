@@ -32,6 +32,8 @@ enum AssetsColor: String {
     case notWhite
     case softGrey
     case baseProgress
+    case c_darkGrey
+    case c2_darkGrey
 }
 
 extension UIColor {
@@ -85,6 +87,11 @@ extension UIColor {
             return UIColor(named: "softGrey")
         case .baseProgress:
             return UIColor(named: "baseProgress")
+        case .c_darkGrey:
+            return UIColor(named: "c_darkGrey")
+        case .c2_darkGrey:
+            return UIColor(named: "c2_darkGrey")
         }
+        
     }
 }

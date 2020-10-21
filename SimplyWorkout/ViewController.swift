@@ -21,18 +21,14 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var plusBtn: UIButton!
+    @IBOutlet weak var configBtn: UIButton!
+    var configIcon: UIImage!
     
     @IBAction func plusBtnTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "AddRecord") as! AddViewController
         self.present(vc, animated: true, completion: nil)
         vc.addDataDelegate = self
     }
-    
-    @IBAction func settingBtnTapped(_ sender: Any) {
-        print("push")
-//        performSegue(withIdentifier: "settingPage", sender: self)
-    }
-    
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -51,7 +47,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }()
     
     /// Collecting User's Workout Data
-    //var workoutData = [WorkoutData]()
     var checkBorder: Bool = true
     private var diffableDataSource: UITableViewDiffableDataSource<Section, WorkoutDataCD>!
     
@@ -66,6 +61,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         tableView.rowHeight = UITableView.automaticDimension
+        themeChanged()
     }
     
     override func viewDidLoad() {
@@ -78,9 +74,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         configureDataSource()
         preSetUp()
-        plusBtn.customPlusButton()
+        themeChanged()
         tableView.tableFooterView = UIView()
-        
         setupFetchedResultsData()
     }
     
@@ -116,17 +111,42 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     func preSetUp() {
         Theme.calendar = calendar
-        self.view.backgroundColor = Theme.currentTheme.backgroundColor
         self.selectedDate = dateFormatter.string(from: self.calendar.today!)
+        viewContainer.addTopBorder(1)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        tableView.separatorColor = Theme.currentTheme.separatorColor
+        
+        configIcon = UIImage(named: "setting")
+        let tempImage = configIcon.withRenderingMode(.alwaysTemplate)
+        configBtn.setImage(tempImage, for: .normal)
+    }
+    
+    @objc func configTapped() {
+        let vc = storyboard?.instantiateViewController(identifier: "settingPage") as! ConfigurationsController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func themeChanged() {
+        
+        self.view.backgroundColor = Theme.currentTheme.backgroundColor
         
         calendar.backgroundColor = Theme.currentTheme.backgroundColor
+        calendar.appearance.headerTitleColor = Theme.currentTheme.headerTitleColor
+        calendar.appearance.weekdayTextColor = Theme.currentTheme.weekdayTextColor
+        calendar.appearance.titleDefaultColor = Theme.currentTheme.dateTextColor
+        calendar.appearance.selectionColor = Theme.currentTheme.selectionColor
         
-        viewContainer.addTopBorder(1)
         viewContainer.backgroundColor = Theme.currentTheme.backgroundColor
         
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+       
+        plusBtn.customPlusButton()
+        configBtn.tintColor = Theme.currentTheme.accentColor
+        
+        tableView.reloadData()
+        calendar.reloadData()
     }
+    
     
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -157,7 +177,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             calendar.setCurrentPage(date, animated: true)
         }
         if calendar.gregorian.isDateInToday(date) == false {
-            calendar.appearance.titleTodayColor = UIColor.applyColor(AssetsColor.vivacious)
+            calendar.appearance.titleTodayColor = Theme.currentTheme.titleTodayColor
         }
         /// if user selects the date, the data is shown on the table view. the data can be multiple.
         selectedDate = dateFormatter.string(from: date)
@@ -342,7 +362,7 @@ extension ViewController: UITableViewDelegate {
         /// update the textFiled data
         vc.activityFiled.text! = data.activityName!
         vc.detailField.text = data.detail!
-        vc.detailField.textColor! = .black
+        vc.detailField.textColor! = Theme.currentTheme.textColor
         
         /// update the duration data
         let duration = data.duration!
@@ -366,7 +386,7 @@ extension ViewController: UITableViewDelegate {
         }
         else if duration.contains("h") && duration.contains("min") {
             if duration[1] == "h" {
-               vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 0, animated: false)
+                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 0, animated: false)
                 if duration[4] == "m" {
                     vc.durationPickView.selectRow(Int(duration[3])!, inComponent: 2, animated: false)
                 }

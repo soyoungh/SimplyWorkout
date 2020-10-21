@@ -14,10 +14,23 @@ protocol AddData {
 
 class AddViewController: UIViewController {
     
+    @IBOutlet weak var t_ColorTag: UILabel!
+    @IBOutlet weak var t_Exercise: UILabel!
+    @IBOutlet weak var t_Duration: UILabel!
+    @IBOutlet weak var t_Location: UILabel!
+    @IBOutlet weak var t_Intensity: UILabel!
+    
+    @IBOutlet weak var icon_tag: UIImageView!
+    @IBOutlet weak var icon_pencil: UIImageView!
+    @IBOutlet weak var icon_time: UIImageView!
+    @IBOutlet weak var icon_location: UIImageView!
+    @IBOutlet weak var icon_meter: UIImageView!
+    
     @IBOutlet weak var colorTagView: UICollectionView!
     @IBOutlet weak var effortPickView: UIPickerView!
     @IBOutlet weak var durationPickView: UIPickerView!
     @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var activityFiled: UITextField!
@@ -36,7 +49,7 @@ class AddViewController: UIViewController {
     var durationString: String?
     let hoursNum = Array(0...24)
     let minuteNum = Array(0...59)
-
+    
     /// Related Controller Connection
     var effortScaleCtrl = EffortScalePicker()
     var colorTagCtrl = ColorTagCtrl()
@@ -49,7 +62,7 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: UIButton) {
-            dismissCheck()
+        dismissCheck()
     }
     
     @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
@@ -63,8 +76,9 @@ class AddViewController: UIViewController {
         else if sender.selectedSegmentIndex == 2 {
             locationLabel = " Outside "
         }
+        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewLayerSet()
@@ -82,26 +96,61 @@ class AddViewController: UIViewController {
         durationPickView.selectRow(0, inComponent: 0, animated: true)
         durationPickView.selectRow(0, inComponent: 2, animated: true)
         
+        locationPickView.selectedSegmentIndex = 0
+        
         activityFiled.delegate = self
         detailField.delegate = self
     }
-
+    
     // MARK: - make rounded corners of view layers and drop shadow
     private func viewLayerSet() {
-        activityFiled.placeholder = "Add an activity title here."
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        
+        activityFiled.backgroundColor = Theme.currentTheme.tagCellColor
+        activityFiled.attributedPlaceholder = NSAttributedString(string: "Add an activity title here.", attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
+        activityFiled.layer.masksToBounds = true
+        activityFiled.layer.cornerRadius = 5
+        activityFiled.layer.borderWidth = 1
+        activityFiled.layer.borderColor = Theme.currentTheme.separatorColor.cgColor
+        activityFiled.textColor = Theme.currentTheme.textColor
+        
         doneBtn.titleLabel!.text = "Done"
         
         colorTagView.customView()
-        cancelBtn.roundedCornerBtn()
-        doneBtn.roundedCornerBtn()
         
-        activityFiled.layer.borderColor = UIColor.systemGray4.cgColor
-        activityFiled.layer.borderWidth = 1
+        cancelBtn.roundedCornerBtn()
+        cancelBtn.titleLabel!.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        cancelBtn.backgroundColor = Theme.currentTheme.cancelBtnColor
+        cancelBtn.tintColor = Theme.currentTheme.weekdayTextColor
+        
+        doneBtn.roundedCornerBtn()
+        doneBtn.backgroundColor = Theme.currentTheme.accentColor
+        doneBtn.tintColor = Theme.currentTheme.textColorInDarkBg
         
         detailField.customTextView()
         detailField.font = UIFont.systemFont(ofSize: 14.0)
         detailField.text = "Give some details.(optional)"
-        detailField.textColor = UIColor.systemGray3
+        detailField.textColor = Theme.currentTheme.opacityText
+        detailField.backgroundColor = Theme.currentTheme.tagCellColor
+        
+        locationPickView.selectedSegmentTintColor = Theme.currentTheme.segmentColor
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.currentTheme.textColor], for: .selected)
+        
+        t_ColorTag.detailPageTitleSet()
+        t_Exercise.detailPageTitleSet()
+        t_Duration.detailPageTitleSet()
+        t_Location.detailPageTitleSet()
+        t_Intensity.detailPageTitleSet()
+        
+        icon_tag.imageViewSet()
+        icon_pencil.imageViewSet()
+        icon_time.imageViewSet()
+        icon_location.imageViewSet()
+        icon_meter.imageViewSet()
+        
+        hourLabel.timeLabelSet()
+        minLabel.timeLabelSet()
     }
     
     func dismissCheck() {
@@ -113,7 +162,7 @@ class AddViewController: UIViewController {
             }
             nilValueCheck()
             del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagCtrl.selectedColor ?? "butterRum", location: locationLabel ?? " Gym ")
-
+            
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         else {
@@ -145,7 +194,7 @@ class AddViewController: UIViewController {
         else {
             durationLabel = durationString!
         }
-
+        
         /// check for the Effort Scale Label
         if effortScaleCtrl.userEffortScale == nil {
             effortLabel = "Moderate"
@@ -171,12 +220,12 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         confitureTapGesture()
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         activityFiled.resignFirstResponder()
         return true
     }
-
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         /// Combine the textView text and the replacement text to create the updated text string
         let currentText:String = textView.text
@@ -185,12 +234,16 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
         if updatedText.isEmpty {
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
-        /// Else if the text view's placeholder is showing and the length of the replacement string is greater than 0, set the text color to black then set its text to the replacement string
-         else if textView.textColor == UIColor.systemGray3 && !text.isEmpty {
-            textView.textColor = UIColor.black
+            /// Else if the text view's placeholder is showing and the length of the replacement string is greater than 0, set the text color to black then set its text to the replacement string
+        else if textView.textColor == UIColor.systemGray2 && !text.isEmpty {
+            textView.textColor = Theme.currentTheme.textColor
             textView.text = text
         }
-        /// For every other case, the text should change with the usual behavior...
+        else if textView.textColor == UIColor.darkGray && !text.isEmpty {
+            textView.textColor = Theme.currentTheme.textColor
+            textView.text = text
+        }
+            /// For every other case, the text should change with the usual behavior...
         else {
             return true
         }
@@ -257,6 +310,7 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         pickerLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        pickerLabel.textColor = Theme.currentTheme.textColor
         
         switch component {
         case 0:
@@ -279,7 +333,7 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         let hour = hoursNum[pickerView.selectedRow(inComponent: 0)]
         let min = minuteNum[pickerView.selectedRow(inComponent: 2)]
-  
+        
         if hour == 0 && min != 0 {
             durationString = "\(min)min"
         }

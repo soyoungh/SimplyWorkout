@@ -12,7 +12,7 @@ import FSCalendar
 class Theme {
     
     static var currentTheme: ThemeProtocol = LightTheme()
-
+    
     static var calendar =  FSCalendar() {
         
         didSet {
@@ -22,19 +22,18 @@ class Theme {
             prefixSet.headerTitleColor = currentSet.headerTitleColor
             prefixSet.weekdayTextColor = currentSet.weekdayTextColor
             prefixSet.selectionColor = currentSet.selectionColor
+            prefixSet.titleDefaultColor = currentSet.dateTextColor
             
             // Common Calendar theme settings
             prefixSet.headerDateFormat = "MMMM YYYY"
             prefixSet.headerMinimumDissolvedAlpha = 0.0
-            prefixSet.weekdayFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+            prefixSet.headerTitleFont = UIFont.systemFont(ofSize: 16, weight: .light)
+            prefixSet.weekdayFont = UIFont.systemFont(ofSize: 13, weight: .light)
+            prefixSet.titleFont = UIFont.systemFont(ofSize: 13, weight: .light)
             prefixSet.todayColor = UIColor.clear
             prefixSet.borderRadius = 1.0
-            
-            
-            
+              
         }
     }
-    
-    
-    
+ 
 }

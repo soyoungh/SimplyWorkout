@@ -10,13 +10,40 @@ import UIKit
 
 class LightTheme: ThemeProtocol {
     
-    var textColor: UIColor = UIColor.darkGray
+    var textColor: UIColor = UIColor.black
+    
+    var accentColor: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!
+    
+    var textColorInDarkBg: UIColor = UIColor.white
+    
+    var lightCellColor: UIColor = UIColor.applyColor(AssetsColor.notWhite)!
     
     var backgroundColor: UIColor = UIColor.applyColor(AssetsColor.cream)!
     
-    var headerTitleColor: UIColor = UIColor.darkGray
+    var cancelBtnColor: UIColor = UIColor.applyColor(AssetsColor.softGrey)!
     
-    var weekdayTextColor: UIColor = UIColor.darkGray
+    var separatorColor: UIColor = UIColor.separator
     
-    var selectionColor: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!    
+    var tagCellColor: UIColor = UIColor.applyColor(AssetsColor.notWhite)!
+    
+    var segmentColor: UIColor = UIColor.applyColor(AssetsColor.notWhite)!
+    
+    var opacityText: UIColor = UIColor.systemGray2
+    
+    var addIconTextColor: UIColor = UIColor.darkGray
+    
+    /// ProgressBar settings
+    var baseProgressColor: UIColor = UIColor.applyColor(AssetsColor.baseProgress)!
+    var startColorOfProgress: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!
+    
+    /// Calendar settings
+    var headerTitleColor: UIColor = UIColor.black
+    
+    var weekdayTextColor: UIColor = UIColor.black
+    
+    var dateTextColor: UIColor = UIColor.black
+    
+    var selectionColor: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!
+    
+    var titleTodayColor: UIColor = UIColor.applyColor(AssetsColor.vivacious)!
 }

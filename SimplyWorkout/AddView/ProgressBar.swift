@@ -22,8 +22,8 @@ class ProgressBar: UIView {
         let height = rect.height
         let lineWidth = 0.2 * min(width, height)
         
-        bgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.applyColor(AssetsColor.baseProgress)!.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
-        fgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.applyColor(AssetsColor.baseProgress)!.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
+        bgLayer = setCircularLayer(rect: rect, strokeColor: Theme.currentTheme.baseProgressColor.cgColor, fillColor: Theme.currentTheme.backgroundColor.cgColor, lineWidth: lineWidth)
+        fgLayer = setCircularLayer(rect: rect, strokeColor: Theme.currentTheme.baseProgressColor.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
         
         fgLayer.strokeEnd = CGFloat(progress)
         
@@ -104,7 +104,7 @@ class ProgressBar: UIView {
     private func setGradientLayer (rect: CGRect, startPoint: CGPoint, endPoint: CGPoint) -> CAGradientLayer {
         
         let gradientLayer = CAGradientLayer()
-        let startColor = UIColor.applyColor(AssetsColor.paleBrown)!.cgColor
+        let startColor = Theme.currentTheme.startColorOfProgress.cgColor
         
         gradientLayer.type = .conic
         

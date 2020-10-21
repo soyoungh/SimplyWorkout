@@ -34,8 +34,9 @@ class ColorTagCell: UICollectionViewCell {
         secondLayer.frame.size = CGSize(width: 32, height: 32)
         secondLayer.cornerRadius = secondLayer.bounds.width / 2
         secondLayer.backgroundColor = UIColor.clear.cgColor
-        secondLayer.borderColor = UIColor.darkGray.cgColor
+        secondLayer.borderColor = Theme.currentTheme.headerTitleColor.cgColor
         secondLayer.borderWidth = 1.3
+        secondLayer.opacity = 0.6
         
         layer.addSublayer(secondLayer)
         
