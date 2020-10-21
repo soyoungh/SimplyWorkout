@@ -17,7 +17,15 @@ class ConfigurationsController: UITableViewController {
     @IBOutlet weak var automaticSwitch: UISwitch!
     @IBOutlet weak var navTitle: UILabel!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var nextBtn_1: UIButton!
+    @IBOutlet weak var nextBtn_2: UIButton!
+    @IBOutlet weak var nextBtn_3: UIButton!
+    @IBOutlet weak var nextBtn_4: UIButton!
+    @IBOutlet weak var nextBtn_5: UIButton!
+    
     var backIcon: UIImage!
+    var nextIcon: UIImage!
+    var window: UIWindow!
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -30,6 +38,7 @@ class ConfigurationsController: UITableViewController {
         setupNavBar()
         applyTheme()
     }
+    
     
     @objc func automaticSwitchDidChange(_ sender: UISwitch) {
         //        let userCtrlSwitch = UserDefaults.standard
@@ -49,13 +58,11 @@ class ConfigurationsController: UITableViewController {
     }
   
     func preSetup() {
-        tableView.tableFooterView = UIView()
-        tableView.backgroundColor = Theme.currentTheme.backgroundColor
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        tableView.sizeToFit()
-        
+        settingTable.tableFooterView = UIView()
+        settingTable.backgroundColor = Theme.currentTheme.backgroundColor
+        settingTable.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        settingTable.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+       
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         versionInfo.text = appVersion
         darkModeSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
@@ -66,6 +73,14 @@ class ConfigurationsController: UITableViewController {
         backIcon = UIImage(named: "leftArrow")
         let tempImg = backIcon.withRenderingMode(.alwaysTemplate)
         backBtn.setImage(tempImg, for: .normal)
+        
+        nextIcon = UIImage(named: "next")
+        let tempImg2 = nextIcon.withRenderingMode(.alwaysTemplate)
+        nextBtn_1.setImage(tempImg2, for: .normal)
+        nextBtn_2.setImage(tempImg2, for: .normal)
+        nextBtn_3.setImage(tempImg2, for: .normal)
+        nextBtn_4.setImage(tempImg2, for: .normal)
+        nextBtn_5.setImage(tempImg2, for: .normal)
     }
     
     func setupNavBar() {
@@ -75,11 +90,17 @@ class ConfigurationsController: UITableViewController {
     
     func applyTheme() {
         view.backgroundColor = Theme.currentTheme.backgroundColor
-        tableView.backgroundColor = Theme.currentTheme.backgroundColor
+        settingTable.backgroundColor = Theme.currentTheme.backgroundColor
         navTitle.textColor = Theme.currentTheme.headerTitleColor
         versionInfo.textColor = Theme.currentTheme.accentColor
         backBtn.tintColor = Theme.currentTheme.accentColor
-        tableView.reloadData()
+        nextBtn_1.tintColor = Theme.currentTheme.accentColor
+        nextBtn_2.tintColor = Theme.currentTheme.accentColor
+        nextBtn_3.tintColor = Theme.currentTheme.accentColor
+        nextBtn_4.tintColor = Theme.currentTheme.accentColor
+        nextBtn_5.tintColor = Theme.currentTheme.accentColor
+        darkModeSwitch.onTintColor = Theme.currentTheme.accentColor
+        settingTable.reloadData()
     }
   
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -130,28 +151,20 @@ class ConfigurationsController: UITableViewController {
         switch indexPath {
         case [0, 0]:
             cell.textLabel!.text = "Remove all Ads"
-            cell.accessoryType = .disclosureIndicator
         case [1, 0]:
             cell.textLabel!.text = "Dark Mode"
-            cell.accessoryType = .none
         case [1, 1]:
             cell.textLabel!.text = "Automatic"
-            cell.accessoryType = .none
         case [2, 0]:
             cell.textLabel!.text = "Category Settings"
-            cell.accessoryType = .disclosureIndicator
         case [2, 1]:
             cell.textLabel!.text = "Clear all Data"
-            cell.accessoryType = .disclosureIndicator
         case [3, 0]:
             cell.textLabel!.text = "App Version"
-            cell.accessoryType = .none
         case [3, 1]:
             cell.textLabel!.text = "Write a Review"
-            cell.accessoryType = .disclosureIndicator
         case [3, 2]:
             cell.textLabel!.text = "License"
-            cell.accessoryType = .disclosureIndicator
         default:
             break
         }

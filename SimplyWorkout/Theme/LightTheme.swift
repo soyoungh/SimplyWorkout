@@ -32,6 +32,8 @@ class LightTheme: ThemeProtocol {
     
     var addIconTextColor: UIColor = UIColor.darkGray
     
+    var pickerBorderColor: UIColor = UIColor.systemGray5
+    
     /// ProgressBar settings
     var baseProgressColor: UIColor = UIColor.applyColor(AssetsColor.baseProgress)!
     var startColorOfProgress: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!

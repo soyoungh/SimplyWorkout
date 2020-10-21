@@ -12,7 +12,7 @@ class DarkTheme: ThemeProtocol {
     
     var textColor: UIColor = UIColor.white
     
-    var accentColor: UIColor = UIColor.applyColor(AssetsColor.ibizaBlue)!
+    var accentColor: UIColor = UIColor.applyColor(AssetsColor.turquoise)!
     
     var textColorInDarkBg: UIColor = UIColor.white
     
@@ -26,11 +26,13 @@ class DarkTheme: ThemeProtocol {
     
     var tagCellColor: UIColor = UIColor.applyColor(AssetsColor.adobeDarkGrey)!
     
-    var segmentColor: UIColor = UIColor.applyColor(AssetsColor.ibizaBlue)!
+    var segmentColor: UIColor = UIColor.applyColor(AssetsColor.turquoise)!
     
     var opacityText: UIColor = UIColor.darkGray
     
     var addIconTextColor: UIColor = UIColor.systemGray
+    
+    var pickerBorderColor: UIColor = UIColor.applyColor(AssetsColor.c2_darkGrey)!
     
     /// ProgressBar settings
     var baseProgressColor: UIColor = UIColor.applyColor(AssetsColor.c_darkGrey)!
@@ -44,8 +46,8 @@ class DarkTheme: ThemeProtocol {
     
     var dateTextColor: UIColor = UIColor.white
     
-    var selectionColor: UIColor = UIColor.applyColor(AssetsColor.ibizaBlue)!
+    var selectionColor: UIColor = UIColor.applyColor(AssetsColor.turquoise)!
     
-    var titleTodayColor: UIColor = UIColor.applyColor(AssetsColor.pinkLemonade)!
+    var titleTodayColor: UIColor = UIColor.applyColor(AssetsColor.oriole)!
     
 }

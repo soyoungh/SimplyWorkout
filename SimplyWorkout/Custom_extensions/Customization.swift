@@ -70,6 +70,25 @@ extension UIView {
         self.layer.addSublayer(border)
         self.setNeedsDisplay()
     }
+    
+    func addTopPickerBorder(_ width: CGFloat) {
+           let border = CALayer()
+           border.backgroundColor = Theme.currentTheme.pickerBorderColor.cgColor
+           border.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
+           //border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+           //        border.opacity = 0.8
+           self.layer.addSublayer(border)
+           self.setNeedsDisplay()
+       }
+       
+       func addBottomPickerBorder(_ width: CGFloat) {
+           let border = CALayer()
+           border.backgroundColor = Theme.currentTheme.pickerBorderColor.cgColor
+           border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+           //     border.opacity = 0.8
+           self.layer.addSublayer(border)
+           self.setNeedsDisplay()
+       }
 }
 
 extension UITextView {

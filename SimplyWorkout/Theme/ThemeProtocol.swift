@@ -22,6 +22,7 @@ protocol ThemeProtocol {
     var segmentColor: UIColor { get }
     var opacityText: UIColor { get }
     var addIconTextColor: UIColor { get }
+    var pickerBorderColor: UIColor { get }
     
     /// ProgressBar settings
     var baseProgressColor: UIColor { get }

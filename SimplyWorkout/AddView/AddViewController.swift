@@ -95,13 +95,14 @@ class AddViewController: UIViewController {
         
         durationPickView.selectRow(0, inComponent: 0, animated: true)
         durationPickView.selectRow(0, inComponent: 2, animated: true)
-        
+       
         locationPickView.selectedSegmentIndex = 0
         
         activityFiled.delegate = self
         detailField.delegate = self
+        
     }
-    
+ 
     // MARK: - make rounded corners of view layers and drop shadow
     private func viewLayerSet() {
         view.backgroundColor = Theme.currentTheme.backgroundColor
@@ -151,6 +152,21 @@ class AddViewController: UIViewController {
         
         hourLabel.timeLabelSet()
         minLabel.timeLabelSet()
+        
+        let pickerBorderView = UIView()
+        pickerBorderView.frame = CGRect(x: 0, y: 24, width: durationPickView.frame.width, height: 27)
+        pickerBorderView.backgroundColor = .clear
+        pickerBorderView.addTopPickerBorder(1)
+        pickerBorderView.addBottomPickerBorder(1)
+        durationPickView.addSubview(pickerBorderView)
+        
+        let effortBorderView = UIView()
+        effortBorderView.frame = CGRect(x: 0, y: 49, width: effortPickView.frame.width, height: 27)
+        effortBorderView.backgroundColor = .clear
+        effortBorderView.addTopPickerBorder(1)
+        effortBorderView.addBottomPickerBorder(1)
+        effortPickView.addSubview(effortBorderView)
+        
     }
     
     func dismissCheck() {
@@ -309,7 +325,7 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        pickerLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         pickerLabel.textColor = Theme.currentTheme.textColor
         
         switch component {
@@ -326,6 +342,7 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             
         default: break
         }
+        
         return pickerLabel
     }
     
@@ -356,4 +373,5 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.reloadAllComponents()
     }
 }
+
 
