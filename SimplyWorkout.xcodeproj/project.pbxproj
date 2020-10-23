@@ -22,6 +22,7 @@
 		F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */; };
 		F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84E333524CAB1F3003D320D /* WorkoutData.swift */; };
 		F854CCF225232DB0006E5103 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF125232DB0006E5103 /* DarkTheme.swift */; };
+		F854CCF625403FD8006E5103 /* AutoTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF525403FD8006E5103 /* AutoTheme.swift */; };
 		F86DDA1F251C1E33009CC633 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86DDA1E251C1E33009CC633 /* CloudKit.framework */; };
 		F8AD190624B9C34B004298D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190424B9C34B004298D0 /* Main.storyboard */; };
 		F8AD190E24B9C34E004298D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190C24B9C34E004298D0 /* LaunchScreen.storyboard */; };
@@ -48,6 +49,7 @@
 		F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffortScalePicker.swift; sourceTree = "<group>"; };
 		F84E333524CAB1F3003D320D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		F854CCF125232DB0006E5103 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
+		F854CCF525403FD8006E5103 /* AutoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTheme.swift; sourceTree = "<group>"; };
 		F86DDA1D251B1E29009CC633 /* SimplyWorkout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplyWorkout.entitlements; sourceTree = "<group>"; };
 		F86DDA1E251C1E33009CC633 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F8AD18FB24B9C34B004298D0 /* SimplyWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 				F8AD192524BBE19A004298D0 /* ThemeProtocol.swift */,
 				F8AD192824BC2BE9004298D0 /* LightTheme.swift */,
 				F854CCF125232DB0006E5103 /* DarkTheme.swift */,
+				F854CCF525403FD8006E5103 /* AutoTheme.swift */,
 			);
 			name = Theme;
 			path = SimplyWorkout/Theme;
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F854CCF625403FD8006E5103 /* AutoTheme.swift in Sources */,
 				F8F0B20D251324F400A28241 /* SimplyWorkout.xcdatamodeld in Sources */,
 				F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */,
 				F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */,

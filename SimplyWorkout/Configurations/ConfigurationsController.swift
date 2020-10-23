@@ -25,30 +25,44 @@ class ConfigurationsController: UITableViewController {
     
     var backIcon: UIImage!
     var nextIcon: UIImage!
-    var window: UIWindow!
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        // Retrieve state
         let darkModeOnoff = UserDefaults.standard.bool(forKey: "DarkTheme")
         darkModeSwitch.setOn(darkModeOnoff, animated: false)
+        
+        let autoModeOnoff = UserDefaults.standard.bool(forKey: "AutoMode")
+        automaticSwitch.setOn(autoModeOnoff, animated: false)
     }
     
     override func viewDidLoad() {
+        
         preSetup()
         setupNavBar()
         applyTheme()
     }
     
-    
     @objc func automaticSwitchDidChange(_ sender: UISwitch) {
-        //        let userCtrlSwitch = UserDefaults.standard
-        //        userCtrlSwitch.set(sender.isOn, forKey: "switchOnOff")
-        //        if sender.isOn {
-        //
-        //        }
-        //        else {
-        //
-        //        }
+        // Save state
+        UserDefaults.standard.set(sender.isOn, forKey: "AutoMode")
+        
+        if sender.isOn {
+            darkModeSwitch.isEnabled = false
+            if UITraitCollection.current.userInterfaceStyle == .light || UITraitCollection.current.userInterfaceStyle
+                == .unspecified {
+                Theme.currentTheme = LightTheme()
+            }
+            else if UITraitCollection.current.userInterfaceStyle == .dark {
+                Theme.currentTheme = DarkTheme()
+            }
+        }
+        else {
+            darkModeSwitch.isEnabled = true
+            darkModeSwitchDidchange(darkModeSwitch)
+        }
+        
+        applyTheme()
     }
     
     @objc func darkModeSwitchDidchange(_ sender: UISwitch) {
@@ -56,17 +70,17 @@ class ConfigurationsController: UITableViewController {
         UserDefaults.standard.set(sender.isOn, forKey: "DarkTheme")
         applyTheme()
     }
-  
+    
     func preSetup() {
         settingTable.tableFooterView = UIView()
         settingTable.backgroundColor = Theme.currentTheme.backgroundColor
         settingTable.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         settingTable.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-       
+        
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         versionInfo.text = appVersion
         darkModeSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchDidchange), for: .valueChanged)
+        darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchDidchange(_:)), for: .valueChanged)
         automaticSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         automaticSwitch.addTarget(self, action: #selector(automaticSwitchDidChange(_:)), for: .valueChanged)
         
@@ -102,7 +116,7 @@ class ConfigurationsController: UITableViewController {
         darkModeSwitch.onTintColor = Theme.currentTheme.accentColor
         settingTable.reloadData()
     }
-  
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 28))
         header.backgroundColor = .clear
