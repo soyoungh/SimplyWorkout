@@ -73,7 +73,6 @@ class ConfigurationsController: UITableViewController {
     
     func preSetup() {
         settingTable.tableFooterView = UIView()
-        settingTable.backgroundColor = Theme.currentTheme.backgroundColor
         settingTable.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         settingTable.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
