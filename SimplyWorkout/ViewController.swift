@@ -119,6 +119,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         configIcon = UIImage(named: "setting")
         let tempImage = configIcon.withRenderingMode(.alwaysTemplate)
         configBtn.setImage(tempImage, for: .normal)
+        configBtn.addTarget(self, action: #selector(configTapped), for: .touchUpInside)
     }
     
     @objc func configTapped() {
@@ -360,7 +361,7 @@ extension ViewController: UITableViewDelegate {
         vc.doneBtn.setTitle("Update", for: .normal)
         
         /// update the textFiled data
-        vc.activityFiled.text! = data.activityName!
+        vc.activityField.text! = data.activityName!
         vc.detailField.text = data.detail!
         vc.detailField.textColor! = Theme.currentTheme.textColor
         

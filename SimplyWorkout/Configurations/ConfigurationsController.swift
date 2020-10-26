@@ -94,6 +94,13 @@ class ConfigurationsController: UITableViewController {
         nextBtn_3.setImage(tempImg2, for: .normal)
         nextBtn_4.setImage(tempImg2, for: .normal)
         nextBtn_5.setImage(tempImg2, for: .normal)
+        
+        nextBtn_2.addTarget(self, action: #selector(nextBtn2_Tapped), for: .touchUpInside)
+    }
+    
+    @objc func nextBtn2_Tapped() {
+        let vc = storyboard?.instantiateViewController(identifier: "categorySetting") as! CategorySettingCtrl
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupNavBar() {

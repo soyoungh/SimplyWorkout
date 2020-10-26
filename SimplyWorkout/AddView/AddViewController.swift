@@ -33,7 +33,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
-    @IBOutlet weak var activityFiled: UITextField!
+    @IBOutlet weak var activityField: UITextField!
     @IBOutlet weak var detailField: UITextView!
     @IBOutlet weak var locationPickView: UISegmentedControl!
     
@@ -98,7 +98,7 @@ class AddViewController: UIViewController {
        
         locationPickView.selectedSegmentIndex = 0
         
-        activityFiled.delegate = self
+        activityField.delegate = self
         detailField.delegate = self
         
     }
@@ -107,13 +107,13 @@ class AddViewController: UIViewController {
     private func viewLayerSet() {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         
-        activityFiled.backgroundColor = Theme.currentTheme.tagCellColor
-        activityFiled.attributedPlaceholder = NSAttributedString(string: "Add an activity title here.", attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
-        activityFiled.layer.masksToBounds = true
-        activityFiled.layer.cornerRadius = 5
-        activityFiled.layer.borderWidth = 1
-        activityFiled.layer.borderColor = Theme.currentTheme.separatorColor.cgColor
-        activityFiled.textColor = Theme.currentTheme.textColor
+        activityField.backgroundColor = Theme.currentTheme.tagCellColor
+        activityField.attributedPlaceholder = NSAttributedString(string: "Add an activity title here.", attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
+        activityField.layer.masksToBounds = true
+        activityField.layer.cornerRadius = 5
+        activityField.layer.borderWidth = 1
+        activityField.layer.borderColor = Theme.currentTheme.separatorColor.cgColor
+        activityField.textColor = Theme.currentTheme.textColor
         
         doneBtn.titleLabel!.text = "Done"
         
@@ -171,7 +171,7 @@ class AddViewController: UIViewController {
     
     func dismissCheck() {
         /// Activity and detail Field Check First!
-        if activityFiled.text != "" || detailField.text != "Give some details.(optional)" {
+        if activityField.text != "" || detailField.text != "Give some details.(optional)" {
             /// Save datas and deliver the blief to the table View
             guard let del = addDataDelegate else {
                 return
@@ -188,11 +188,11 @@ class AddViewController: UIViewController {
     
     func nilValueCheck() {
         /// check for the activity Label
-        if activityFiled.text == "" {
+        if activityField.text == "" {
             activityLabel = "  "
         }
         else {
-            activityLabel = activityFiled.text
+            activityLabel = activityField.text
         }
         
         ///check for the detail Label
@@ -238,7 +238,7 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        activityFiled.resignFirstResponder()
+        activityField.resignFirstResponder()
         return true
     }
     
