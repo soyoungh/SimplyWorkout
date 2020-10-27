@@ -16,9 +16,11 @@ class CategorySettingCtrl: UIViewController {
     
     var backIcon: UIImage!
     var categoryAddPopupCtrl = CategoryAddPopupCtrl()
+    var categoryArray = [CategoryData]()
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     override func viewDidLoad() {
@@ -46,6 +48,7 @@ class CategorySettingCtrl: UIViewController {
         let vc = storyboard?.instantiateViewController(identifier: "categoryAddPopup") as! CategoryAddPopupCtrl
         self.navigationController?.present(vc, animated: true)
         self.navigationController?.modalPresentationStyle = .currentContext
+        vc.addCategoryDelegate = self
     }
     
     func applyTheme() {
@@ -64,24 +67,33 @@ class CategorySettingCtrl: UIViewController {
     
 }
 
-extension CategorySettingCtrl: AddNewCategories {
-    func addNewCategoryData(activityName: String, colorTag: String) {
-       print("add a new category.")
+extension CategorySettingCtrl: AddCategory {
+    func addCategoryData(activityName: String, ColorTag: String) {
+        
+        let categoryData = CategoryData()
+        categoryData.activityName_c = activityName
+        categoryData.colorTag_c = ColorTag
+        
+        categoryArray.append(categoryData)
+        
+        categoryTable.reloadData()
     }
 }
 
 extension CategorySettingCtrl: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return categoryArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let tableCell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategorySetViewCell
         
-        return tableCell
+        cell.categoryData = categoryArray[indexPath.row]
+        cell.backgroundColor = Theme.currentTheme.backgroundColor
+        cell.selectionStyle = .none
+        
+        return cell
     }
-    
-    
 }

@@ -596,7 +596,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="tagCell" translatesAutoresizingMaskIntoConstraints="NO" id="H39-O1-X9w" customClass="ColorTagCell" customModule="SimplyWorkout" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="tagCell" translatesAutoresizingMaskIntoConstraints="NO" id="H39-O1-X9w" customClass="ColorTagCell" customModule="SimplyWorkout" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="C1n-S3-gKZ">
@@ -749,15 +749,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQk-wt-dfg">
-                                                    <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                                    <rect key="frame" x="16" y="14" width="16" height="16"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="Th0-ca-OX2"/>
-                                                        <constraint firstAttribute="width" constant="24" id="hnh-IZ-sQd"/>
+                                                        <constraint firstAttribute="height" constant="16" id="Th0-ca-OX2"/>
+                                                        <constraint firstAttribute="width" constant="16" id="hnh-IZ-sQd"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWM-tM-tHV">
-                                                    <rect key="frame" x="50" y="11.5" width="328" height="21"/>
+                                                    <rect key="frame" x="42" y="11.5" width="336" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="xX0-HS-Pun"/>
                                                     </constraints>

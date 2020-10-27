@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddCategory {
+    func addCategoryData (activityName: String, ColorTag: String)
+}
+
 class CategoryAddPopupCtrl: UIViewController {
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var popupView: UIView!
@@ -18,8 +22,8 @@ class CategoryAddPopupCtrl: UIViewController {
     @IBOutlet weak var saveBtn: UIButton!
     
     var colorTagCtrl = ColorTagCtrl()
-    var addNewCategories: AddNewCategories?
-    
+    var addCategoryDelegate: AddCategory?
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         colorTagView.delegate = colorTagCtrl
@@ -46,7 +50,7 @@ class CategoryAddPopupCtrl: UIViewController {
         colorTagTitle.detailPageTitleSet()
         colorTagView.customView()
         
-        saveBtn.tintColor = Theme.currentTheme.accentColor
+        saveBtn.setTitleColor(Theme.currentTheme.accentColor, for: .normal)
         saveBtn.addTarget(self, action: #selector(saveBtnDidTapped), for: .touchUpInside)
     }
     
@@ -60,10 +64,10 @@ class CategoryAddPopupCtrl: UIViewController {
     
     func addNewCategory() {
         if activityField.text != "" && colorTagCtrl.selectedColor != "" {
-            guard let del = addNewCategories else {
+            guard let del = addCategoryDelegate else {
                 return
             }
-            del.addNewCategoryData(activityName: activityField.text!, colorTag: colorTagCtrl.selectedColor!)
+            del.addCategoryData(activityName: activityField.text!, ColorTag: colorTagCtrl.selectedColor!)
             
             dismiss(animated: true, completion: nil)
         }
@@ -71,8 +75,4 @@ class CategoryAddPopupCtrl: UIViewController {
             dismiss(animated: true, completion: nil)
         }
     }
-}
-
-protocol AddNewCategories {
-    func addNewCategoryData (activityName: String, colorTag: String)
 }
