@@ -19,6 +19,7 @@
 		F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F801C10824BD6C8F006FFF2E /* AddViewController.swift */; };
 		F804DC6524C52F9D00C3F67E /* ColorTagCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */; };
 		F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */; };
+		F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */; };
 		F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */; };
 		F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84E333524CAB1F3003D320D /* WorkoutData.swift */; };
 		F854CCF225232DB0006E5103 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF125232DB0006E5103 /* DarkTheme.swift */; };
@@ -33,7 +34,8 @@
 		F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */; };
 		F8D7E4BB2545C1C50020B3DB /* CategoryAddPopupCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */; };
 		F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */; };
-		F8E8018D2547071900395285 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8018C2547071900395285 /* CategoryData.swift */; };
+		F8E801912547C94500395285 /* CategoryCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */; };
+		F8E801922547C94500395285 /* CategoryCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */; };
 		F8EA031524C69864000756E9 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA031424C69864000756E9 /* ProgressBar.swift */; };
 		F8F0B20D251324F400A28241 /* SimplyWorkout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */; };
 		F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */; };
@@ -51,6 +53,7 @@
 		F801C10824BD6C8F006FFF2E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCtrl.swift; sourceTree = "<group>"; };
 		F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCell.swift; sourceTree = "<group>"; };
+		F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColorCtrl.swift; sourceTree = "<group>"; };
 		F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffortScalePicker.swift; sourceTree = "<group>"; };
 		F84E333524CAB1F3003D320D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		F854CCF125232DB0006E5103 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
@@ -76,7 +79,9 @@
 		F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddPopupCtrl.swift; sourceTree = "<group>"; };
 		F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySetViewCell.swift; sourceTree = "<group>"; };
-		F8E8018C2547071900395285 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
+		F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimplyWorkout v2.xcdatamodel"; sourceTree = "<group>"; };
+		F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		F8EA031424C69864000756E9 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		F8F0B20F251327CF00A28241 /* EventDateCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -131,13 +136,14 @@
 		F866869924D7922A007054E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */,
+				F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */,
 				F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */,
 				F8F0B20F251327CF00A28241 /* EventDateCD+CoreDataProperties.swift */,
 				F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */,
 				F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */,
 				F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */,
 				F84E333524CAB1F3003D320D /* WorkoutData.swift */,
-				F8E8018C2547071900395285 /* CategoryData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -210,6 +216,7 @@
 				F801C10824BD6C8F006FFF2E /* AddViewController.swift */,
 				F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */,
 				F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */,
+				F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */,
 				F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */,
 				F8EA031424C69864000756E9 /* ProgressBar.swift */,
 			);
@@ -333,7 +340,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F854CCF625403FD8006E5103 /* AutoTheme.swift in Sources */,
-				F8E8018D2547071900395285 /* CategoryData.swift in Sources */,
 				F8F0B20D251324F400A28241 /* SimplyWorkout.xcdatamodeld in Sources */,
 				F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */,
 				F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */,
@@ -349,17 +355,20 @@
 				F854CCF825431074006E5103 /* License.swift in Sources */,
 				F801C0F924BC3BD2006FFF2E /* ViewController.swift in Sources */,
 				F8F0B213251327CF00A28241 /* EventDateCD+CoreDataProperties.swift in Sources */,
+				F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */,
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
 				F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */,
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
 				F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */,
+				F8E801922547C94500395285 /* CategoryCD+CoreDataProperties.swift in Sources */,
 				F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */,
 				F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */,
 				F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */,
 				F801C10724BC9E1A006FFF2E /* Customization.swift in Sources */,
 				F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */,
 				F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */,
+				F8E801912547C94500395285 /* CategoryCD+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,9 +575,10 @@
 		F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */,
 				F8AD190824B9C34B004298D0 /* SimplyWorkout.xcdatamodel */,
 			);
-			currentVersion = F8AD190824B9C34B004298D0 /* SimplyWorkout.xcdatamodel */;
+			currentVersion = F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */;
 			path = SimplyWorkout.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ColorTagCtrl: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CategoryColorCtrl: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let colorTag = [AssetsColor.floraFirma, .bodacious, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .barrierReef, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .raspberries]
     
     var selectedColor: String?
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorTag.count
     }
@@ -37,7 +37,7 @@ class ColorTagCtrl: UIViewController, UICollectionViewDelegate, UICollectionView
     }
 }
 
-extension ColorTagCtrl: UICollectionViewDelegateFlowLayout {
+extension CategoryColorCtrl: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 30, height: 30)

@@ -23,6 +23,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     @IBOutlet weak var plusBtn: UIButton!
     @IBOutlet weak var configBtn: UIButton!
     var configIcon: UIImage!
+    var colorTagCtrl = ColorTagCtrl()
     
     @IBAction func plusBtnTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "AddRecord") as! AddViewController

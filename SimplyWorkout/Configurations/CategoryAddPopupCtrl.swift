@@ -12,7 +12,7 @@ protocol AddCategory {
     func addCategoryData (activityName: String, ColorTag: String)
 }
 
-class CategoryAddPopupCtrl: UIViewController {
+class CategoryAddPopupCtrl: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var activityTitle: UILabel!
@@ -21,7 +21,7 @@ class CategoryAddPopupCtrl: UIViewController {
     @IBOutlet weak var colorTagView: UICollectionView!
     @IBOutlet weak var saveBtn: UIButton!
     
-    var colorTagCtrl = ColorTagCtrl()
+    var colorTagCtrl = CategoryColorCtrl()
     var addCategoryDelegate: AddCategory?
  
     override func viewDidLoad() {

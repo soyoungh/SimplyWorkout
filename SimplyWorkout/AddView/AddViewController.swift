@@ -44,6 +44,8 @@ class AddViewController: UIViewController {
     var effortLabel: String?
     var durationLabel: String?
     var locationLabel: String?
+    let colorTag = [AssetsColor.floraFirma, .bodacious, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .barrierReef, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .raspberries]
+    var selectedColor: String?
     
     /// DurationPickerView Properties
     var durationString: String?
@@ -52,10 +54,11 @@ class AddViewController: UIViewController {
     
     /// Related Controller Connection
     var effortScaleCtrl = EffortScalePicker()
-    var colorTagCtrl = ColorTagCtrl()
     var progressBarCtrl = ProgressBar()
     var firstSelectionIndexPath: IndexPath?
     var isFilled: Bool = false
+    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBAction func cancelTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -87,8 +90,8 @@ class AddViewController: UIViewController {
         effortPickView.delegate = effortScaleCtrl
         effortPickView.selectRow(2, inComponent: 0, animated: false)
         
-        colorTagView.dataSource = colorTagCtrl
-        colorTagView.delegate = colorTagCtrl
+        colorTagView.dataSource = self
+        colorTagView.delegate = self
         
         durationPickView.delegate = self
         durationPickView.dataSource = self
@@ -166,7 +169,6 @@ class AddViewController: UIViewController {
         effortBorderView.addTopPickerBorder(1)
         effortBorderView.addBottomPickerBorder(1)
         effortPickView.addSubview(effortBorderView)
-        
     }
     
     func dismissCheck() {
@@ -177,7 +179,7 @@ class AddViewController: UIViewController {
                 return
             }
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagCtrl.selectedColor ?? "butterRum", location: locationLabel ?? " Gym ")
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: selectedColor ?? "butterRum", location: locationLabel ?? " Gym ")
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
@@ -225,6 +227,74 @@ class AddViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
 }
+
+// MARK: - UICollectionView Delegation
+extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return colorTag.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! ColorTagCell
+        
+        let tag = colorTag[indexPath.row]
+        
+        cell.frame.size = CGSize(width:32, height: 32)
+        cell.backgroundColor = UIColor.clear
+        cell.setCell(tag)
+        
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tag = colorTag[indexPath.row]
+        selectedColor = "\(tag)"
+        
+        let categoryRequest = CategoryCD.createFetchRequest()
+        do {
+            let categoryDataResults = try context.fetch(categoryRequest)
+            let key = categoryDataResults.filter { $0.colorTag_c == selectedColor }
+            for data in key {
+                if data.colorTag_c == selectedColor {
+                    activityField.text = data.activityName_c
+                }
+            }
+        }
+        catch let err {
+            print(err)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 30, height: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 10, left: 17, bottom: 10, right: 17)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        var space = CGFloat()
+        
+        if collectionView.frame.size.width > 340 {
+            
+            space = 25
+        }
+        else {
+            space = 16
+        }
+        
+        return space
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+}
+
 
 // MARK: - UITextField Delegation
 extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
