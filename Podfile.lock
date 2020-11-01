@@ -1,16 +1,62 @@
 PODS:
   - FSCalendar (2.8.1)
+  - Google-Mobile-Ads-SDK (7.67.1):
+    - GoogleAppMeasurement (~> 7.0)
+    - GoogleUserMessagingPlatform (~> 1.1)
+  - GoogleAppMeasurement (7.0.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30906.0)
+  - GoogleUserMessagingPlatform (1.3.0)
+  - GoogleUtilities/AppDelegateSwizzler (7.0.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (7.0.0):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (7.0.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (7.0.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (7.0.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (7.0.0)"
+  - GoogleUtilities/Reachability (7.0.0):
+    - GoogleUtilities/Logger
+  - nanopb (2.30906.0):
+    - nanopb/decode (= 2.30906.0)
+    - nanopb/encode (= 2.30906.0)
+  - nanopb/decode (2.30906.0)
+  - nanopb/encode (2.30906.0)
+  - PromisesObjC (1.2.11)
 
 DEPENDENCIES:
   - FSCalendar
+  - Google-Mobile-Ads-SDK
 
 SPEC REPOS:
   trunk:
     - FSCalendar
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleUserMessagingPlatform
+    - GoogleUtilities
+    - nanopb
+    - PromisesObjC
 
 SPEC CHECKSUMS:
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  Google-Mobile-Ads-SDK: 4c11bba9a823ed16c42f14d42feebc7678fbfd6a
+  GoogleAppMeasurement: 7790ef975d1d463c8614cd949a847e612edf087a
+  GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
+  GoogleUtilities: ffb2f4159f2c897c6e8992bd7fbcdef8a300589c
+  nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 70a0f553369d4e34e07d7f7a0c6c69fd2ea9e4e5
+PODFILE CHECKSUM: 7989f43086e45d873916b7363aabc7c07715b2d1
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

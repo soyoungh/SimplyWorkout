@@ -52,7 +52,7 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
     @objc func plusBtnDidTapped() {
         let vc = storyboard?.instantiateViewController(identifier: "categoryAddPopup") as! CategoryAddPopupCtrl
         self.navigationController?.present(vc, animated: true)
-        self.navigationController?.modalPresentationStyle = .currentContext
+        self.navigationController?.modalPresentationStyle = .overCurrentContext
         vc.addCategoryDelegate = self
     }
     

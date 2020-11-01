@@ -17,9 +17,10 @@
 		F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD192124BAFF00004298D0 /* ColorAssets.swift */; };
 		F801C10724BC9E1A006FFF2E /* Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F801C10624BC9E1A006FFF2E /* Customization.swift */; };
 		F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F801C10824BD6C8F006FFF2E /* AddViewController.swift */; };
-		F804DC6524C52F9D00C3F67E /* ColorTagCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */; };
 		F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */; };
 		F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */; };
+		F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F806D8F9254A7C2A007C26E3 /* StoreKit.framework */; };
+		F806D8FC254AA1CE007C26E3 /* InAppPurchaseCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806D8FB254AA1CE007C26E3 /* InAppPurchaseCtrl.swift */; };
 		F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */; };
 		F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84E333524CAB1F3003D320D /* WorkoutData.swift */; };
 		F854CCF225232DB0006E5103 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF125232DB0006E5103 /* DarkTheme.swift */; };
@@ -43,6 +44,8 @@
 		F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */; };
 		F8F0B215251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */; };
 		F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */; };
+		F8F28C4A254C0866007BEE8E /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F28C49254C0866007BEE8E /* IAPHelper.swift */; };
+		F8F28C4C254EC8E1007BEE8E /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,9 +54,10 @@
 		B5DC7A69A9558B90A3D20AA5 /* Pods-SimplyWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.release.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.release.xcconfig"; sourceTree = "<group>"; };
 		F801C10624BC9E1A006FFF2E /* Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customization.swift; sourceTree = "<group>"; };
 		F801C10824BD6C8F006FFF2E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCtrl.swift; sourceTree = "<group>"; };
 		F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCell.swift; sourceTree = "<group>"; };
 		F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColorCtrl.swift; sourceTree = "<group>"; };
+		F806D8F9254A7C2A007C26E3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F806D8FB254AA1CE007C26E3 /* InAppPurchaseCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseCtrl.swift; sourceTree = "<group>"; };
 		F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffortScalePicker.swift; sourceTree = "<group>"; };
 		F84E333524CAB1F3003D320D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		F854CCF125232DB0006E5103 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsController.swift; sourceTree = "<group>"; };
+		F8F28C49254C0866007BEE8E /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */,
 				D3F652230BB5C59D5820B1DC /* Pods_SimplyWorkout.framework in Frameworks */,
 				F86DDA1F251C1E33009CC633 /* CloudKit.framework in Frameworks */,
 			);
@@ -106,6 +113,7 @@
 		854E372F12EE4554A1D40795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F806D8F9254A7C2A007C26E3 /* StoreKit.framework */,
 				F86DDA1E251C1E33009CC633 /* CloudKit.framework */,
 				8745BC04E64AE3E545E14AEF /* Pods_SimplyWorkout.framework */,
 			);
@@ -129,6 +137,9 @@
 				F854CCF9254472B5006E5103 /* CategorySettingCtrl.swift */,
 				F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */,
 				F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */,
+				F806D8FB254AA1CE007C26E3 /* InAppPurchaseCtrl.swift */,
+				F8F28C49254C0866007BEE8E /* IAPHelper.swift */,
+				F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -215,7 +226,6 @@
 			children = (
 				F801C10824BD6C8F006FFF2E /* AddViewController.swift */,
 				F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */,
-				F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */,
 				F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */,
 				F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */,
 				F8EA031424C69864000756E9 /* ProgressBar.swift */,
@@ -345,8 +355,8 @@
 				F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */,
 				F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */,
 				F854CCFA254472B5006E5103 /* CategorySettingCtrl.swift in Sources */,
+				F8F28C4C254EC8E1007BEE8E /* IAPProduct.swift in Sources */,
 				F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */,
-				F804DC6524C52F9D00C3F67E /* ColorTagCtrl.swift in Sources */,
 				F801C0FC24BC3BE0006FFF2E /* Theme.swift in Sources */,
 				F8F0B215251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift in Sources */,
 				F8EA031524C69864000756E9 /* ProgressBar.swift in Sources */,
@@ -356,12 +366,14 @@
 				F801C0F924BC3BD2006FFF2E /* ViewController.swift in Sources */,
 				F8F0B213251327CF00A28241 /* EventDateCD+CoreDataProperties.swift in Sources */,
 				F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */,
+				F8F28C4A254C0866007BEE8E /* IAPHelper.swift in Sources */,
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
 				F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */,
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
 				F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */,
 				F8E801922547C94500395285 /* CategoryCD+CoreDataProperties.swift in Sources */,
+				F806D8FC254AA1CE007C26E3 /* InAppPurchaseCtrl.swift in Sources */,
 				F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */,
 				F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */,
 				F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */,

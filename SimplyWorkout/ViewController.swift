@@ -9,6 +9,7 @@
 import UIKit
 import FSCalendar
 import CoreData
+import GoogleMobileAds
 
 enum Section {
     case main
@@ -23,8 +24,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     @IBOutlet weak var plusBtn: UIButton!
     @IBOutlet weak var configBtn: UIButton!
     var configIcon: UIImage!
-    var colorTagCtrl = ColorTagCtrl()
+    var iapCtrl = InAppPurchaseCtrl()
     
+    var bannerView: GADBannerView!
+    /// banner.adUnitID = "ca-app-pub-5585665050991980/9398800141"
+    /// testID = "ca-app-pub-3940256099942544/2934735716"
+
     @IBAction func plusBtnTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "AddRecord") as! AddViewController
         self.present(vc, animated: true, completion: nil)
@@ -78,6 +83,14 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         themeChanged()
         tableView.tableFooterView = UIView()
         setupFetchedResultsData()
+        
+//        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        addBannerViewToView(bannerView)
+//        bannerView.rootViewController = self
+//        bannerView.delegate = self
+//        bannerView.load(GADRequest())
+        
     }
     
     func setupFetchedResultsData() {
@@ -149,6 +162,11 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         calendar.reloadData()
     }
     
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints([NSLayoutConstraint(item: bannerView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0), NSLayoutConstraint(item: bannerView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)])
+    }
     
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -505,6 +523,17 @@ extension String {
         let start = index(startIndex, offsetBy: range.lowerBound)
         let end = index(start, offsetBy: range.upperBound - range.lowerBound)
         return String(self[start ..< end])
+    }
+}
+
+// MARK: - Google Ads Banner
+extension ViewController: GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("received ads")
+    }
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print(error)
     }
 }
 

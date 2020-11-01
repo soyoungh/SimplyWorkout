@@ -7,4 +7,5 @@ target 'SimplyWorkout' do
 
   # Pods for SimplyWorkout
 pod 'FSCalendar'
+pod 'Google-Mobile-Ads-SDK'
 end

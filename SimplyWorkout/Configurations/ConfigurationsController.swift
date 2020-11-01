@@ -22,6 +22,7 @@ class ConfigurationsController: UITableViewController {
     @IBOutlet weak var nextBtn_3: UIButton!
     @IBOutlet weak var nextBtn_4: UIButton!
     @IBOutlet weak var nextBtn_5: UIButton!
+    @IBOutlet weak var nextBtn_6: UIButton!
     
     var backIcon: UIImage!
     var nextIcon: UIImage!
@@ -37,7 +38,6 @@ class ConfigurationsController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        
         preSetup()
         setupNavBar()
         applyTheme()
@@ -94,13 +94,21 @@ class ConfigurationsController: UITableViewController {
         nextBtn_3.setImage(tempImg2, for: .normal)
         nextBtn_4.setImage(tempImg2, for: .normal)
         nextBtn_5.setImage(tempImg2, for: .normal)
+        nextBtn_6.setImage(tempImg2, for: .normal)
         
+        nextBtn_1.addTarget(self, action: #selector(nextBtn1_Tapped), for: .touchUpInside)
         nextBtn_2.addTarget(self, action: #selector(nextBtn2_Tapped), for: .touchUpInside)
     }
     
+    @objc func nextBtn1_Tapped() {
+        let vc1 = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+        self.navigationController?.present(vc1, animated: true)
+        self.navigationController?.modalPresentationStyle = .overCurrentContext
+    }
+    
     @objc func nextBtn2_Tapped() {
-        let vc = storyboard?.instantiateViewController(identifier: "categorySetting") as! CategorySettingCtrl
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc2 = storyboard?.instantiateViewController(identifier: "categorySetting") as! CategorySettingCtrl
+        self.navigationController?.pushViewController(vc2, animated: true)
     }
     
     func setupNavBar() {
@@ -119,6 +127,7 @@ class ConfigurationsController: UITableViewController {
         nextBtn_3.tintColor = Theme.currentTheme.accentColor
         nextBtn_4.tintColor = Theme.currentTheme.accentColor
         nextBtn_5.tintColor = Theme.currentTheme.accentColor
+        nextBtn_6.tintColor = Theme.currentTheme.accentColor
         darkModeSwitch.onTintColor = Theme.currentTheme.accentColor
         settingTable.reloadData()
     }
@@ -132,7 +141,7 @@ class ConfigurationsController: UITableViewController {
         case 0:
             headerText.text = "SIMPLY WORKOUT PRO"
         case 1:
-            headerText.text = "DISPLAY THEME"
+            headerText.text = "DISPLAY & LANGUAGE"
         case 2:
             headerText.text = "DATA MANAGEMENT"
         case 3:
@@ -174,7 +183,9 @@ class ConfigurationsController: UITableViewController {
         case [1, 0]:
             cell.textLabel!.text = "Dark Mode"
         case [1, 1]:
-            cell.textLabel!.text = "Automatic"
+            cell.textLabel!.text = "Auto Mode"
+        case [1, 2]:
+            cell.textLabel!.text = "Language"
         case [2, 0]:
             cell.textLabel!.text = "Category Settings"
         case [2, 1]:
