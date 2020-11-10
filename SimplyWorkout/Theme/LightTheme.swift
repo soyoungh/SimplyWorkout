@@ -9,7 +9,7 @@
 import UIKit
 
 class LightTheme: ThemeProtocol {
-    
+ 
     var textColor: UIColor = UIColor.black
     
     var accentColor: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!

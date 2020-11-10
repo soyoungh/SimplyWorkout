@@ -26,7 +26,7 @@ class ConfigurationsController: UITableViewController {
     
     var backIcon: UIImage!
     var nextIcon: UIImage!
-    
+  
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         // Retrieve state
@@ -35,14 +35,18 @@ class ConfigurationsController: UITableViewController {
         
         let autoModeOnoff = UserDefaults.standard.bool(forKey: "AutoMode")
         automaticSwitch.setOn(autoModeOnoff, animated: false)
+       
     }
-    
+
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         preSetup()
         setupNavBar()
         applyTheme()
+        
     }
-    
+
     @objc func automaticSwitchDidChange(_ sender: UISwitch) {
         // Save state
         UserDefaults.standard.set(sender.isOn, forKey: "AutoMode")
@@ -96,23 +100,29 @@ class ConfigurationsController: UITableViewController {
         nextBtn_5.setImage(tempImg2, for: .normal)
         nextBtn_6.setImage(tempImg2, for: .normal)
         
+        /// Remove Ads
         nextBtn_1.addTarget(self, action: #selector(nextBtn1_Tapped), for: .touchUpInside)
+        /// Category Setting
         nextBtn_2.addTarget(self, action: #selector(nextBtn2_Tapped), for: .touchUpInside)
+    
     }
     
+    /// Remove Ads
     @objc func nextBtn1_Tapped() {
         let vc1 = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
         self.navigationController?.present(vc1, animated: true)
         self.navigationController?.modalPresentationStyle = .overCurrentContext
     }
     
+    /// Category Setting
     @objc func nextBtn2_Tapped() {
         let vc2 = storyboard?.instantiateViewController(identifier: "categorySetting") as! CategorySettingCtrl
         self.navigationController?.pushViewController(vc2, animated: true)
     }
-    
+
     func setupNavBar() {
         navTitle.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        navTitle.text = "Settings"
         navTitle.alpha = 0.7
     }
     
@@ -132,6 +142,7 @@ class ConfigurationsController: UITableViewController {
         settingTable.reloadData()
     }
     
+    // MARK: - TableView Delegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 28))
         header.backgroundColor = .clear
@@ -139,7 +150,7 @@ class ConfigurationsController: UITableViewController {
         
         switch section {
         case 0:
-            headerText.text = "SIMPLY WORKOUT PRO"
+            headerText.text = "IN-APP PURCHASE"
         case 1:
             headerText.text = "DISPLAY & LANGUAGE"
         case 2:
@@ -151,7 +162,7 @@ class ConfigurationsController: UITableViewController {
         }
         
         headerText.textColor = Theme.currentTheme.headerTitleColor
-        headerText.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        headerText.font = FontSizeControl.currentFontSize.headerTextSize
         headerText.alpha = 0.68
         header.addSubview(headerText)
         header.addBottomBorder(0.5)
@@ -172,20 +183,20 @@ class ConfigurationsController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = Theme.currentTheme.lightCellColor
         cell.textLabel!.textColor = Theme.currentTheme.headerTitleColor
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        cell.textLabel?.font = FontSizeControl.currentFontSize.cellTextSize
         
         cell.selectionStyle = .none
         tableView.separatorColor = Theme.currentTheme.separatorColor
         
         switch indexPath {
         case [0, 0]:
-            cell.textLabel!.text = "Remove all Ads"
+            cell.textLabel!.text = "Simply Workout Pro"
         case [1, 0]:
             cell.textLabel!.text = "Dark Mode"
         case [1, 1]:
             cell.textLabel!.text = "Auto Mode"
         case [1, 2]:
-            cell.textLabel!.text = "Language"
+            cell.textLabel!.text = "Text Size"
         case [2, 0]:
             cell.textLabel!.text = "Category Settings"
         case [2, 1]:
@@ -205,5 +216,3 @@ class ConfigurationsController: UITableViewController {
         
     }
 }
-
-

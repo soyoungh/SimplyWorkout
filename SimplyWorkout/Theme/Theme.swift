@@ -27,9 +27,9 @@ class Theme {
             // Common Calendar theme settings
             prefixSet.headerDateFormat = "MMMM YYYY"
             prefixSet.headerMinimumDissolvedAlpha = 0.0
-            prefixSet.headerTitleFont = UIFont.systemFont(ofSize: 16, weight: .light)
-            prefixSet.weekdayFont = UIFont.systemFont(ofSize: 13, weight: .light)
-            prefixSet.titleFont = UIFont.systemFont(ofSize: 13, weight: .light)
+            prefixSet.headerTitleFont = FontSizeControl.currentFontSize.c_headerTextSize
+            prefixSet.weekdayFont = FontSizeControl.currentFontSize.c_weekdayTextSize
+            prefixSet.titleFont = FontSizeControl.currentFontSize.c_weekdayTextSize
             prefixSet.todayColor = UIColor.clear
             prefixSet.borderRadius = 1.0
               

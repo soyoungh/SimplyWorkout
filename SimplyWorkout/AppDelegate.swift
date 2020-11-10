@@ -13,6 +13,7 @@ import GoogleMobileAds
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var selectedIndex: NSInteger!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,11 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.object(forKey: "DarkTheme") != nil {
                 Theme.currentTheme = UserDefaults.standard.bool(forKey: "DarkTheme") ? DarkTheme() : LightTheme()
         }
+        
         return true
     }
 
     // MARK: UISceneSession Lifecycle
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        self.selectedIndex = NSInteger()
+    }
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.

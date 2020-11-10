@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - FSCalendar (2.8.1)
   - Google-Mobile-Ads-SDK (7.67.1):
     - GoogleAppMeasurement (~> 7.0)
@@ -35,11 +38,13 @@ PODS:
   - PromisesObjC (1.2.11)
 
 DEPENDENCIES:
+  - Charts
   - FSCalendar
   - Google-Mobile-Ads-SDK
 
 SPEC REPOS:
   trunk:
+    - Charts
     - FSCalendar
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
@@ -49,6 +54,7 @@ SPEC REPOS:
     - PromisesObjC
 
 SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   Google-Mobile-Ads-SDK: 4c11bba9a823ed16c42f14d42feebc7678fbfd6a
   GoogleAppMeasurement: 7790ef975d1d463c8614cd949a847e612edf087a
@@ -57,6 +63,6 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 7989f43086e45d873916b7363aabc7c07715b2d1
+PODFILE CHECKSUM: 4034c142125099ef49a32a6d14c7c9260546ed57
 
 COCOAPODS: 1.10.0

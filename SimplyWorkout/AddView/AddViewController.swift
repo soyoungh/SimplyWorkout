@@ -112,28 +112,29 @@ class AddViewController: UIViewController {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         
         activityField.backgroundColor = Theme.currentTheme.tagCellColor
-        activityField.attributedPlaceholder = NSAttributedString(string: "Add an activity title here.", attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
+        activityField.attributedPlaceholder = NSAttributedString(string: "Add a type of exercise here.", attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
         activityField.layer.masksToBounds = true
         activityField.layer.cornerRadius = 5
         activityField.layer.borderWidth = 1
         activityField.layer.borderColor = Theme.currentTheme.separatorColor.cgColor
         activityField.textColor = Theme.currentTheme.textColor
-        
+        activityField.font = FontSizeControl.currentFontSize.add_fieldTextSize
         doneBtn.titleLabel!.text = "Done"
         
         colorTagView.customView()
         
         cancelBtn.roundedCornerBtn()
-        cancelBtn.titleLabel!.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        cancelBtn.titleLabel!.font = FontSizeControl.currentFontSize.btnTextSize
         cancelBtn.backgroundColor = Theme.currentTheme.cancelBtnColor
         cancelBtn.tintColor = Theme.currentTheme.weekdayTextColor
         
         doneBtn.roundedCornerBtn()
+        doneBtn.titleLabel!.font = FontSizeControl.currentFontSize.btnTextSize
         doneBtn.backgroundColor = Theme.currentTheme.accentColor
         doneBtn.tintColor = Theme.currentTheme.textColorInDarkBg
         
         detailField.customTextView()
-        detailField.font = UIFont.systemFont(ofSize: 14.0)
+        detailField.font = FontSizeControl.currentFontSize.add_fieldTextSize
         detailField.text = "Give some details.(optional)"
         detailField.textColor = Theme.currentTheme.opacityText
         detailField.backgroundColor = Theme.currentTheme.tagCellColor
@@ -399,7 +400,7 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        pickerLabel.font = FontSizeControl.currentFontSize.pickerTextSize
         pickerLabel.textColor = Theme.currentTheme.textColor
         
         switch component {

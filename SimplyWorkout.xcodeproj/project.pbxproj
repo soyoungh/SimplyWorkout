@@ -33,6 +33,10 @@
 		F8AD192424BBD814004298D0 /* colorPalatte.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192324BBD814004298D0 /* colorPalatte.xcassets */; };
 		F8AD192D24BC328E004298D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192C24BC328E004298D0 /* Assets.xcassets */; };
 		F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */; };
+		F8C7A771255021050010B69D /* FontSizeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A770255021050010B69D /* FontSizeProtocol.swift */; };
+		F8C7A7732550216C0010B69D /* FontSizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A7722550216C0010B69D /* FontSizeControl.swift */; };
+		F8C7A776255021D40010B69D /* DefaultFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A775255021D40010B69D /* DefaultFontSize.swift */; };
+		F8C7A778255021DF0010B69D /* X3FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A777255021DF0010B69D /* X3FontSize.swift */; };
 		F8D7E4BB2545C1C50020B3DB /* CategoryAddPopupCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */; };
 		F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */; };
 		F8E801912547C94500395285 /* CategoryCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */; };
@@ -46,6 +50,9 @@
 		F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */; };
 		F8F28C4A254C0866007BEE8E /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F28C49254C0866007BEE8E /* IAPHelper.swift */; };
 		F8F28C4C254EC8E1007BEE8E /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */; };
+		F8FED85525554949006A16F7 /* FontSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85425554949006A16F7 /* FontSizeController.swift */; };
+		F8FED85925554E92006A16F7 /* X2FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85825554E92006A16F7 /* X2FontSize.swift */; };
+		F8FED85D255A32D7006A16F7 /* X4FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85C255A32D7006A16F7 /* X4FontSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +88,10 @@
 		F8AD192A24BC2F2F004298D0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F8AD192C24BC328E004298D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		F8C7A770255021050010B69D /* FontSizeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeProtocol.swift; sourceTree = "<group>"; };
+		F8C7A7722550216C0010B69D /* FontSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeControl.swift; sourceTree = "<group>"; };
+		F8C7A775255021D40010B69D /* DefaultFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFontSize.swift; sourceTree = "<group>"; };
+		F8C7A777255021DF0010B69D /* X3FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X3FontSize.swift; sourceTree = "<group>"; };
 		F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddPopupCtrl.swift; sourceTree = "<group>"; };
 		F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySetViewCell.swift; sourceTree = "<group>"; };
 		F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimplyWorkout v2.xcdatamodel"; sourceTree = "<group>"; };
@@ -94,6 +105,9 @@
 		F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsController.swift; sourceTree = "<group>"; };
 		F8F28C49254C0866007BEE8E /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		F8FED85425554949006A16F7 /* FontSizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeController.swift; sourceTree = "<group>"; };
+		F8FED85825554E92006A16F7 /* X2FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X2FontSize.swift; sourceTree = "<group>"; };
+		F8FED85C255A32D7006A16F7 /* X4FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X4FontSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +154,7 @@
 				F806D8FB254AA1CE007C26E3 /* InAppPurchaseCtrl.swift */,
 				F8F28C49254C0866007BEE8E /* IAPHelper.swift */,
 				F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */,
+				F8FED85425554949006A16F7 /* FontSizeController.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -187,6 +202,7 @@
 				F8AD190024B9C34B004298D0 /* SceneDelegate.swift */,
 				F8AD190224B9C34B004298D0 /* ViewController.swift */,
 				F8AD192724BC2857004298D0 /* Theme */,
+				F8C7A774255021B20010B69D /* FontSize */,
 				F801C10324BC4285006FFF2E /* Configurations */,
 				F8AD192F24BC3472004298D0 /* Custom_extensions */,
 				F8AD190424B9C34B004298D0 /* Main.storyboard */,
@@ -219,6 +235,19 @@
 				F8AD192124BAFF00004298D0 /* ColorAssets.swift */,
 			);
 			path = Custom_extensions;
+			sourceTree = "<group>";
+		};
+		F8C7A774255021B20010B69D /* FontSize */ = {
+			isa = PBXGroup;
+			children = (
+				F8C7A770255021050010B69D /* FontSizeProtocol.swift */,
+				F8C7A7722550216C0010B69D /* FontSizeControl.swift */,
+				F8C7A775255021D40010B69D /* DefaultFontSize.swift */,
+				F8FED85825554E92006A16F7 /* X2FontSize.swift */,
+				F8C7A777255021DF0010B69D /* X3FontSize.swift */,
+				F8FED85C255A32D7006A16F7 /* X4FontSize.swift */,
+			);
+			path = FontSize;
 			sourceTree = "<group>";
 		};
 		F8EA031624C7BDD3000756E9 /* AddView */ = {
@@ -351,6 +380,7 @@
 			files = (
 				F854CCF625403FD8006E5103 /* AutoTheme.swift in Sources */,
 				F8F0B20D251324F400A28241 /* SimplyWorkout.xcdatamodeld in Sources */,
+				F8C7A776255021D40010B69D /* DefaultFontSize.swift in Sources */,
 				F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */,
 				F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */,
 				F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */,
@@ -365,9 +395,11 @@
 				F854CCF825431074006E5103 /* License.swift in Sources */,
 				F801C0F924BC3BD2006FFF2E /* ViewController.swift in Sources */,
 				F8F0B213251327CF00A28241 /* EventDateCD+CoreDataProperties.swift in Sources */,
+				F8FED85925554E92006A16F7 /* X2FontSize.swift in Sources */,
 				F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */,
 				F8F28C4A254C0866007BEE8E /* IAPHelper.swift in Sources */,
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
+				F8C7A7732550216C0010B69D /* FontSizeControl.swift in Sources */,
 				F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */,
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
@@ -376,11 +408,15 @@
 				F806D8FC254AA1CE007C26E3 /* InAppPurchaseCtrl.swift in Sources */,
 				F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */,
 				F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */,
+				F8FED85D255A32D7006A16F7 /* X4FontSize.swift in Sources */,
 				F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */,
 				F801C10724BC9E1A006FFF2E /* Customization.swift in Sources */,
+				F8C7A778255021DF0010B69D /* X3FontSize.swift in Sources */,
+				F8FED85525554949006A16F7 /* FontSizeController.swift in Sources */,
 				F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */,
 				F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */,
 				F8E801912547C94500395285 /* CategoryCD+CoreDataClass.swift in Sources */,
+				F8C7A771255021050010B69D /* FontSizeProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

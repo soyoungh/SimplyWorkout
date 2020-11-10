@@ -28,7 +28,7 @@ class EffortScalePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource 
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        pickerLabel.font = FontSizeControl.currentFontSize.pickerTextSize
         pickerLabel.textColor = Theme.currentTheme.textColor
         pickerLabel.textAlignment = .center
         pickerLabel.text = effortScale[row]

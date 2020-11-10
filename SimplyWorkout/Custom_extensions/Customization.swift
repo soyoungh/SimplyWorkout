@@ -105,7 +105,7 @@ extension UILabel {
     
     func detailPageTitleSet() {
         textColor = Theme.currentTheme.addIconTextColor
-        font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        font = UIFont.systemFont(ofSize: 13, weight: .regular)
     }
     
     func timeLabelSet() {
