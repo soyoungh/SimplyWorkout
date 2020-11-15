@@ -23,13 +23,13 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var plusBtn: UIButton!
     @IBOutlet weak var configBtn: UIButton!
+    @IBOutlet weak var reportBtn: UIButton!
     var configIcon: UIImage!
     var iapCtrl = InAppPurchaseCtrl()
-    
     var bannerView: GADBannerView!
     /// banner.adUnitID = "ca-app-pub-5585665050991980/9398800141"
     /// testID = "ca-app-pub-3940256099942544/2934735716"
-
+    
     @IBAction func plusBtnTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "AddRecord") as! AddViewController
         self.present(vc, animated: true, completion: nil)
@@ -90,7 +90,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 //        bannerView.rootViewController = self
 //        bannerView.delegate = self
 //        bannerView.load(GADRequest())
-        
     }
     
     func setupFetchedResultsData() {
@@ -134,6 +133,13 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         let tempImage = configIcon.withRenderingMode(.alwaysTemplate)
         configBtn.setImage(tempImage, for: .normal)
         configBtn.addTarget(self, action: #selector(configTapped), for: .touchUpInside)
+        
+        reportBtn.addTarget(self, action: #selector(reportTapped), for: .touchUpInside)
+    }
+    
+    @objc func reportTapped() {
+        let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func configTapped() {
@@ -157,6 +163,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
        
         plusBtn.customPlusButton()
         configBtn.tintColor = Theme.currentTheme.accentColor
+        reportBtn.tintColor = Theme.currentTheme.accentColor
         
         tableView.reloadData()
         calendar.reloadData()
@@ -536,8 +543,6 @@ extension ViewController: GADBannerViewDelegate {
         print(error)
     }
 }
-
-
 
 
 

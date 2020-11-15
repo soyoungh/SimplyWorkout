@@ -107,7 +107,7 @@ class AddViewController: UIViewController {
         
     }
  
-    // MARK: - make rounded corners of view layers and drop shadow
+    // MARK: - PreSetup Layouts
     private func viewLayerSet() {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         
@@ -175,7 +175,7 @@ class AddViewController: UIViewController {
         }
         
     }
-    
+    // MARK: - Data Delegate
     func dismissCheck() {
         /// Activity and detail Field Check First!
         if activityField.text != "" || detailField.text != "Give some details.(optional)" {

@@ -42,4 +42,7 @@ class X3FontSize: FontSizeProtocol {
 
     /// Add Page - activity and detail field
     var add_fieldTextSize: UIFont = UIFont.systemFont(ofSize: 15, weight: .regular)
+    
+    /// Report Page
+    var reportMonthLabel: UIFont = UIFont.systemFont(ofSize: 17, weight: .medium)
 }

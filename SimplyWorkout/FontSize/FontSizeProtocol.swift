@@ -42,4 +42,7 @@ protocol FontSizeProtocol {
     
     /// Add Page - activity and detail field
     var add_fieldTextSize: UIFont { get }
+    
+    /// Report Page
+    var reportMonthLabel: UIFont { get }
 }

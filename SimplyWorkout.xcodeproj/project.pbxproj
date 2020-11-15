@@ -21,6 +21,7 @@
 		F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */; };
 		F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F806D8F9254A7C2A007C26E3 /* StoreKit.framework */; };
 		F806D8FC254AA1CE007C26E3 /* InAppPurchaseCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806D8FB254AA1CE007C26E3 /* InAppPurchaseCtrl.swift */; };
+		F822A59B255C267900AA8035 /* MonthlyReportCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */; };
 		F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */; };
 		F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84E333524CAB1F3003D320D /* WorkoutData.swift */; };
 		F854CCF225232DB0006E5103 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF125232DB0006E5103 /* DarkTheme.swift */; };
@@ -65,6 +66,7 @@
 		F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColorCtrl.swift; sourceTree = "<group>"; };
 		F806D8F9254A7C2A007C26E3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F806D8FB254AA1CE007C26E3 /* InAppPurchaseCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseCtrl.swift; sourceTree = "<group>"; };
+		F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyReportCtrl.swift; sourceTree = "<group>"; };
 		F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffortScalePicker.swift; sourceTree = "<group>"; };
 		F84E333524CAB1F3003D320D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		F854CCF125232DB0006E5103 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
@@ -159,6 +161,14 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		F822A599255C263600AA8035 /* MonthlyReport */ = {
+			isa = PBXGroup;
+			children = (
+				F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */,
+			);
+			path = MonthlyReport;
+			sourceTree = "<group>";
+		};
 		F866869924D7922A007054E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +214,7 @@
 				F8AD192724BC2857004298D0 /* Theme */,
 				F8C7A774255021B20010B69D /* FontSize */,
 				F801C10324BC4285006FFF2E /* Configurations */,
+				F822A599255C263600AA8035 /* MonthlyReport */,
 				F8AD192F24BC3472004298D0 /* Custom_extensions */,
 				F8AD190424B9C34B004298D0 /* Main.storyboard */,
 				F8AD192C24BC328E004298D0 /* Assets.xcassets */,
@@ -400,6 +411,7 @@
 				F8F28C4A254C0866007BEE8E /* IAPHelper.swift in Sources */,
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
 				F8C7A7732550216C0010B69D /* FontSizeControl.swift in Sources */,
+				F822A59B255C267900AA8035 /* MonthlyReportCtrl.swift in Sources */,
 				F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */,
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
