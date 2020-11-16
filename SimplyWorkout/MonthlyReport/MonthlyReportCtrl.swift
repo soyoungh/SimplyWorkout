@@ -11,12 +11,13 @@ import CoreData
 import FSCalendar
 import Charts
 
-class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate {
+class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var navTitle: UILabel!
     @IBOutlet weak var reportTable: UITableView!
     @IBOutlet weak var prevBtn: UIButton!
     @IBOutlet weak var nexBtn: UIButton!
+    @IBOutlet weak var pieChartView: PieChartView!
     
     @IBOutlet weak var totalLoggedNumber: UILabel!
     @IBOutlet weak var workoutsLabel: UILabel!
@@ -25,9 +26,11 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
     @IBOutlet weak var minuteNumber: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var headerCalendar: FSCalendar!
+    @IBOutlet weak var backBtn: UIButton!
     
-    var backIcon: UIImage!
+    var preIcon: UIImage!
     var nextIcon: UIImage!
+    var backIcon: UIImage!
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -38,13 +41,10 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
     
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    //    let players = ["K.S. Williamson", "S.P.D. Smith", "V. Kohli", "Sachin", "J.J. Bumrah", "R.A. Jadeja"]
-    //    let hundreds = [6, 8, 26, 30, 8, 10]
-    var pieChart = PieChartView()
-    
+  
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        reportNumberLabel()
     }
     
     override func viewDidLoad() {
@@ -52,12 +52,11 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         
         preSetup()
         setupNavBar()
+        setupPieChart()
         applyTheme()
-        totalLoggedNumber.text = "\(totalLogNumber())"
-        
-        pieChart.delegate = self
     }
-    
+ 
+    // MARK: - Button Tap Actions
     @IBAction func preBtnTapped(_ sender: UIButton) {
         headerCalendar.setCurrentPage(getPreviousMonth(date: headerCalendar.currentPage), animated: true)
         reportNumberLabel()
@@ -68,6 +67,11 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         reportNumberLabel()
     }
     
+    @objc func backBtnTapped(sender: UIButton!) {
+        let vc = storyboard?.instantiateViewController(identifier: "mainView") as! ViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func getNextMonth(date: Date) -> Date {
         return Calendar.current.date(byAdding: .month, value: 1, to: date)!
     }
@@ -75,6 +79,15 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
     func getPreviousMonth(date: Date) -> Date {
         return Calendar.current.date(byAdding: .month, value: -1, to: date)!
     }
+    
+    // MARK: - Data Delegate
+    func reportNumberLabel() {
+          totalLoggedNumber.text = "\(totalLogNumber())"
+          hourNumber.text = "\(totalDurationNumber().0)"
+          minuteNumber.text = "\(totalDurationNumber().1)"
+          pieGraphData()
+          reportTable.reloadData()
+      }
     
     func totalLogNumber() -> Int {
         let dateString = dateFormatter.string(from: headerCalendar.currentPage)
@@ -115,8 +128,14 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
                     }
                 }
             }
-            let hourNum = hourArray.reduce(.zero, +)
-            let minNum = minArray.reduce(.zero, +)
+            var hourNum = hourArray.reduce(.zero, +)
+            var minNum = minArray.reduce(.zero, +)
+            
+            while minNum > 59 {
+                minNum -= 60
+                hourNum += 1
+            }
+    
             return (hourNum, minNum)
         }
         catch let err {
@@ -124,37 +143,62 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         }
         return (0, 0)
     }
-    
-    func reportNumberLabel() {
-        totalLoggedNumber.text = "\(totalLogNumber())"
-        hourNumber.text = "\(totalDurationNumber().0)"
-        minuteNumber.text = "\(totalDurationNumber().1)"
-        reportTable.reloadData()
+     
+    func pieGraphData() {
+        var entries = [ChartDataEntry]()
+        
+        let dateString = dateFormatter.string(from: headerCalendar.currentPage)
+        let request = WorkoutDataCD.createFetchRequest()
+        let sort = NSSortDescriptor(key: "created", ascending: true)
+        let predicate = NSPredicate(format: "toEventDate.activityDate CONTAINS %@", dateString)
+        request.sortDescriptors = [sort]
+        request.predicate = predicate
+        
+        do {
+            let dataResults = try context.fetch(request)
+            
+            var activityArray = [String]()
+            var colorDictionary = [String : String]()
+            var colorSet = [UIColor]()
+         
+            for data in dataResults {
+                let userActivity = data.activityName
+                activityArray.append(userActivity!)
+               
+                let colorTag = data.colorTag
+                colorDictionary[userActivity!] = colorTag
+            }
+ 
+            let frequency = activityArray.frequency
+            for (key, value) in frequency {
+                let dataEntry = PieChartDataEntry(value: Double(value), label: key, data: key as AnyObject)
+                entries.append(dataEntry)
+                
+                for (act, color) in colorDictionary {
+                    if dataEntry.label == act {
+                        colorSet.append(UIColor(named: color)!)
+            }}}
+         
+            let dataSet = PieChartDataSet(entries: entries, label: nil)
+            dataSet.colors = colorSet
+            dataSet.entryLabelColor = UIColor.white // block text color
+            let data = PieChartData(dataSet: dataSet)
+            let format = NumberFormatter()
+            format.numberStyle = .none
+            let formatter = DefaultValueFormatter(formatter: format)
+            data.setValueFormatter(formatter)
+            pieChartView.data = data
+            
+            /// show block text
+            //            pieChart.drawEntryLabelsEnabled = false
+        }
+        catch let err {
+            print(err)
+        }
     }
     
-    //    override func viewDidLayoutSubviews() {
-    //        super.viewDidLayoutSubviews()
-    //
-    //        var entries = [ChartDataEntry]()
-    //
-    //        for i in 0..<players.count {
-    //            let dataEntry = PieChartDataEntry(value: Double(hundreds[i]), label: players[i], data: players[i] as AnyObject)
-    //            entries.append(dataEntry)
-    //        }
-    //
-    //        let set = PieChartDataSet(entries: entries, label: nil)
-    //        set.colors = ChartColorTemplates.liberty()
-    //
-    //        let data = PieChartData(dataSet: set)
-    //        let format = NumberFormatter()
-    //        format.numberStyle = .percent
-    //        let formatter = DefaultValueFormatter(formatter: format)
-    //        data.setValueFormatter(formatter)
-    //        pieChart.data = data
-    //        pieChart.dragDecelerationEnabled = false
-    //        pieChart.drawEntryLabelsEnabled = false
-    //    }
     
+    // MARK: - View Layout Setup
     func preSetup() {
         headerCalendar.calendarWeekdayView.isHidden = true
         headerCalendar.collectionView.isHidden = true
@@ -163,14 +207,19 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         headerCalendar.appearance.headerDateFormat = "MMMM YYYY"
         headerCalendar.appearance.headerTitleFont = FontSizeControl.currentFontSize.reportMonthLabel
         
-        backIcon = UIImage(named: "leftArrow")
-        let tempImg1 = backIcon.withRenderingMode(.alwaysTemplate)
+        preIcon = UIImage(named: "next")
+        let tempImg1 = preIcon.withRenderingMode(.alwaysTemplate)
         prevBtn.setImage(tempImg1, for: .normal)
+        prevBtn.transform = prevBtn.transform.rotated(by: .pi)
         
-        nextIcon = UIImage(named: "leftArrow")
+        nextIcon = UIImage(named: "next")
         let tempImg2 = nextIcon.withRenderingMode(.alwaysTemplate)
         nexBtn.setImage(tempImg2, for: .normal)
-        nexBtn.transform = nexBtn.transform.rotated(by: .pi)
+        
+        backIcon = UIImage(named: "leftArrow")
+        let tempImg3 = backIcon.withRenderingMode(.alwaysTemplate)
+        backBtn.setImage(tempImg3, for: .normal)
+        backBtn.addTarget(self, action: #selector(backBtnTapped), for: .touchUpInside)
         
         workoutsLabel.alpha = 0.5
         hourLabel.alpha = 0.5
@@ -187,6 +236,7 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         reportTable.backgroundColor = Theme.currentTheme.backgroundColor
         prevBtn.tintColor = Theme.currentTheme.separatorColor
         nexBtn.tintColor = Theme.currentTheme.separatorColor
+        backBtn.tintColor = Theme.currentTheme.accentColor
         navTitle.textColor = Theme.currentTheme.headerTitleColor
         headerCalendar.appearance.headerTitleColor = Theme.currentTheme.accentColor
         totalLoggedNumber.textColor = UIColor.applyColor(AssetsColor.livingCoral)
@@ -199,11 +249,34 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         reportTable.reloadData()
     }
     
+    func setupPieChart() {
+        pieChartView.chartDescription?.enabled = false
+        pieChartView.drawHoleEnabled = true
+        pieChartView.rotationAngle = 0
+        pieChartView.rotationEnabled = false
+        pieChartView.isUserInteractionEnabled = false
+        pieChartView.dragDecelerationEnabled = false
+        pieChartView.dragDecelerationFrictionCoef = 0
+        pieChartView.isExclusiveTouch = false
+        pieChartView.holeColor = UIColor.clear
+        pieChartView.holeRadiusPercent = 0.35
+        pieChartView.transparentCircleRadiusPercent = 0.4
+        
+        pieChartView.legend.maxSizePercent = 1
+        pieChartView.legend.form = .circle
+        pieChartView.legend.formSize = 10
+        pieChartView.legend.formToTextSpace = 6
+        pieChartView.legend.font = UIFont.systemFont(ofSize: 13)
+        pieChartView.legend.textColor = Theme.currentTheme.weekdayTextColor
+        pieChartView.legend.horizontalAlignment = .left
+        pieChartView.legend.verticalAlignment = .bottom
+    }
+    
     // MARK: - TableView Delegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 28))
         header.backgroundColor = .clear
-        let headerText = UILabel(frame: CGRect(x: 20, y: 0, width: 180, height: tableView.sectionHeaderHeight))
+        let headerText = UILabel(frame: CGRect(x: 20, y: 0, width: 220, height: tableView.sectionHeaderHeight))
         
         switch section {
         case 0:
@@ -239,13 +312,7 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         cell.backgroundColor = Theme.currentTheme.lightCellColor
         cell.selectionStyle = .none
         tableView.separatorColor = Theme.currentTheme.separatorColor
-        
-        if indexPath == [2, 0] {
-            pieChart.frame = CGRect(x: 0, y: 0, width: 320, height: 320)
-            pieChart.center = cell.contentView.center
-            cell.contentView.addSubview(pieChart)
-        }
-        
+
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -256,7 +323,7 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         case [1, 0]:
             return 60
         case [2, 0]:
-            return 360
+            return 330
         default:
             return 60
         }
@@ -269,3 +336,8 @@ class MonthlyReportCtrl: UITableViewController, ChartViewDelegate, FSCalendarDel
         return 0
     }
 }
+
+extension Sequence where Element: Hashable {
+    var frequency: [Element: Int] { reduce(into: [:]) { $0[$1, default: 0] += 1 } }
+}
+

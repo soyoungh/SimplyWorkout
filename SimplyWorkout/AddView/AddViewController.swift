@@ -45,8 +45,8 @@ class AddViewController: UIViewController {
     var durationLabel: String?
     var locationLabel: String?
     let colorTag = [AssetsColor.floraFirma, .bodacious, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .barrierReef, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .raspberries]
-    var selectedColor: String?
-    
+    var colorTagString: String?
+ 
     /// DurationPickerView Properties
     var durationString: String?
     let hoursNum = Array(0...24)
@@ -93,15 +93,14 @@ class AddViewController: UIViewController {
         
         colorTagView.dataSource = self
         colorTagView.delegate = self
+        colorTagView.selectItem(at: [0, 0], animated: false, scrollPosition: .init())
         
         durationPickView.delegate = self
         durationPickView.dataSource = self
         
         durationPickView.selectRow(0, inComponent: 0, animated: true)
         durationPickView.selectRow(0, inComponent: 2, animated: true)
-       
-        locationPickView.selectedSegmentIndex = 0
-        
+  
         activityField.delegate = self
         detailField.delegate = self
         
@@ -184,7 +183,7 @@ class AddViewController: UIViewController {
                 return
             }
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: selectedColor ?? "butterRum", location: locationLabel ?? " Gym ")
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagString!, location: locationLabel!)
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
@@ -211,7 +210,7 @@ class AddViewController: UIViewController {
         }
         
         /// check for the Duration Label
-        if durationString == nil {
+        if durationString == "" {
             durationLabel = "0h 0min"
         }
         else {
@@ -219,12 +218,40 @@ class AddViewController: UIViewController {
         }
         
         /// check for the Effort Scale Label
-        if effortScaleCtrl.userEffortScale == nil {
+        if effortScaleCtrl.userEffortScale == "" {
             effortLabel = "Moderate"
         }
-        else {
-            effortLabel = effortScaleCtrl.userEffortScale!
+        
+        if effortPickView.selectedRow(inComponent: 0) == 0 {
+            effortLabel = "Very Light"
         }
+        else if effortPickView.selectedRow(inComponent: 0) == 1 {
+            effortLabel = "Light"
+        }
+        else if effortPickView.selectedRow(inComponent: 0) == 2 {
+            effortLabel = "Moderate"
+        }
+        else if effortPickView.selectedRow(inComponent: 0) == 3 {
+            effortLabel = "Vigorous"
+        }
+        else if effortPickView.selectedRow(inComponent: 0) == 4 {
+            effortLabel = "Hard"
+        }
+        else if effortPickView.selectedRow(inComponent: 0) == 5 {
+            effortLabel = "Max"
+        }
+        
+        /// update the location data
+        if locationLabel == " Gym " {
+            locationPickView.selectedSegmentIndex = 0
+        }
+        else if locationLabel == " Home " {
+            locationPickView.selectedSegmentIndex = 1
+        }
+        else if locationLabel == " Outside " {
+            locationPickView.selectedSegmentIndex = 2
+        }
+   
     }
     
     private func confitureTapGesture() {
@@ -254,14 +281,14 @@ extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSourc
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let tag = colorTag[indexPath.row]
-        selectedColor = "\(tag)"
+        colorTagString = "\(tag)"
         
         let categoryRequest = CategoryCD.createFetchRequest()
         do {
             let categoryDataResults = try context.fetch(categoryRequest)
-            let key = categoryDataResults.filter { $0.colorTag_c == selectedColor }
+            let key = categoryDataResults.filter { $0.colorTag_c == colorTagString }
             for data in key {
-                if data.colorTag_c == selectedColor {
+                if data.colorTag_c == colorTagString {
                     activityField.text = data.activityName_c
                 }
             }

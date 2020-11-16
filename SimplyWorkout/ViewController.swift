@@ -139,7 +139,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     @objc func reportTapped() {
         let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func configTapped() {
@@ -238,7 +238,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             for data in key {
                 let colorName = data.colorTag!
                 colorArray.append(UIColor(named: colorName)!)
-                //                print(colorArray)
             }
             return colorArray
         }
@@ -259,7 +258,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             for data in key {
                 let colorName = data.colorTag!
                 colorArray.append(UIColor(named: colorName)!)
-                //                print(colorArray)
             }
             return colorArray
         }
@@ -390,6 +388,10 @@ extension ViewController: UITableViewDelegate {
         vc.activityField.text! = data.activityName!
         vc.detailField.text = data.detail!
         vc.detailField.textColor! = Theme.currentTheme.textColor
+        vc.durationString = data.duration!
+        vc.locationLabel = data.location!
+        vc.colorTagString = data.colorTag
+        vc.effortLabel = data.effortType
         
         /// update the duration data
         let duration = data.duration!
@@ -433,13 +435,13 @@ extension ViewController: UITableViewDelegate {
         }
         
         /// update the location data
-        if data.location == "Gym" {
+        if data.location == " Gym " {
             vc.locationPickView.selectedSegmentIndex = 0
         }
-        else if data.location == "Home" {
+        else if data.location == " Home " {
             vc.locationPickView.selectedSegmentIndex = 1
         }
-        else if data.location == "OutSide" {
+        else if data.location == " Outside " {
             vc.locationPickView.selectedSegmentIndex = 2
         }
         

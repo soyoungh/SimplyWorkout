@@ -122,7 +122,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outside" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-wp-bgD">
                                                             <rect key="frame" x="170" y="73.5" width="47.5" height="16"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="0gE-er-Akc"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="0gE-er-Akc"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
@@ -709,7 +709,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZE-Il-Qyg" customClass="FSCalendar">
-                                    <rect key="frame" x="0.0" y="54" width="414" height="300"/>
+                                    <rect key="frame" x="0.0" y="58" width="414" height="300"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <accessibility key="accessibilityConfiguration">
                                         <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -719,10 +719,10 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPt-gZ-m75">
-                                    <rect key="frame" x="20" y="64" width="28" height="28"/>
+                                    <rect key="frame" x="96" y="67" width="25" height="25"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="28" id="7bf-cc-hbn"/>
-                                        <constraint firstAttribute="height" constant="28" id="TSj-I6-5c4"/>
+                                        <constraint firstAttribute="width" constant="25" id="7bf-cc-hbn"/>
+                                        <constraint firstAttribute="height" constant="25" id="TSj-I6-5c4"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <connections>
@@ -730,28 +730,38 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ss-zO-S5m">
-                                    <rect key="frame" x="366" y="64" width="28" height="28"/>
+                                    <rect key="frame" x="293" y="67" width="25" height="25"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="28" id="7VJ-Ff-1V8"/>
-                                        <constraint firstAttribute="width" constant="28" id="kfh-Zv-6yC"/>
+                                        <constraint firstAttribute="height" constant="25" id="7VJ-Ff-1V8"/>
+                                        <constraint firstAttribute="width" constant="25" id="kfh-Zv-6yC"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <connections>
                                         <action selector="nexBtnTapped:" destination="3TV-wF-99g" eventType="touchUpInside" id="gny-pJ-8BP"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgv-8o-aeO">
+                                    <rect key="frame" x="10" y="21.5" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="28" id="8Es-HS-v7H"/>
+                                        <constraint firstAttribute="width" constant="28" id="erD-7f-MEj"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="jPt-gZ-m75" secondAttribute="bottom" constant="18" id="51v-ZD-sqR"/>
                                 <constraint firstAttribute="bottom" secondItem="2Ss-zO-S5m" secondAttribute="bottom" constant="18" id="7da-gh-tTG"/>
-                                <constraint firstItem="UZE-Il-Qyg" firstAttribute="top" secondItem="EyZ-yN-rra" secondAttribute="bottom" constant="8" id="Ccm-TR-NLn"/>
-                                <constraint firstItem="jPt-gZ-m75" firstAttribute="leading" secondItem="xCw-vE-nwm" secondAttribute="leading" constant="20" id="Ghj-bI-lF7"/>
+                                <constraint firstItem="UZE-Il-Qyg" firstAttribute="top" secondItem="EyZ-yN-rra" secondAttribute="bottom" constant="12" id="Ccm-TR-NLn"/>
+                                <constraint firstItem="jPt-gZ-m75" firstAttribute="leading" secondItem="xCw-vE-nwm" secondAttribute="leading" constant="96" id="Ghj-bI-lF7"/>
                                 <constraint firstItem="EyZ-yN-rra" firstAttribute="top" secondItem="xCw-vE-nwm" secondAttribute="top" constant="25" id="Xw2-xC-zaU"/>
                                 <constraint firstItem="EyZ-yN-rra" firstAttribute="centerX" secondItem="xCw-vE-nwm" secondAttribute="centerX" id="cqU-RT-EJk"/>
                                 <constraint firstAttribute="trailing" secondItem="UZE-Il-Qyg" secondAttribute="trailing" id="dOj-cl-f3y"/>
                                 <constraint firstItem="UZE-Il-Qyg" firstAttribute="leading" secondItem="xCw-vE-nwm" secondAttribute="leading" id="eIM-ti-JNW"/>
-                                <constraint firstAttribute="trailing" secondItem="2Ss-zO-S5m" secondAttribute="trailing" constant="20" id="xW4-dO-TnG"/>
+                                <constraint firstItem="kgv-8o-aeO" firstAttribute="leading" secondItem="xCw-vE-nwm" secondAttribute="leading" constant="10" id="ng6-A2-EkS"/>
+                                <constraint firstItem="kgv-8o-aeO" firstAttribute="centerY" secondItem="EyZ-yN-rra" secondAttribute="centerY" id="vcf-SB-sh0"/>
+                                <constraint firstAttribute="trailing" secondItem="2Ss-zO-S5m" secondAttribute="trailing" constant="96" id="xW4-dO-TnG"/>
                             </constraints>
                         </view>
                         <sections>
@@ -840,10 +850,30 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="299" id="Hrk-gk-SqO">
                                         <rect key="frame" x="0.0" y="337" width="414" height="299"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hrk-gk-SqO" id="SVO-D3-cZW">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hrk-gk-SqO" id="SVO-D3-cZW">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="299"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SN2-vu-mm4" customClass="PieChartView" customModule="Charts">
+                                                    <rect key="frame" x="47" y="-10.5" width="320" height="320"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                    </accessibility>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="6c6-UW-zO8"/>
+                                                        <constraint firstAttribute="height" constant="320" id="QBe-nB-8yg"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SN2-vu-mm4" firstAttribute="centerX" secondItem="SVO-D3-cZW" secondAttribute="centerX" id="Obw-Tr-AxQ"/>
+                                                <constraint firstItem="SN2-vu-mm4" firstAttribute="centerY" secondItem="SVO-D3-cZW" secondAttribute="centerY" id="lDq-3K-kts"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -854,6 +884,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="backBtn" destination="kgv-8o-aeO" id="b2A-of-Wd8"/>
                         <outlet property="headerCalendar" destination="UZE-Il-Qyg" id="zE5-Oy-cqn"/>
                         <outlet property="hourLabel" destination="1Qv-0F-kWO" id="ZZc-kj-COi"/>
                         <outlet property="hourNumber" destination="wOH-Ja-MmU" id="Mtp-Vg-O19"/>
@@ -861,6 +892,7 @@
                         <outlet property="minuteNumber" destination="K6u-6U-ppK" id="96l-38-1Kc"/>
                         <outlet property="navTitle" destination="EyZ-yN-rra" id="SQD-Xu-4n6"/>
                         <outlet property="nexBtn" destination="2Ss-zO-S5m" id="6iq-4Z-f42"/>
+                        <outlet property="pieChartView" destination="SN2-vu-mm4" id="OmU-nK-AUf"/>
                         <outlet property="prevBtn" destination="jPt-gZ-m75" id="ngK-7H-fcc"/>
                         <outlet property="reportTable" destination="eXE-Kg-bp9" id="skz-fn-5WW"/>
                         <outlet property="totalLoggedNumber" destination="8iA-ZK-2yl" id="Gm6-5F-fLC"/>
@@ -1655,7 +1687,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ywq-sc-e9g"/>
+        <segue reference="pe9-AG-Iaj"/>
         <segue reference="GEq-d7-0jg"/>
     </inferredMetricsTieBreakers>
     <resources>
