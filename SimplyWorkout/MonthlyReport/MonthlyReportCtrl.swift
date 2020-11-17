@@ -245,7 +245,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         hourLabel.textColor = Theme.currentTheme.textColor
         minuteNumber.textColor = UIColor.applyColor(AssetsColor.floraFirma)
         minuteLabel.textColor = Theme.currentTheme.textColor
-        
+        headerCalendar.appearance.headerTitleFont = FontSizeControl.currentFontSize.reportMonthLabel
         reportTable.reloadData()
     }
     
@@ -266,7 +266,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         pieChartView.legend.form = .circle
         pieChartView.legend.formSize = 10
         pieChartView.legend.formToTextSpace = 6
-        pieChartView.legend.font = UIFont.systemFont(ofSize: 13)
+        pieChartView.legend.font = FontSizeControl.currentFontSize.c_weekdayTextSize
         pieChartView.legend.textColor = Theme.currentTheme.weekdayTextColor
         pieChartView.legend.horizontalAlignment = .left
         pieChartView.legend.verticalAlignment = .bottom
@@ -276,7 +276,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 28))
         header.backgroundColor = .clear
-        let headerText = UILabel(frame: CGRect(x: 20, y: 0, width: 220, height: tableView.sectionHeaderHeight))
+        let headerText = UILabel(frame: CGRect(x: 20, y: 0, width: 290, height: tableView.sectionHeaderHeight))
         
         switch section {
         case 0:

@@ -93,8 +93,7 @@ class AddViewController: UIViewController {
         
         colorTagView.dataSource = self
         colorTagView.delegate = self
-        colorTagView.selectItem(at: [0, 0], animated: false, scrollPosition: .init())
-        
+  
         durationPickView.delegate = self
         durationPickView.dataSource = self
         
@@ -183,7 +182,7 @@ class AddViewController: UIViewController {
                 return
             }
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagString!, location: locationLabel!)
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagString ?? "floraFirma", location: locationLabel ?? "Gym")
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
@@ -251,7 +250,6 @@ class AddViewController: UIViewController {
         else if locationLabel == " Outside " {
             locationPickView.selectedSegmentIndex = 2
         }
-   
     }
     
     private func confitureTapGesture() {
