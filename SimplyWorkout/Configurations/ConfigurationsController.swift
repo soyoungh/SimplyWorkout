@@ -110,8 +110,7 @@ class ConfigurationsController: UITableViewController {
     /// Remove Ads
     @objc func nextBtn1_Tapped() {
         let vc1 = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
-        self.navigationController?.present(vc1, animated: true)
-        self.navigationController?.modalPresentationStyle = .overCurrentContext
+        self.present(vc1, animated: true, completion: nil)
     }
     
     /// Category Setting

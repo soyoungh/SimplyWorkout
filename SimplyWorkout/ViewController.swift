@@ -270,7 +270,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 
 // MARK: - AddData Delegate
 extension ViewController: AddData {
-    func addWorkoutData(activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String) {
+    func addWorkoutData(activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String, effortValue: Float) {
         
         if selectedData.isEmpty == true {
             let userWorkout = WorkoutDataCD(context: context)
@@ -281,6 +281,7 @@ extension ViewController: AddData {
             userWorkout.colorTag = colorType
             userWorkout.created = Date()
             userWorkout.location = location
+            userWorkout.effortValue = effortValue
             
             let eventDate = EventDateCD(context: userWorkout.managedObjectContext!)
             eventDate.activityDate = dateFormatter.string(from: calendar.selectedDate!)
@@ -295,6 +296,7 @@ extension ViewController: AddData {
                 data.colorTag = colorType
                 data.created = Date()
                 data.location = location
+                data.effortValue = effortValue
             }
         }
         /// save the data

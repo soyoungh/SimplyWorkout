@@ -2,7 +2,7 @@
 //  WorkoutDataCD+CoreDataProperties.swift
 //  SimplyWorkout
 //
-//  Created by Soyoung Hyun on 2020/09/17.
+//  Created by Soyoung Hyun on 2020/11/21.
 //  Copyright © 2020 soyoung hyun. All rights reserved.
 //
 //
@@ -26,5 +26,9 @@ extension WorkoutDataCD {
     @NSManaged public var effortValue: Float
     @NSManaged public var location: String?
     @NSManaged public var toEventDate: EventDateCD?
+
+}
+
+extension WorkoutDataCD : Identifiable {
 
 }

@@ -12,12 +12,19 @@ import StoreKit
 class InAppPurchaseCtrl: UIViewController {
     
     @IBOutlet weak var popupTitle: UILabel!
+    @IBOutlet weak var adShieldIcon: UIImageView!
     @IBOutlet weak var removeAdsTitle: UILabel!
-    @IBOutlet weak var enjoyLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var subLabel_ads: UILabel!
+    @IBOutlet weak var chartIcon: UIImageView!
+    @IBOutlet weak var reportTitle: UILabel!
+    @IBOutlet weak var subLabel_report: UILabel!
+    @IBOutlet weak var darkmodeIcon: UIImageView!
+    @IBOutlet weak var darkmodeTitle: UILabel!
+    @IBOutlet weak var subLabel_darkmode: UILabel!
+    @IBOutlet weak var restoreLabel: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var upgradeBtn: UIButton!
-    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var proBox: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +33,28 @@ class InAppPurchaseCtrl: UIViewController {
     }
     
     func presetup() {
-        popupView.backgroundColor = Theme.currentTheme.backgroundColor
-        popupView.layer.cornerRadius = 10
+        view.backgroundColor = Theme.currentTheme.backgroundColor
         
+        proBox.backgroundColor = Theme.currentTheme.lightCellColor
+        proBox.layer.cornerRadius = 10
+        proBox.layer.shadowColor = UIColor.black.cgColor
+        proBox.layer.shadowOpacity = 0.2
+        proBox.layer.shadowRadius = 10
+        proBox.layer.shadowOffset = .zero
+        proBox.layer.shadowPath = UIBezierPath(rect: proBox.bounds).cgPath
+        proBox.layer.shouldRasterize = true
+        proBox.layer.rasterizationScale = UIScreen.main.scale
+      
         removeAdsTitle.textColor = Theme.currentTheme.headerTitleColor
+        reportTitle.textColor = Theme.currentTheme.headerTitleColor
+        darkmodeTitle.textColor = Theme.currentTheme.headerTitleColor
         popupTitle.detailPageTitleSet()
         
-        enjoyLabel.textColor = Theme.currentTheme.textColor
-        priceLabel.textColor = Theme.currentTheme.textColor
+        subLabel_ads.textColor = Theme.currentTheme.opacityText
+        subLabel_report.textColor = Theme.currentTheme.opacityText
+        subLabel_darkmode.textColor = Theme.currentTheme.opacityText
         
-        cancelBtn.roundedCornerBtn()
-        cancelBtn.titleLabel!.font = UIFont.systemFont(ofSize: 15, weight: .light)
-        cancelBtn.backgroundColor = Theme.currentTheme.cancelBtnColor
-        cancelBtn.tintColor = Theme.currentTheme.weekdayTextColor
+        cancelBtn.tintColor = Theme.currentTheme.accentColor
         cancelBtn.addTarget(self, action: #selector(cancelBtnDidTapped), for: .touchUpInside)
         
         upgradeBtn.roundedCornerBtn()

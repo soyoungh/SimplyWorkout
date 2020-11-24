@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddData {
-    func addWorkoutData (activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String)
+    func addWorkoutData (activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String, effortValue: Float)
 }
 
 class AddViewController: UIViewController {
@@ -46,7 +46,8 @@ class AddViewController: UIViewController {
     var locationLabel: String?
     let colorTag = [AssetsColor.floraFirma, .bodacious, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .barrierReef, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .raspberries]
     var colorTagString: String?
- 
+    var effortValue: Float?
+    
     /// DurationPickerView Properties
     var durationString: String?
     let hoursNum = Array(0...24)
@@ -97,7 +98,7 @@ class AddViewController: UIViewController {
         durationPickView.delegate = self
         durationPickView.dataSource = self
         
-        durationPickView.selectRow(0, inComponent: 0, animated: true)
+        durationPickView.selectRow(0, inComponent: 1, animated: true)
         durationPickView.selectRow(0, inComponent: 2, animated: true)
   
         activityField.delegate = self
@@ -156,21 +157,22 @@ class AddViewController: UIViewController {
         hourLabel.timeLabelSet()
         minLabel.timeLabelSet()
         
-        if UserDefaults.standard.bool(forKey: "DarkTheme") == true || UITraitCollection.current.userInterfaceStyle == .dark {
-            let pickerBorderView = UIView()
-            pickerBorderView.frame = CGRect(x: 0, y: 24, width: durationPickView.frame.width, height: 27)
-            pickerBorderView.backgroundColor = .clear
-            pickerBorderView.addTopPickerBorder(1)
-            pickerBorderView.addBottomPickerBorder(1)
-            durationPickView.addSubview(pickerBorderView)
-            
-            let effortBorderView = UIView()
-            effortBorderView.frame = CGRect(x: 0, y: 49, width: effortPickView.frame.width, height: 27)
-            effortBorderView.backgroundColor = .clear
-            effortBorderView.addTopPickerBorder(1)
-            effortBorderView.addBottomPickerBorder(1)
-            effortPickView.addSubview(effortBorderView)
-        }
+        /// Add a top and bottom's border into the Duration and Effort PickerView
+//        if UserDefaults.standard.bool(forKey: "DarkTheme") == true || UITraitCollection.current.userInterfaceStyle == .dark {
+//            let pickerBorderView = UIView()
+//            pickerBorderView.frame = CGRect(x: 0, y: 24, width: durationPickView.frame.width, height: 27)
+//            pickerBorderView.backgroundColor = .clear
+//            pickerBorderView.addTopPickerBorder(1)
+//            pickerBorderView.addBottomPickerBorder(1)
+//            durationPickView.addSubview(pickerBorderView)
+//
+//            let effortBorderView = UIView()
+//            effortBorderView.frame = CGRect(x: 0, y: 49, width: effortPickView.frame.width, height: 27)
+//            effortBorderView.backgroundColor = .clear
+//            effortBorderView.addTopPickerBorder(1)
+//            effortBorderView.addBottomPickerBorder(1)
+//            effortPickView.addSubview(effortBorderView)
+//        }
         
     }
     // MARK: - Data Delegate
@@ -182,7 +184,7 @@ class AddViewController: UIViewController {
                 return
             }
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagString ?? "floraFirma", location: locationLabel ?? "Gym")
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagString ?? "floraFirma", location: locationLabel ?? " Gym ", effortValue: effortValue!)
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
@@ -249,6 +251,25 @@ class AddViewController: UIViewController {
         }
         else if locationLabel == " Outside " {
             locationPickView.selectedSegmentIndex = 2
+        }
+        
+        if effortLabel == "Very Light" {
+            effortValue = 0.1
+        }
+        else if effortLabel == "Light" {
+            effortValue = 0.2
+        }
+        else if effortLabel == "Moderate" {
+            effortValue = 0.4
+        }
+        else if effortLabel == "Vigorous" {
+            effortValue = 0.6
+        }
+        else if effortLabel == "Hard" {
+            effortValue = 0.8
+        }
+        else if effortLabel == "Max" {
+            effortValue = 1.0
         }
     }
     
@@ -378,26 +399,27 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if component == 0 {
-            return hoursNum.count
+            return 0
         }
         else if component == 1 {
-            return 1
+            return hoursNum.count
         }
         else if component == 2 {
             return minuteNum.count
         }
         else {
-            return 1
+            return 0
         }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if component == 0 {
-            return String(hoursNum[row])
+            return ""
         }
         else if component == 1 {
-            return ""
+            return String(hoursNum[row])
         }
         else if component == 2 {
             return String(minuteNum[row])
@@ -408,18 +430,18 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        
+
         if component == 0 {
-            return 100
+            return 20
         }
         else if component == 1 {
-            return 40
+            return 120
         }
         else if component == 2 {
-            return 50
+            return 120
         }
         else {
-            return 170
+            return 60
         }
     }
     
@@ -429,17 +451,12 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         pickerLabel.textColor = Theme.currentTheme.textColor
         
         switch component {
-        case 0:
-            pickerLabel.text = String(hoursNum[row])
-            pickerLabel.textAlignment = .right
         case 1:
-            pickerLabel.text = ""
+            pickerLabel.text = String(hoursNum[row])
+            pickerLabel.textAlignment = .center
         case 2:
             pickerLabel.text = String(minuteNum[row])
-            pickerLabel.textAlignment = .right
-        case 3:
-            pickerLabel.text = ""
-            
+            pickerLabel.textAlignment = .center
         default: break
         }
         
@@ -448,7 +465,7 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        let hour = hoursNum[pickerView.selectedRow(inComponent: 0)]
+        let hour = hoursNum[pickerView.selectedRow(inComponent: 1)]
         let min = minuteNum[pickerView.selectedRow(inComponent: 2)]
         
         if hour == 0 && min != 0 {
