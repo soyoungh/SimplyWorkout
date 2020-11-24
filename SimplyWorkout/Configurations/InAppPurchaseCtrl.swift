@@ -72,7 +72,5 @@ class InAppPurchaseCtrl: UIViewController {
         IAPHelper.shared.purchase(product: .nonConsumable)
         dismiss(animated: true, completion: nil)
     }
-    
-   
 
 }

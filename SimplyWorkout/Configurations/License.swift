@@ -102,10 +102,19 @@ class License: UITableViewController {
         switch indexPath {
         case [0, 0]:
             cell.textLabel!.text = "FScalendar"
+        case [0, 1]:
+            cell.textLabel!.text = "Charts"
         case [1, 0]:
             cell.textLabel!.text = "Flaticon"
         default:
             break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath == [1, 0] {
+            didTapGoogle()
         }
     }
 }

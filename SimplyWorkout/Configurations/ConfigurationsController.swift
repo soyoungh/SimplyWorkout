@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ConfigurationsController: UITableViewController {
     
@@ -26,7 +27,8 @@ class ConfigurationsController: UITableViewController {
     
     var backIcon: UIImage!
     var nextIcon: UIImage!
-  
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         // Retrieve state
@@ -35,16 +37,13 @@ class ConfigurationsController: UITableViewController {
         
         let autoModeOnoff = UserDefaults.standard.bool(forKey: "AutoMode")
         automaticSwitch.setOn(autoModeOnoff, animated: false)
-       
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         preSetup()
         setupNavBar()
         applyTheme()
-        
     }
 
     @objc func automaticSwitchDidChange(_ sender: UISwitch) {
@@ -65,7 +64,6 @@ class ConfigurationsController: UITableViewController {
             darkModeSwitch.isEnabled = true
             darkModeSwitchDidchange(darkModeSwitch)
         }
-        
         applyTheme()
     }
     
@@ -104,7 +102,6 @@ class ConfigurationsController: UITableViewController {
         nextBtn_1.addTarget(self, action: #selector(nextBtn1_Tapped), for: .touchUpInside)
         /// Category Setting
         nextBtn_2.addTarget(self, action: #selector(nextBtn2_Tapped), for: .touchUpInside)
-    
     }
     
     /// Remove Ads
@@ -213,5 +210,60 @@ class ConfigurationsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        switch indexPath {
+        case [0, 0]:
+            nextBtn1_Tapped()
+        case [1, 2]:
+            let vc3 = storyboard?.instantiateViewController(identifier: "fontSizeCtrl") as! FontSizeController
+            self.navigationController?.pushViewController(vc3, animated: true)
+        case [2, 0]:
+            nextBtn2_Tapped()
+        case [2, 1]:
+            /// remove all data
+            createAlert(alertTitle: "Clear All Data", alertMessage: "All this app's data will be deleted permanently. \nDo you want to continue?" )
+        case [3, 1]:
+            print("d")
+        case [3, 2]:
+            /// license
+            let vc4 = storyboard?.instantiateViewController(identifier: "licenseCtrl") as! License
+            self.navigationController?.pushViewController(vc4, animated: true)
+        default:
+            break
+        }
+    }
+    
+    func removeAllData(_ entity: String) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(request)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else { continue }
+                context.delete(objectData)
+            }
+            
+            try context.save()
+        }
+        catch let err {
+            print(err)
+        }
+    }
+    
+    func createAlert(alertTitle: String?, alertMessage: String?) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let addTask = UIAlertAction(title: "Clear", style: .default) { (_) in
+            self.removeAllData("CategoryCD")
+            self.removeAllData("EventDateCD")
+            self.removeAllData("WorkoutDataCD")
+            print("all data has been deleted.")
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(addTask)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
 }
