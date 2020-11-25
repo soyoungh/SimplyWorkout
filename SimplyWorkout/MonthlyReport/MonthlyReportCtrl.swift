@@ -41,6 +41,15 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     var dateArray = [String]()
     weak var axisFormatDelegate: IAxisValueFormatter?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
+            return .darkContent
+        }
+        else {
+            return .lightContent
+        }
+    }
+    
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     
     fileprivate lazy var dateFormatter: DateFormatter = {

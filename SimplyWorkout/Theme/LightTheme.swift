@@ -48,4 +48,5 @@ class LightTheme: ThemeProtocol {
     var selectionColor: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!
     
     var titleTodayColor: UIColor = UIColor.applyColor(AssetsColor.vivacious)!
+
 }

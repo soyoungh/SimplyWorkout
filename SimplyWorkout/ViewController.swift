@@ -10,6 +10,7 @@ import UIKit
 import FSCalendar
 import CoreData
 import GoogleMobileAds
+import SwiftyStoreKit
 
 enum Section {
     case main
@@ -22,13 +23,14 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var plusBtn: UIButton!
+    @IBOutlet weak var plusBtnConstraint: NSLayoutConstraint!
     @IBOutlet weak var configBtn: UIButton!
     @IBOutlet weak var reportBtn: UIButton!
     var configIcon: UIImage!
-    var iapCtrl = InAppPurchaseCtrl()
+    
     var bannerView: GADBannerView!
-    /// banner.adUnitID = "ca-app-pub-5585665050991980/9398800141"
-    /// testID = "ca-app-pub-3940256099942544/2934735716"
+    let adUnitID = "ca-app-pub-5585665050991980/9398800141"
+    let testID = "ca-app-pub-3940256099942544/2934735716"
     
     @IBAction func plusBtnTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "AddRecord") as! AddViewController
@@ -50,7 +52,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         panGesture.minimumNumberOfTouches = 1
         panGesture.maximumNumberOfTouches = 2
         return panGesture
-        }()
+    }()
     
     /// Collecting User's Workout Data
     var checkBorder: Bool = true
@@ -61,6 +63,18 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var fetchedResultsCtrl: NSFetchedResultsController<WorkoutDataCD>!
     var selectedDate: String?
     var selectedData = [WorkoutDataCD]()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
+            return .darkContent
+        }
+        else {
+            return .lightContent
+        }
+    }
+    
+    let IAPPurchaseIDs = [["com.soyoungHyun.SimplyWorkout.ncRemoveAds"]]
+    let sharedSecret = "c620d1374ee34cd88444245fa7f27e2d"
     
     /// Make the navigation bar hidden.
     override func viewWillAppear(_ animated: Bool) {
@@ -83,13 +97,48 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         themeChanged()
         tableView.tableFooterView = UIView()
         setupFetchedResultsData()
-        
-//        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        addBannerViewToView(bannerView)
-//        bannerView.rootViewController = self
-//        bannerView.delegate = self
-//        bannerView.load(GADRequest())
+       
+        plusBtnConstraint.constant = 65
+        verifyPurchase(with: IAPPurchaseIDs[0][0], sharedSecret: sharedSecret)
+    }
+    
+    func verifyPurchase(with id: String, sharedSecret: String) {
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: sharedSecret)
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
+            switch result {
+            case .success(let receipt):
+                let productId = id
+                // Verify the purchase of Consumable or NonConsumable
+                let purchaseResult = SwiftyStoreKit.verifyPurchase(
+                    productId: productId,
+                    inReceipt: receipt)
+                
+                switch purchaseResult {
+                case .purchased:
+                    //                    print("Product is purchased: \(receiptItem)")
+                    self.reportBtn.alpha = 1.0
+                    
+                case .notPurchased:
+                    //                    print("The user has never purchased \(productId)")
+                    self.reportBtn.alpha = 0.5
+                    self.addBanner(with: self.testID)
+                }
+            case .error:
+                //                print("Receipt verification failed: \(error)")
+                self.reportBtn.alpha = 0.5
+                self.addBanner(with: self.testID)
+            }
+        }
+    }
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    func addBanner(with id: String) {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = id
+        addBannerViewToView(bannerView)
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+        bannerView.load(GADRequest())
     }
     
     func setupFetchedResultsData() {
@@ -138,8 +187,15 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     @objc func reportTapped() {
-        let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
-        self.navigationController?.pushViewController(vc, animated: true)
+        if self.reportBtn.alpha == 1.0 {
+            let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if self.reportBtn.alpha == 0.5 {
+            let vc2 = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+            self.present(vc2, animated: true)
+        }
+        
     }
     
     @objc func configTapped() {
@@ -160,7 +216,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         viewContainer.backgroundColor = Theme.currentTheme.backgroundColor
         
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
-       
+        
         plusBtn.customPlusButton()
         configBtn.tintColor = Theme.currentTheme.accentColor
         reportBtn.tintColor = Theme.currentTheme.accentColor

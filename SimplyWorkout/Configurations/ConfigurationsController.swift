@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import SwiftyStoreKit
 
 class ConfigurationsController: UITableViewController {
     
@@ -28,6 +29,18 @@ class ConfigurationsController: UITableViewController {
     var backIcon: UIImage!
     var nextIcon: UIImage!
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    let IAPPurchaseIDs = [["com.soyoungHyun.SimplyWorkout.ncRemoveAds"]]
+    let sharedSecret = "c620d1374ee34cd88444245fa7f27e2d"
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
+            return .darkContent
+        }
+        else {
+            return .lightContent
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -38,41 +51,88 @@ class ConfigurationsController: UITableViewController {
         let autoModeOnoff = UserDefaults.standard.bool(forKey: "AutoMode")
         automaticSwitch.setOn(autoModeOnoff, animated: false)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preSetup()
         setupNavBar()
         applyTheme()
+        
+        verifyPurchase(with: IAPPurchaseIDs[0][0], sharedSecret: sharedSecret)
     }
 
     @objc func automaticSwitchDidChange(_ sender: UISwitch) {
-        // Save state
-        UserDefaults.standard.set(sender.isOn, forKey: "AutoMode")
         
-        if sender.isOn {
-            darkModeSwitch.isEnabled = false
-            if UITraitCollection.current.userInterfaceStyle == .light || UITraitCollection.current.userInterfaceStyle
-                == .unspecified {
-                Theme.currentTheme = LightTheme()
+        if sender.alpha == 1.0 {
+            // Save state
+            UserDefaults.standard.set(sender.isOn, forKey: "AutoMode")
+            
+            if sender.isOn {
+                darkModeSwitch.isEnabled = false
+                if UITraitCollection.current.userInterfaceStyle == .light || UITraitCollection.current.userInterfaceStyle
+                    == .unspecified {
+                    Theme.currentTheme = LightTheme()
+                }
+                else if UITraitCollection.current.userInterfaceStyle == .dark {
+                    Theme.currentTheme = DarkTheme()
+                }
             }
-            else if UITraitCollection.current.userInterfaceStyle == .dark {
-                Theme.currentTheme = DarkTheme()
+            else {
+                darkModeSwitch.isEnabled = true
+                darkModeSwitchDidchange(darkModeSwitch)
             }
+            applyTheme()
         }
         else {
-            darkModeSwitch.isEnabled = true
-            darkModeSwitchDidchange(darkModeSwitch)
+            sender.isOn = false
+            let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+            self.present(vc, animated: true)
         }
-        applyTheme()
     }
     
     @objc func darkModeSwitchDidchange(_ sender: UISwitch) {
-        Theme.currentTheme = sender.isOn ? DarkTheme() : LightTheme()
-        UserDefaults.standard.set(sender.isOn, forKey: "DarkTheme")
-        applyTheme()
+        if sender.alpha == 1.0 {
+            Theme.currentTheme = sender.isOn ? DarkTheme() : LightTheme()
+            UserDefaults.standard.set(sender.isOn, forKey: "DarkTheme")
+            applyTheme()
+        }
+        else  {
+            sender.isOn = false
+            let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+            self.present(vc, animated: true)
+        }
     }
     
+    func verifyPurchase(with id: String, sharedSecret: String) {
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: sharedSecret)
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
+            switch result {
+            case .success(let receipt):
+                let productId = id
+                // Verify the purchase of Consumable or NonConsumable
+                let purchaseResult = SwiftyStoreKit.verifyPurchase(
+                    productId: productId,
+                    inReceipt: receipt)
+                
+                switch purchaseResult {
+                case .purchased:
+                    //                    print("Product is purchased: \(receiptItem)")
+                    self.tableView.reloadData()
+                    self.darkModeSwitch.alpha = 1.0
+                    self.automaticSwitch.alpha = 1.0
+                case .notPurchased:
+                    //                    print("The user has never purchased \(productId)")
+                    self.darkModeSwitch.alpha = 0.5
+                    self.automaticSwitch.alpha = 0.5
+                }
+            case .error:
+                //                print("Receipt verification failed: \(error)")
+                self.darkModeSwitch.alpha = 0.5
+                self.automaticSwitch.alpha = 0.5
+            }
+        }
+    }
+
     func preSetup() {
         settingTable.tableFooterView = UIView()
         settingTable.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -115,7 +175,7 @@ class ConfigurationsController: UITableViewController {
         let vc2 = storyboard?.instantiateViewController(identifier: "categorySetting") as! CategorySettingCtrl
         self.navigationController?.pushViewController(vc2, animated: true)
     }
-
+    
     func setupNavBar() {
         navTitle.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         navTitle.text = "Settings"

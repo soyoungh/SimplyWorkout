@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import GoogleMobileAds
+import SwiftyStoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Theme.currentTheme = UserDefaults.standard.bool(forKey: "DarkTheme") ? DarkTheme() : LightTheme()
         }
         
+        // see notes below for the meaning of Atomic / Non-Atomic
+            SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+                for purchase in purchases {
+                    switch purchase.transaction.transactionState {
+                    case .purchased, .restored:
+                        if purchase.needsFinishTransaction {
+                            // Deliver content from server, then:
+                            SwiftyStoreKit.finishTransaction(purchase.transaction)
+                        }
+                        // Unlock content
+                    case .failed, .purchasing, .deferred:
+                        break // do nothing
+                    @unknown default:
+                        break
+                    }
+                }
+            }
         return true
     }
 

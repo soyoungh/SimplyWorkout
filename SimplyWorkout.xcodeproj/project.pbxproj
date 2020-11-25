@@ -49,8 +49,6 @@
 		F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */; };
 		F8F0B215251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */; };
 		F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */; };
-		F8F28C4A254C0866007BEE8E /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F28C49254C0866007BEE8E /* IAPHelper.swift */; };
-		F8F28C4C254EC8E1007BEE8E /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */; };
 		F8FED85525554949006A16F7 /* FontSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85425554949006A16F7 /* FontSizeController.swift */; };
 		F8FED85925554E92006A16F7 /* X2FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85825554E92006A16F7 /* X2FontSize.swift */; };
 		F8FED85D255A32D7006A16F7 /* X4FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85C255A32D7006A16F7 /* X4FontSize.swift */; };
@@ -105,8 +103,6 @@
 		F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsController.swift; sourceTree = "<group>"; };
-		F8F28C49254C0866007BEE8E /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
-		F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
 		F8FED85425554949006A16F7 /* FontSizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeController.swift; sourceTree = "<group>"; };
 		F8FED85825554E92006A16F7 /* X2FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X2FontSize.swift; sourceTree = "<group>"; };
 		F8FED85C255A32D7006A16F7 /* X4FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X4FontSize.swift; sourceTree = "<group>"; };
@@ -154,8 +150,6 @@
 				F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */,
 				F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */,
 				F806D8FB254AA1CE007C26E3 /* InAppPurchaseCtrl.swift */,
-				F8F28C49254C0866007BEE8E /* IAPHelper.swift */,
-				F8F28C4B254EC8E1007BEE8E /* IAPProduct.swift */,
 				F8FED85425554949006A16F7 /* FontSizeController.swift */,
 			);
 			path = Configurations;
@@ -396,7 +390,6 @@
 				F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */,
 				F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */,
 				F854CCFA254472B5006E5103 /* CategorySettingCtrl.swift in Sources */,
-				F8F28C4C254EC8E1007BEE8E /* IAPProduct.swift in Sources */,
 				F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */,
 				F801C0FC24BC3BE0006FFF2E /* Theme.swift in Sources */,
 				F8F0B215251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift in Sources */,
@@ -408,7 +401,6 @@
 				F8F0B213251327CF00A28241 /* EventDateCD+CoreDataProperties.swift in Sources */,
 				F8FED85925554E92006A16F7 /* X2FontSize.swift in Sources */,
 				F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */,
-				F8F28C4A254C0866007BEE8E /* IAPHelper.swift in Sources */,
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
 				F8C7A7732550216C0010B69D /* FontSizeControl.swift in Sources */,
 				F822A59B255C267900AA8035 /* MonthlyReportCtrl.swift in Sources */,

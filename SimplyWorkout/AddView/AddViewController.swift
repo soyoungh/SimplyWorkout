@@ -157,23 +157,6 @@ class AddViewController: UIViewController {
         hourLabel.timeLabelSet()
         minLabel.timeLabelSet()
         
-        /// Add a top and bottom's border into the Duration and Effort PickerView
-//        if UserDefaults.standard.bool(forKey: "DarkTheme") == true || UITraitCollection.current.userInterfaceStyle == .dark {
-//            let pickerBorderView = UIView()
-//            pickerBorderView.frame = CGRect(x: 0, y: 24, width: durationPickView.frame.width, height: 27)
-//            pickerBorderView.backgroundColor = .clear
-//            pickerBorderView.addTopPickerBorder(1)
-//            pickerBorderView.addBottomPickerBorder(1)
-//            durationPickView.addSubview(pickerBorderView)
-//
-//            let effortBorderView = UIView()
-//            effortBorderView.frame = CGRect(x: 0, y: 49, width: effortPickView.frame.width, height: 27)
-//            effortBorderView.backgroundColor = .clear
-//            effortBorderView.addTopPickerBorder(1)
-//            effortBorderView.addBottomPickerBorder(1)
-//            effortPickView.addSubview(effortBorderView)
-//        }
-        
     }
     // MARK: - Data Delegate
     func dismissCheck() {

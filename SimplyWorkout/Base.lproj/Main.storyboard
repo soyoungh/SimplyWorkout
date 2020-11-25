@@ -236,6 +236,7 @@
                         <outlet property="calendarHeightConstraint" destination="scl-AK-Q8h" id="QLM-01-qeq"/>
                         <outlet property="configBtn" destination="B1S-aS-M5D" id="IYY-qG-N86"/>
                         <outlet property="plusBtn" destination="QLA-he-KPo" id="NMX-fV-X2n"/>
+                        <outlet property="plusBtnConstraint" destination="vlG-8c-KFR" id="YOr-UI-QjC"/>
                         <outlet property="reportBtn" destination="ofc-Vo-chQ" id="MOq-j8-REU"/>
                         <outlet property="tableView" destination="SW0-t9-kCp" id="gAo-GR-9W7"/>
                         <outlet property="viewContainer" destination="KCX-83-mp1" id="pTG-6J-Kf4"/>
@@ -1886,16 +1887,15 @@
                                     <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore purchase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jee-tH-3pp">
-                                <rect key="frame" x="140" y="796" width="134" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eju-we-Chc">
+                                <rect key="frame" x="137" y="790" width="140" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="T3G-f6-hYZ"/>
-                                    <constraint firstAttribute="width" constant="134" id="w1y-c5-f1D"/>
+                                    <constraint firstAttribute="width" constant="140" id="5dz-D4-qzh"/>
+                                    <constraint firstAttribute="height" constant="30" id="gU1-BP-Dzn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Restore purchase"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YK9-DI-BBf"/>
                         <color key="backgroundColor" name="cream"/>
@@ -1903,12 +1903,12 @@
                             <constraint firstItem="IjH-DO-AiJ" firstAttribute="centerX" secondItem="Siq-1a-fOv" secondAttribute="centerX" id="2se-Hg-fb6"/>
                             <constraint firstItem="YK9-DI-BBf" firstAttribute="trailing" secondItem="MqT-a9-GFl" secondAttribute="trailing" constant="40" id="Lh8-5x-Dpn"/>
                             <constraint firstItem="IjH-DO-AiJ" firstAttribute="top" secondItem="YK9-DI-BBf" secondAttribute="top" constant="140" id="NX3-PU-CTN"/>
-                            <constraint firstItem="Jee-tH-3pp" firstAttribute="centerX" secondItem="Siq-1a-fOv" secondAttribute="centerX" id="afz-DR-uNr"/>
+                            <constraint firstItem="eju-we-Chc" firstAttribute="centerX" secondItem="Siq-1a-fOv" secondAttribute="centerX" id="Sd6-2c-73G"/>
                             <constraint firstItem="Onh-fk-XQF" firstAttribute="top" secondItem="YK9-DI-BBf" secondAttribute="top" constant="40" id="eck-1G-jQs"/>
                             <constraint firstItem="YK9-DI-BBf" firstAttribute="bottom" secondItem="MqT-a9-GFl" secondAttribute="bottom" constant="80" id="lM5-zw-ZH7"/>
                             <constraint firstItem="MqT-a9-GFl" firstAttribute="leading" secondItem="YK9-DI-BBf" secondAttribute="leading" constant="40" id="nbp-KE-uUq"/>
                             <constraint firstItem="Onh-fk-XQF" firstAttribute="leading" secondItem="YK9-DI-BBf" secondAttribute="leading" constant="20" id="nio-Vk-ssx"/>
-                            <constraint firstItem="Jee-tH-3pp" firstAttribute="top" secondItem="MqT-a9-GFl" secondAttribute="bottom" constant="14" id="wBK-Dt-F6a"/>
+                            <constraint firstItem="eju-we-Chc" firstAttribute="top" secondItem="MqT-a9-GFl" secondAttribute="bottom" constant="8" id="wal-mq-VDD"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1921,7 +1921,7 @@
                         <outlet property="proBox" destination="IjH-DO-AiJ" id="8tF-sO-qA7"/>
                         <outlet property="removeAdsTitle" destination="dNl-6l-Lg6" id="KSn-y1-KKk"/>
                         <outlet property="reportTitle" destination="t7F-C7-3I9" id="yeN-Jb-eCw"/>
-                        <outlet property="restoreLabel" destination="Jee-tH-3pp" id="Fqe-tY-6ck"/>
+                        <outlet property="restoreBtn" destination="eju-we-Chc" id="eje-QG-pTA"/>
                         <outlet property="subLabel_ads" destination="O3r-Or-50O" id="uOT-pr-ajS"/>
                         <outlet property="subLabel_darkmode" destination="1jN-Zx-H2K" id="AD3-cM-g36"/>
                         <outlet property="subLabel_report" destination="ssA-R6-ash" id="ajy-xU-Ldi"/>
