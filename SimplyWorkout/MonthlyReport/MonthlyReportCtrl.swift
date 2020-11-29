@@ -28,6 +28,8 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var headerCalendar: FSCalendar!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var maxLabel: UILabel!
     
     @IBOutlet weak var lineChart_lightLabel: UILabel!
     @IBOutlet weak var lineChart_maxLabel: UILabel!
@@ -40,6 +42,17 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     var effortArray = [Float]()
     var dateArray = [String]()
     weak var axisFormatDelegate: IAxisValueFormatter?
+    
+    /// Localization Labels
+    var mo_veryLight = NSLocalizedString("mr_Very Light", comment: "mr_effortLabel")
+    var mo_light = NSLocalizedString("mr_Light", comment: "mr_effortLabel")
+    var mo_moderate = NSLocalizedString("mr_Moderate", comment: "mr_effortLabel")
+    var mo_vigorous = NSLocalizedString("mr_Vigorous", comment: "mr_effortLabel")
+    var mo_hard = NSLocalizedString("mr_Hard", comment: "mr_effortLabel")
+    var mo_max = NSLocalizedString("mr_Max", comment: "mr_effortLabel")
+    
+    var mo_h = NSLocalizedString("mr_h", comment: "mr_h")
+    var mo_min = NSLocalizedString("mr_min", comment: "mr_min")
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
@@ -84,13 +97,11 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     // MARK: - Button Tap Actions
     @IBAction func preBtnTapped(_ sender: UIButton) {
         headerCalendar.setCurrentPage(getPreviousMonth(date: headerCalendar.currentPage), animated: true)
-        dateArray.removeAll()
         reportNumberLabel()
     }
     
     @IBAction func nexBtnTapped(_ sender: UIButton) {
         headerCalendar.setCurrentPage(getNextMonth(date: headerCalendar.currentPage), animated: true)
-        dateArray.removeAll()
         reportNumberLabel()
     }
     
@@ -109,6 +120,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     
     // MARK: - Data Delegate
     func reportNumberLabel() {
+        dateArray.removeAll()
         totalLoggedNumber.text = "\(totalLogNumber())"
         hourNumber.text = "\(totalDurationNumber().0)"
         minuteNumber.text = "\(totalDurationNumber().1)"
@@ -146,11 +158,11 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
             for data in key {
                 let duration = data.duration!.split(separator: " ")
                 for item in duration {
-                    if item.contains("h") == true {
+                    if item.contains(mo_h) == true {
                         let numOnlyforHour = item.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
                         hourArray.append(Int(numOnlyforHour)!)
                     }
-                    else if item.contains("min") == true {
+                    else if item.contains(mo_min) == true {
                         let numOnlyforMin = item.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
                         minArray.append(Int(numOnlyforMin)!)
                     }
@@ -275,27 +287,27 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         label.textAlignment = .center
         
         if highlight.y == 1.0 {
-            label.text = "Max"
+            label.text = mo_max
             label.backgroundColor = UIColor.applyColor(AssetsColor.raspberries)
         }
         else if highlight.y >= 0.8 {
-            label.text = "Hard"
+            label.text = mo_hard
             label.backgroundColor = UIColor.applyColor(AssetsColor.oriole)
         }
         else if highlight.y >= 0.6 {
-            label.text = "Vigorous"
+            label.text = mo_vigorous
             label.backgroundColor = UIColor.applyColor(AssetsColor.citrusSol)
         }
         else if highlight.y >= 0.4 {
-            label.text = "Moderate"
+            label.text = mo_moderate
             label.backgroundColor = UIColor.applyColor(AssetsColor.sulphurSpring)
         }
         else if highlight.y >= 0.2 {
-            label.text = "Light"
+            label.text = mo_light
             label.backgroundColor = UIColor.applyColor(AssetsColor.floraFirma)
         }
         else if highlight.y >= 0.1 {
-            label.text = "Very Light"
+            label.text = mo_veryLight
             label.backgroundColor = UIColor.applyColor(AssetsColor.barrierReef)
         }
         
@@ -345,7 +357,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     
     func setupNavBar() {
         navTitle.font = FontSizeControl.currentFontSize.c_headerTextSize
-        navTitle.text = "Monthly Workout Report"
+        navTitle.text = NSLocalizedString("Monthly Workout Report", comment: "")
     }
     
     func applyTheme() {
@@ -358,11 +370,16 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         headerCalendar.appearance.headerTitleColor = Theme.currentTheme.accentColor
         totalLoggedNumber.textColor = UIColor.applyColor(AssetsColor.livingCoral)
         workoutsLabel.textColor = Theme.currentTheme.textColor
+        workoutsLabel.text = NSLocalizedString("mr_workoutLabel", comment: "mr_workoutLabel")
         hourNumber.textColor = UIColor.applyColor(AssetsColor.floraFirma)
         hourLabel.textColor = Theme.currentTheme.textColor
+        hourLabel.text = NSLocalizedString("mr_hourLabel", comment: "mr_hourLabel")
         minuteNumber.textColor = UIColor.applyColor(AssetsColor.floraFirma)
         minuteLabel.textColor = Theme.currentTheme.textColor
+        minuteLabel.text = NSLocalizedString("mr_minuteLabel", comment: "mr_minuteLabel")
         headerCalendar.appearance.headerTitleFont = FontSizeControl.currentFontSize.reportMonthLabel
+        lineChart_maxLabel.text = NSLocalizedString("mr_maxLabel", comment: "lineChart_maxLabel")
+        lineChart_lightLabel.text = NSLocalizedString("mr_minLabel", comment: "lineChart_lightLabel")
         reportTable.reloadData()
     }
 
@@ -452,13 +469,13 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         
         switch section {
         case 0:
-            headerText.text = "LOGGED THIS MONTH"
+            headerText.text = NSLocalizedString("LOGGED THIS MONTH", comment: "")
         case 1:
-            headerText.text = "TOTAL DURATION"
+            headerText.text = NSLocalizedString("TOTAL DURATION", comment: "")
         case 2:
-            headerText.text = "FREQUENTLY LOGGED EXERCISE"
+            headerText.text = NSLocalizedString("FREQUENTLY LOGGED EXERCISE", comment: "")
         case 3:
-            headerText.text = "EFFORT SCALE OVERVIEW"
+            headerText.text = NSLocalizedString("EFFORT SCALE OVERVIEW", comment: "")
         default:
             break
         }
@@ -513,7 +530,7 @@ extension Sequence where Element: Hashable {
 extension MonthlyReportCtrl: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return dateArray[Int(value)]
+        return dateArray[Int(value) % dateArray.count]
     }
 }
 

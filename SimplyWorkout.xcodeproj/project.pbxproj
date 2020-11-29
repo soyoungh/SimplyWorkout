@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D3F652230BB5C59D5820B1DC /* Pods_SimplyWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745BC04E64AE3E545E14AEF /* Pods_SimplyWorkout.framework */; };
+		099DA74583D38E2BCAA79A80 /* Pods_SimplyWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */; };
 		F801C0F924BC3BD2006FFF2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190224B9C34B004298D0 /* ViewController.swift */; };
 		F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */; };
 		F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190024B9C34B004298D0 /* SceneDelegate.swift */; };
@@ -29,6 +29,7 @@
 		F854CCF825431074006E5103 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF725431074006E5103 /* License.swift */; };
 		F854CCFA254472B5006E5103 /* CategorySettingCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF9254472B5006E5103 /* CategorySettingCtrl.swift */; };
 		F86DDA1F251C1E33009CC633 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86DDA1E251C1E33009CC633 /* CloudKit.framework */; };
+		F8916BE2256F47FA005B7277 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8916BE4256F47FA005B7277 /* Localizable.strings */; };
 		F8AD190624B9C34B004298D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190424B9C34B004298D0 /* Main.storyboard */; };
 		F8AD190E24B9C34E004298D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190C24B9C34E004298D0 /* LaunchScreen.storyboard */; };
 		F8AD192424BBD814004298D0 /* colorPalatte.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192324BBD814004298D0 /* colorPalatte.xcassets */; };
@@ -55,9 +56,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D1A94F917188CF98D3C07DC /* Pods-SimplyWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.debug.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.debug.xcconfig"; sourceTree = "<group>"; };
-		8745BC04E64AE3E545E14AEF /* Pods_SimplyWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimplyWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5DC7A69A9558B90A3D20AA5 /* Pods-SimplyWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.release.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.release.xcconfig"; sourceTree = "<group>"; };
+		7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimplyWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.release.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.release.xcconfig"; sourceTree = "<group>"; };
+		F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.debug.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.debug.xcconfig"; sourceTree = "<group>"; };
 		F801C10624BC9E1A006FFF2E /* Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customization.swift; sourceTree = "<group>"; };
 		F801C10824BD6C8F006FFF2E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCell.swift; sourceTree = "<group>"; };
@@ -73,6 +74,10 @@
 		F854CCF9254472B5006E5103 /* CategorySettingCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingCtrl.swift; sourceTree = "<group>"; };
 		F86DDA1D251B1E29009CC633 /* SimplyWorkout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplyWorkout.entitlements; sourceTree = "<group>"; };
 		F86DDA1E251C1E33009CC633 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F8916BE3256F47FA005B7277 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F8916BE6256F486E005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		F8916BE7256F486E005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F8916BE8256F486F005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F8AD18FB24B9C34B004298D0 /* SimplyWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8AD190024B9C34B004298D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,8 +119,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */,
-				D3F652230BB5C59D5820B1DC /* Pods_SimplyWorkout.framework in Frameworks */,
 				F86DDA1F251C1E33009CC633 /* CloudKit.framework in Frameworks */,
+				099DA74583D38E2BCAA79A80 /* Pods_SimplyWorkout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +132,7 @@
 			children = (
 				F806D8F9254A7C2A007C26E3 /* StoreKit.framework */,
 				F86DDA1E251C1E33009CC633 /* CloudKit.framework */,
-				8745BC04E64AE3E545E14AEF /* Pods_SimplyWorkout.framework */,
+				7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,8 +140,8 @@
 		B66DC6520CB310A74297040F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1D1A94F917188CF98D3C07DC /* Pods-SimplyWorkout.debug.xcconfig */,
-				B5DC7A69A9558B90A3D20AA5 /* Pods-SimplyWorkout.release.xcconfig */,
+				F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */,
+				D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */,
 				F8AD190024B9C34B004298D0 /* SceneDelegate.swift */,
 				F8AD190224B9C34B004298D0 /* ViewController.swift */,
+				F8916BE4256F47FA005B7277 /* Localizable.strings */,
 				F8AD192724BC2857004298D0 /* Theme */,
 				F8C7A774255021B20010B69D /* FontSize */,
 				F801C10324BC4285006FFF2E /* Configurations */,
@@ -274,11 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8AD191224B9C34E004298D0 /* Build configuration list for PBXNativeTarget "SimplyWorkout" */;
 			buildPhases = (
-				63222E798B0ACD29557291F1 /* [CP] Check Pods Manifest.lock */,
+				A35B62D282EB3D4453716061 /* [CP] Check Pods Manifest.lock */,
 				F8AD18F724B9C34B004298D0 /* Sources */,
 				F8AD18F824B9C34B004298D0 /* Frameworks */,
 				F8AD18F924B9C34B004298D0 /* Resources */,
-				B00466F98ADF06649A76B656 /* [CP] Embed Pods Frameworks */,
+				BE158FCB1B9C1D48B99BE981 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,6 +317,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = F8AD18F224B9C34B004298D0;
 			productRefGroup = F8AD18FC24B9C34B004298D0 /* Products */;
@@ -327,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8916BE2256F47FA005B7277 /* Localizable.strings in Resources */,
 				F8AD190E24B9C34E004298D0 /* LaunchScreen.storyboard in Resources */,
 				F8AD190624B9C34B004298D0 /* Main.storyboard in Resources */,
 				F8AD192D24BC328E004298D0 /* Assets.xcassets in Resources */,
@@ -337,7 +345,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		63222E798B0ACD29557291F1 /* [CP] Check Pods Manifest.lock */ = {
+		A35B62D282EB3D4453716061 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -359,7 +367,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B00466F98ADF06649A76B656 /* [CP] Embed Pods Frameworks */ = {
+		BE158FCB1B9C1D48B99BE981 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,10 +435,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F8916BE4256F47FA005B7277 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8916BE3256F47FA005B7277 /* en */,
+				F8916BE8256F486F005B7277 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F8AD190424B9C34B004298D0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F8AD190524B9C34B004298D0 /* Base */,
+				F8916BE6256F486E005B7277 /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -439,6 +457,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F8AD190D24B9C34E004298D0 /* Base */,
+				F8916BE7256F486E005B7277 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -450,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -510,6 +530,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -562,7 +583,7 @@
 		};
 		F8AD191324B9C34E004298D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D1A94F917188CF98D3C07DC /* Pods-SimplyWorkout.debug.xcconfig */;
+			baseConfigurationReference = F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;
@@ -582,7 +603,7 @@
 		};
 		F8AD191424B9C34E004298D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5DC7A69A9558B90A3D20AA5 /* Pods-SimplyWorkout.release.xcconfig */;
+			baseConfigurationReference = D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;

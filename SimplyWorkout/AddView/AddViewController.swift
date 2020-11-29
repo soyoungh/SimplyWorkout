@@ -60,6 +60,25 @@ class AddViewController: UIViewController {
     var firstSelectionIndexPath: IndexPath?
     var isFilled: Bool = false
     
+    /// Localization Labels
+    var lo_gym = NSLocalizedString("a_Gym", comment: "addv_locationLabel")
+    var lo_home = NSLocalizedString("a_Home", comment: "addv_locationLabel")
+    var lo_outside = NSLocalizedString("a_Outside", comment: "addv_locationLabel")
+    
+    var lo_veryLight = NSLocalizedString("a_Very Light", comment: "addv_effortLabel")
+    var lo_light = NSLocalizedString("a_Light", comment: "addv_effortLabel")
+    var lo_moderate = NSLocalizedString("a_Moderate", comment: "addv_effortLabel")
+    var lo_vigorous = NSLocalizedString("a_Vigorous", comment: "addv_effortLabel")
+    var lo_hard = NSLocalizedString("a_Hard", comment: "addv_effortLabel")
+    var lo_max = NSLocalizedString("a_Max", comment: "addv_effortLabel")
+    
+    var lo_detailField = NSLocalizedString("Give some details.(optional)", comment: "addv_detailField Placeholder")
+    
+    var lo_h = NSLocalizedString("a_h", comment: "addv_h")
+    var lo_hour = NSLocalizedString("a_hour", comment: "addv_hour")
+    var lo_hours = NSLocalizedString("a_hours", comment: "addv_hours")
+    var lo_min = NSLocalizedString("a_min", comment: "addv_min")
+    
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBAction func cancelTapped(_ sender: UIButton) {
@@ -71,17 +90,15 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
-        
         if sender.selectedSegmentIndex == 0 {
-            locationLabel = " Gym "
+            locationLabel = lo_gym
         }
         else if sender.selectedSegmentIndex == 1 {
-            locationLabel = " Home "
+            locationLabel = lo_home
         }
         else if sender.selectedSegmentIndex == 2 {
-            locationLabel = " Outside "
+            locationLabel = lo_outside
         }
-        
     }
     
     override func viewDidLoad() {
@@ -111,36 +128,43 @@ class AddViewController: UIViewController {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         
         activityField.backgroundColor = Theme.currentTheme.tagCellColor
-        activityField.attributedPlaceholder = NSAttributedString(string: "Add a type of exercise here.", attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
+        activityField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Add a type of exercise here.", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
         activityField.layer.masksToBounds = true
         activityField.layer.cornerRadius = 5
         activityField.layer.borderWidth = 1
         activityField.layer.borderColor = Theme.currentTheme.separatorColor.cgColor
         activityField.textColor = Theme.currentTheme.textColor
         activityField.font = FontSizeControl.currentFontSize.add_fieldTextSize
-        doneBtn.titleLabel!.text = "Done"
-        
+       
         colorTagView.customView()
         
         cancelBtn.roundedCornerBtn()
         cancelBtn.titleLabel!.font = FontSizeControl.currentFontSize.btnTextSize
         cancelBtn.backgroundColor = Theme.currentTheme.cancelBtnColor
         cancelBtn.tintColor = Theme.currentTheme.weekdayTextColor
+        cancelBtn.setTitle(NSLocalizedString("cancelBtn_title", comment: "Add view cancel button"), for: .normal)
         
         doneBtn.roundedCornerBtn()
         doneBtn.titleLabel!.font = FontSizeControl.currentFontSize.btnTextSize
         doneBtn.backgroundColor = Theme.currentTheme.accentColor
         doneBtn.tintColor = Theme.currentTheme.textColorInDarkBg
+        doneBtn.setTitle(NSLocalizedString("doneBtn_title", comment: "Add view done button"), for: .normal)
         
         detailField.customTextView()
         detailField.font = FontSizeControl.currentFontSize.add_fieldTextSize
-        detailField.text = "Give some details.(optional)"
+        detailField.text = lo_detailField
         detailField.textColor = Theme.currentTheme.opacityText
         detailField.backgroundColor = Theme.currentTheme.tagCellColor
         
         locationPickView.selectedSegmentTintColor = Theme.currentTheme.segmentColor
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.currentTheme.textColor], for: .selected)
+        
+        t_ColorTag.text = NSLocalizedString("COLOR TAG", comment: "")
+        t_Exercise.text = NSLocalizedString("EXERCISE / ACTIVITY", comment: "")
+        t_Duration.text = NSLocalizedString("DURATION", comment: "")
+        t_Location.text = NSLocalizedString("LOCATION", comment: "")
+        t_Intensity.text = NSLocalizedString("INTENSITY / EFFORT SCALE", comment: "")
         
         t_ColorTag.detailPageTitleSet()
         t_Exercise.detailPageTitleSet()
@@ -155,19 +179,25 @@ class AddViewController: UIViewController {
         icon_meter.imageViewSet()
         
         hourLabel.timeLabelSet()
+        hourLabel.text = NSLocalizedString("a_picker_hour", comment: "addv_picker_hour")
         minLabel.timeLabelSet()
+        minLabel.text = NSLocalizedString("a_picker_minute", comment: "addv_picker_minute")
+        
+        locationPickView.setTitle(lo_gym, forSegmentAt: 0)
+        locationPickView.setTitle(lo_home, forSegmentAt: 1)
+        locationPickView.setTitle(lo_outside, forSegmentAt: 2)
         
     }
     // MARK: - Data Delegate
     func dismissCheck() {
         /// Activity and detail Field Check First!
-        if activityField.text != "" || detailField.text != "Give some details.(optional)" {
+        if activityField.text != "" || detailField.text != lo_detailField {
             /// Save datas and deliver the blief to the table View
             guard let del = addDataDelegate else {
                 return
             }
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel!, duration: durationLabel!, colorType: colorTagString ?? "floraFirma", location: locationLabel ?? " Gym ", effortValue: effortValue!)
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel ?? lo_moderate, duration: durationLabel!, colorType: colorTagString ?? "floraFirma", location: locationLabel ?? lo_gym, effortValue: effortValue!)
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
@@ -186,7 +216,7 @@ class AddViewController: UIViewController {
         }
         
         ///check for the detail Label
-        if detailField.text == "Give some details.(optional)" {
+        if detailField.text == lo_detailField {
             detailLabel = "  "
         }
         else {
@@ -195,63 +225,59 @@ class AddViewController: UIViewController {
         
         /// check for the Duration Label
         if durationString == "" {
-            durationLabel = "0h 0min"
+            durationLabel = "0\(lo_h) 0\(lo_min)"
         }
         else {
             durationLabel = durationString!
         }
         
         /// check for the Effort Scale Label
-        if effortScaleCtrl.userEffortScale == "" {
-            effortLabel = "Moderate"
-        }
-        
         if effortPickView.selectedRow(inComponent: 0) == 0 {
-            effortLabel = "Very Light"
+            effortLabel = lo_veryLight
         }
         else if effortPickView.selectedRow(inComponent: 0) == 1 {
-            effortLabel = "Light"
+            effortLabel = lo_light
         }
         else if effortPickView.selectedRow(inComponent: 0) == 2 {
-            effortLabel = "Moderate"
+            effortLabel = lo_moderate
         }
         else if effortPickView.selectedRow(inComponent: 0) == 3 {
-            effortLabel = "Vigorous"
+            effortLabel = lo_vigorous
         }
         else if effortPickView.selectedRow(inComponent: 0) == 4 {
-            effortLabel = "Hard"
+            effortLabel = lo_hard
         }
         else if effortPickView.selectedRow(inComponent: 0) == 5 {
-            effortLabel = "Max"
+            effortLabel = lo_max
         }
         
         /// update the location data
-        if locationLabel == " Gym " {
+        if locationLabel == lo_gym {
             locationPickView.selectedSegmentIndex = 0
         }
-        else if locationLabel == " Home " {
+        else if locationLabel == lo_home {
             locationPickView.selectedSegmentIndex = 1
         }
-        else if locationLabel == " Outside " {
+        else if locationLabel == lo_outside {
             locationPickView.selectedSegmentIndex = 2
         }
         
-        if effortLabel == "Very Light" {
+        if effortLabel == lo_veryLight {
             effortValue = 0.1
         }
-        else if effortLabel == "Light" {
+        else if effortLabel == lo_light {
             effortValue = 0.2
         }
-        else if effortLabel == "Moderate" {
+        else if effortLabel == lo_moderate {
             effortValue = 0.4
         }
-        else if effortLabel == "Vigorous" {
+        else if effortLabel == lo_vigorous {
             effortValue = 0.6
         }
-        else if effortLabel == "Hard" {
+        else if effortLabel == lo_hard {
             effortValue = 0.8
         }
-        else if effortLabel == "Max" {
+        else if effortLabel == lo_max {
             effortValue = 1.0
         }
     }
@@ -349,7 +375,7 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         /// Combine the textView text and the replacement text to create the updated text string
         let currentText:String = textView.text
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        let updatedText = (currentText as NSString).replacingCharacters(in: NSRangeFromString(lo_detailField), with: text)
         /// If updated text view will be empty, add the placeholder and set the cursor to the beginning of the text view
         if updatedText.isEmpty {
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
@@ -452,13 +478,13 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let min = minuteNum[pickerView.selectedRow(inComponent: 2)]
         
         if hour == 0 && min != 0 {
-            durationString = "\(min)min"
+            durationString = "\(min)\(lo_min)"
         }
         else if hour != 0 && min == 0 {
-            durationString = "\(hour)h"
+            durationString = "\(hour)\(lo_h)"
         }
         else if hour != 0 && min != 0 {
-            durationString = "\(hour)h \(min)min"
+            durationString = "\(hour)\(lo_h) \(min)\(lo_min)"
             //print("both")
         }
         else {
@@ -466,9 +492,9 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         
         if hour == 1 {
-            hourLabel.text = "hour"
+            hourLabel.text = lo_hour
         } else {
-            hourLabel.text = "hours"
+            hourLabel.text = lo_hours
         }
         pickerView.reloadAllComponents()
     }

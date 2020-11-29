@@ -75,7 +75,7 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
     
     func setupNavBar() {
         navTitle.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        navTitle.text = "Category Settings"
+        navTitle.text = NSLocalizedString("cs_Category Settings", comment: "enter the category setting page")
         navTitle.alpha = 0.7
     }
     

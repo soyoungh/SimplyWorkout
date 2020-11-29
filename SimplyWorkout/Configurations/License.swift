@@ -49,7 +49,7 @@ class License: UITableViewController {
     
     func setupNavBar() {
         navTitle.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        navTitle.text = "License"
+        navTitle.text = NSLocalizedString("lp_License", comment: "enter the license page")
         navTitle.alpha = 0.7
     }
     
@@ -74,9 +74,9 @@ class License: UITableViewController {
         
         switch section {
         case 0:
-            headerText.text = "OPEN SOURCE"
+            headerText.text = NSLocalizedString("OPEN SOURCE", comment: "")
         case 1:
-            headerText.text = "ICON IMAGES"
+            headerText.text = NSLocalizedString("ICON IMAGES", comment: "")
         default:
             break
         }
@@ -113,6 +113,8 @@ class License: UITableViewController {
             cell.textLabel!.text = "FScalendar"
         case [0, 1]:
             cell.textLabel!.text = "Charts"
+        case [0, 2]:
+            cell.textLabel!.text = "SwiftyStoreKit"
         case [1, 0]:
             cell.textLabel!.text = "Flaticon"
         default:

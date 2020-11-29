@@ -40,7 +40,7 @@ class CategoryAddPopupCtrl: UIViewController, UIGestureRecognizerDelegate {
         
         activityTitle.detailPageTitleSet()
         activityField.backgroundColor = Theme.currentTheme.tagCellColor
-        activityField.attributedPlaceholder = NSAttributedString(string: "Add a type of exercise here.", attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
+        activityField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Add a type of exercise here.", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
         activityField.layer.masksToBounds = true
         activityField.layer.cornerRadius = 5
         activityField.layer.borderWidth = 1

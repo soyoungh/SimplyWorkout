@@ -47,6 +47,12 @@ class FontSizeController: UIViewController {
         backIcon = UIImage(named: "leftArrow")
         let tempImg = backIcon.withRenderingMode(.alwaysTemplate)
         backBtn.setImage(tempImg, for: .normal)
+        
+        sampleSentence.text = NSLocalizedString("The average font size will adjust to your preferred reading size below.", comment: "font size sample text")
+        
+        smallA.text = NSLocalizedString("smallA", comment: "font size sample mark")
+        bigA.text = NSLocalizedString("bigA", comment: "font size sample mark")
+        defaultSizeMark.text = NSLocalizedString("default_font_size", comment: "font size default mark")
     }
     
     func applyTheme() {
@@ -63,7 +69,7 @@ class FontSizeController: UIViewController {
     
     func setupNavBar() {
         navTitle.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        navTitle.text = "Font Size"
+        navTitle.text = NSLocalizedString("Font Size", comment: "enter the font size page")
         navTitle.alpha = 0.7
     }
   

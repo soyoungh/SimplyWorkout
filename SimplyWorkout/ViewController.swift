@@ -62,7 +62,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsCtrl: NSFetchedResultsController<WorkoutDataCD>!
     var selectedDate: String?
-    var selectedData = [WorkoutDataCD]()
+    var selectedDataArray = [WorkoutDataCD]()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
@@ -75,6 +75,22 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     let IAPPurchaseIDs = [["com.soyoungHyun.SimplyWorkout.ncRemoveAds"]]
     let sharedSecret = "c620d1374ee34cd88444245fa7f27e2d"
+    
+    /// Localization Labels
+    var vo_gym = NSLocalizedString("v_Gym", comment: "vc_locationLabel")
+    var vo_home = NSLocalizedString("v_Home", comment: "vc_locationLabel")
+    var vo_outside = NSLocalizedString("v_Outside", comment: "vc_locationLabel")
+    
+    var vo_veryLight = NSLocalizedString("v_Very Light", comment: "vc_effortLabel")
+    var vo_light = NSLocalizedString("v_Light", comment: "vc_effortLabel")
+    var vo_moderate = NSLocalizedString("v_Moderate", comment: "vc_effortLabel")
+    var vo_vigorous = NSLocalizedString("v_Vigorous", comment: "vc_effortLabel")
+    var vo_hard = NSLocalizedString("v_Hard", comment: "vc_effortLabel")
+    var vo_max = NSLocalizedString("v_Max", comment: "vc_effortLabel")
+    
+    var vo_h = NSLocalizedString("v_h", comment: "vc_h")
+    var vo_m = NSLocalizedString("v_m", comment: "vc_m")
+    var vo_min = NSLocalizedString("v_min", comment: "vc_min")
     
     /// Make the navigation bar hidden.
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +113,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         themeChanged()
         tableView.tableFooterView = UIView()
         setupFetchedResultsData()
-       
+        
         plusBtnConstraint.constant = 65
         verifyPurchase(with: IAPPurchaseIDs[0][0], sharedSecret: sharedSecret)
     }
@@ -154,7 +170,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         do {
             try fetchedResultsCtrl.performFetch()
-            selectedData.removeAll()
+            selectedDataArray.removeAll()
             DispatchQueue.main.async {
                 self.updateSnapshot()
                 self.tableView.reloadData()
@@ -231,6 +247,16 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         view.addConstraints([NSLayoutConstraint(item: bannerView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0), NSLayoutConstraint(item: bannerView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)])
     }
     
+    func createAlert(alertTitle: String?, alertMessage: String?) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        
+        let Ok = UIAlertAction(title: NSLocalizedString("okBtn_monthlyReportAlart", comment: "ok Button_monthlyReportAlart"), style: .cancel) { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(Ok)
+        present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
@@ -254,8 +280,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -328,7 +352,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 extension ViewController: AddData {
     func addWorkoutData(activity: String, detail: String, effortType: String, duration: String, colorType: String, location: String, effortValue: Float) {
         
-        if selectedData.isEmpty == true {
+        if selectedDataArray.isEmpty == true {
             let userWorkout = WorkoutDataCD(context: context)
             userWorkout.activityName = activity
             userWorkout.detail = detail
@@ -344,7 +368,7 @@ extension ViewController: AddData {
             eventDate.addToToWorkoutData(userWorkout)
         }
         else {
-            for data in selectedData {
+            for data in selectedDataArray {
                 data.activityName = activity
                 data.detail = detail
                 data.effortType = effortType
@@ -413,7 +437,8 @@ extension ViewController {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completion) in
+        let deleteTitle = NSLocalizedString("Delete", comment: "vc_table cell delete action")
+        let deleteAction = UIContextualAction(style: .destructive, title: deleteTitle) { (_, _, completion) in
             /// figure out the data to delete
             guard let data = self.diffableDataSource.itemIdentifier(for: indexPath) else { return }
             self.context.delete(data)
@@ -438,9 +463,9 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "AddRecord") as! AddViewController
         guard let data = self.diffableDataSource.itemIdentifier(for: indexPath) else { return }
-        selectedData.append(data)
+        selectedDataArray.append(data)
         self.present(vc, animated: true, completion: nil)
-        vc.doneBtn.setTitle("Update", for: .normal)
+        vc.doneBtn.setTitle(NSLocalizedString("Update", comment: "vc_cell data update"), for: .normal)
         
         /// update the textFiled data
         vc.activityField.text! = data.activityName!
@@ -453,37 +478,37 @@ extension ViewController: UITableViewDelegate {
         
         /// update the duration data
         let duration = data.duration!
-        if duration.contains("min") == false {
+        if duration.contains(vo_min) == false {
             vc.durationPickView.selectRow(0, inComponent: 2, animated: false)
-            if duration[1] == "h" {
+            if duration[1] == vo_h {
                 vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 0, animated: false)
             }
-            else if duration[2] == "h" {
+            else if duration[2] == vo_h {
                 vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 0, animated: false)
             }
         }
-        else if duration.contains("h") == false {
+        else if duration.contains(vo_h) == false {
             vc.durationPickView.selectRow(0, inComponent: 0, animated: false)
-            if duration[1] == "m" {
+            if duration[1] == vo_m {
                 vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 2, animated: false)
             }
-            else if duration[2] == "m" {
+            else if duration[2] == vo_m {
                 vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 2, animated: false)
             }
         }
-        else if duration.contains("h") && duration.contains("min") {
-            if duration[1] == "h" {
+        else if duration.contains(vo_h) && duration.contains(vo_min) {
+            if duration[1] == vo_h {
                 vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 0, animated: false)
-                if duration[4] == "m" {
+                if duration[4] == vo_m {
                     vc.durationPickView.selectRow(Int(duration[3])!, inComponent: 2, animated: false)
                 }
                 else {
                     vc.durationPickView.selectRow(Int(duration[3 ..< 5])!, inComponent: 2, animated: false)
                 }
             }
-            else if duration[2] == "h" {
+            else if duration[2] == vo_h {
                 vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 0, animated: false)
-                if duration[5] == "m" {
+                if duration[5] == vo_m {
                     vc.durationPickView.selectRow(Int(duration[4])!, inComponent: 2, animated: false)
                 }
                 else {
@@ -493,33 +518,33 @@ extension ViewController: UITableViewDelegate {
         }
         
         /// update the location data
-        if data.location == " Gym " {
+        if data.location == vo_gym {
             vc.locationPickView.selectedSegmentIndex = 0
         }
-        else if data.location == " Home " {
+        else if data.location == vo_home {
             vc.locationPickView.selectedSegmentIndex = 1
         }
-        else if data.location == " Outside " {
+        else if data.location == vo_outside {
             vc.locationPickView.selectedSegmentIndex = 2
         }
         
         /// update the effort data
-        if data.effortType == "Very Light" {
+        if data.effortType == vo_veryLight {
             vc.effortPickView.selectRow(0, inComponent: 0, animated: false)
         }
-        else if data.effortType == "Light" {
+        else if data.effortType == vo_light {
             vc.effortPickView.selectRow(1, inComponent: 0, animated: false)
         }
-        else if data.effortType == "Moderate" {
+        else if data.effortType == vo_moderate {
             vc.effortPickView.selectRow(2, inComponent: 0, animated: false)
         }
-        else if data.effortType == "Vigorous" {
+        else if data.effortType == vo_vigorous {
             vc.effortPickView.selectRow(3, inComponent: 0, animated: false)
         }
-        else if data.effortType == "Hard" {
+        else if data.effortType == vo_hard {
             vc.effortPickView.selectRow(4, inComponent: 0, animated: false)
         }
-        else if data.effortType == "Max" {
+        else if data.effortType == vo_max {
             vc.effortPickView.selectRow(5, inComponent: 0, animated: false)
         }
         
@@ -603,6 +628,5 @@ extension ViewController: GADBannerViewDelegate {
         print(error)
     }
 }
-
 
 

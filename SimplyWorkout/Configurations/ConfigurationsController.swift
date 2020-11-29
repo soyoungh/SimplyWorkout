@@ -178,7 +178,7 @@ class ConfigurationsController: UITableViewController {
     
     func setupNavBar() {
         navTitle.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        navTitle.text = "Settings"
+        navTitle.text = NSLocalizedString("Settings", comment: "")
         navTitle.alpha = 0.7
     }
     
@@ -206,13 +206,13 @@ class ConfigurationsController: UITableViewController {
         
         switch section {
         case 0:
-            headerText.text = "IN-APP PURCHASE"
+            headerText.text = NSLocalizedString("IN-APP PURCHASE", comment: "")
         case 1:
-            headerText.text = "DISPLAY & LANGUAGE"
+            headerText.text = NSLocalizedString("DISPLAY", comment: "")
         case 2:
-            headerText.text = "DATA MANAGEMENT"
+            headerText.text = NSLocalizedString("DATA MANAGEMENT", comment: "")
         case 3:
-            headerText.text = "LEARN MORE"
+            headerText.text = NSLocalizedString("LEARN MORE", comment: "")
         default:
             break
         }
@@ -248,21 +248,21 @@ class ConfigurationsController: UITableViewController {
         case [0, 0]:
             cell.textLabel!.text = "Simply Workout Pro"
         case [1, 0]:
-            cell.textLabel!.text = "Dark Mode"
+            cell.textLabel!.text = NSLocalizedString("Dark Mode", comment: "")
         case [1, 1]:
-            cell.textLabel!.text = "Auto Mode"
+            cell.textLabel!.text = NSLocalizedString("Auto Mode", comment: "")
         case [1, 2]:
-            cell.textLabel!.text = "Text Size"
+            cell.textLabel!.text = NSLocalizedString("Text Size", comment: "config screen title")
         case [2, 0]:
-            cell.textLabel!.text = "Category Settings"
+            cell.textLabel!.text = NSLocalizedString("Category Settings", comment: "config screen title")
         case [2, 1]:
-            cell.textLabel!.text = "Clear all Data"
+            cell.textLabel!.text = NSLocalizedString("Clear all Data", comment: "config screen title")
         case [3, 0]:
-            cell.textLabel!.text = "App Version"
+            cell.textLabel!.text = NSLocalizedString("App Version", comment: "")
         case [3, 1]:
-            cell.textLabel!.text = "Write a Review"
+            cell.textLabel!.text = NSLocalizedString("Write a Review", comment: "")
         case [3, 2]:
-            cell.textLabel!.text = "License"
+            cell.textLabel!.text = NSLocalizedString("License", comment: "config screen title")
         default:
             break
         }
@@ -280,7 +280,7 @@ class ConfigurationsController: UITableViewController {
             nextBtn2_Tapped()
         case [2, 1]:
             /// remove all data
-            createAlert(alertTitle: "Clear All Data", alertMessage: "All this app's data will be deleted permanently. \nDo you want to continue?" )
+            createAlert(alertTitle: NSLocalizedString("Clear All Data", comment: "Clear all data Alert - Title"), alertMessage: NSLocalizedString("All this app's data will be deleted permanently. \nDo you want to continue?", comment: ""))
         case [3, 1]:
             print("d")
         case [3, 2]:
@@ -312,14 +312,14 @@ class ConfigurationsController: UITableViewController {
     
     func createAlert(alertTitle: String?, alertMessage: String?) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        let addTask = UIAlertAction(title: "Clear", style: .default) { (_) in
+        let addTask = UIAlertAction(title: NSLocalizedString("Clear", comment: "Clear all data Alert - Clear Button"), style: .default) { (_) in
             self.removeAllData("CategoryCD")
             self.removeAllData("EventDateCD")
             self.removeAllData("WorkoutDataCD")
             print("all data has been deleted.")
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel_Clear Alert", comment: "Clear all data Alert - Cancel Button"), style: .cancel) { (_) in
             alert.dismiss(animated: true, completion: nil)
         }
         alert.addAction(addTask)
