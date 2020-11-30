@@ -190,7 +190,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     func preSetUp() {
         Theme.calendar = calendar
         self.selectedDate = dateFormatter.string(from: self.calendar.today!)
-        viewContainer.addTopBorder(1)
+        viewContainer.addTopBorder(1, view: self.view)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         tableView.separatorColor = Theme.currentTheme.separatorColor
         

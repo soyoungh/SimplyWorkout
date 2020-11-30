@@ -39,6 +39,7 @@ class CategoryAddPopupCtrl: UIViewController, UIGestureRecognizerDelegate {
         backgroundView.addGestureRecognizer(dismissTap)
         
         activityTitle.detailPageTitleSet()
+        activityTitle.text = NSLocalizedString("cate_TYPE OF ACTIVITY", comment: "categoryPage_activityTitle")
         activityField.backgroundColor = Theme.currentTheme.tagCellColor
         activityField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Add a type of exercise here.", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: Theme.currentTheme.opacityText])
         activityField.layer.masksToBounds = true
@@ -48,10 +49,12 @@ class CategoryAddPopupCtrl: UIViewController, UIGestureRecognizerDelegate {
         activityField.textColor = Theme.currentTheme.textColor
         
         colorTagTitle.detailPageTitleSet()
+        colorTagTitle.text = NSLocalizedString("cate_COLOR TAG", comment: "categoryPage_colorTagTitle")
         colorTagView.customView()
         
         saveBtn.setTitleColor(Theme.currentTheme.accentColor, for: .normal)
         saveBtn.addTarget(self, action: #selector(saveBtnDidTapped), for: .touchUpInside)
+        saveBtn.setTitle(NSLocalizedString("cate_Save", comment: "categoryPage_saveBtn"), for: .normal)
     }
     
     @objc func dismissOnTapOutside() {

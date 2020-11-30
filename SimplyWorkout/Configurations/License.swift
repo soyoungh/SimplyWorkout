@@ -92,7 +92,7 @@ class License: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 20))
-        footer.addTopBorder(0.5)
+        footer.addTopBorder(0.6, view: tableView)
         return footer
     }
     

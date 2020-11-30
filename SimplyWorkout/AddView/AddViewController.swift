@@ -52,6 +52,8 @@ class AddViewController: UIViewController {
     var durationString: String?
     let hoursNum = Array(0...24)
     let minuteNum = Array(0...59)
+    var hourLabel2 = UILabel()
+    var minuteLabel = UILabel()
     
     /// Related Controller Connection
     var effortScaleCtrl = EffortScalePicker()
@@ -186,8 +188,9 @@ class AddViewController: UIViewController {
         locationPickView.setTitle(lo_gym, forSegmentAt: 0)
         locationPickView.setTitle(lo_home, forSegmentAt: 1)
         locationPickView.setTitle(lo_outside, forSegmentAt: 2)
-        
+      
     }
+
     // MARK: - Data Delegate
     func dismissCheck() {
         /// Activity and detail Field Check First!

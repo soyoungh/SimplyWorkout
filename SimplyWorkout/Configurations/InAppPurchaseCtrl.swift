@@ -146,13 +146,20 @@ class InAppPurchaseCtrl: UIViewController {
         proBox.layer.rasterizationScale = UIScreen.main.scale
         
         removeAdsTitle.textColor = Theme.currentTheme.headerTitleColor
+        removeAdsTitle.text = NSLocalizedString("Remove all Ads", comment: "iap_page_removeAdsTitle")
         reportTitle.textColor = Theme.currentTheme.headerTitleColor
+        reportTitle.text = NSLocalizedString("Monthly workout report", comment: "iap_page_reportTitle")
         darkmodeTitle.textColor = Theme.currentTheme.headerTitleColor
+        darkmodeTitle.text = NSLocalizedString("Dark Theme", comment: "iap_popup_darkmodeTitle")
         popupTitle.detailPageTitleSet()
+        popupTitle.text = NSLocalizedString("SIMPLY WORKOUT PRO", comment: "iap_page_popupTitle")
         
         subLabel_ads.textColor = Theme.currentTheme.opacityText
+        subLabel_ads.text = NSLocalizedString("Enjoy your app without annoying ads!", comment: "iap_adsText")
         subLabel_report.textColor = Theme.currentTheme.opacityText
+        subLabel_report.text = NSLocalizedString("You will get the monthly statistics for your activity.", comment: "iap_reportText")
         subLabel_darkmode.textColor = Theme.currentTheme.opacityText
+        subLabel_darkmode.text = NSLocalizedString("You will get a dark appearance and synchronize the same as your device setting.", comment: "iap_darkmodeText")
         
         cancelBtn.tintColor = Theme.currentTheme.accentColor
         cancelBtn.addTarget(self, action: #selector(cancelBtnDidTapped), for: .touchUpInside)
@@ -161,9 +168,11 @@ class InAppPurchaseCtrl: UIViewController {
         upgradeBtn.backgroundColor = Theme.currentTheme.accentColor
         upgradeBtn.tintColor = Theme.currentTheme.textColorInDarkBg
         upgradeBtn.addTarget(self, action: #selector(upgradeBtnDidTapped), for: .touchUpInside)
+        upgradeBtn.setTitle(NSLocalizedString("Upgrade for $1.99", comment: "iap_popup_upgradeBtn"), for: .normal)
         
         restoreBtn.tintColor = Theme.currentTheme.opacityText
         restoreBtn.addTarget(self, action: #selector(restoreBtnDidTapped), for:     .touchUpInside)
+        restoreBtn.setTitle(NSLocalizedString("Restore purchase", comment: "iap_popup_restoreBtn"), for: .normal)
     }
     
 }
