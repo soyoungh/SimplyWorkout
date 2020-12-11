@@ -54,15 +54,6 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     var mo_h = NSLocalizedString("mr_h", comment: "mr_h")
     var mo_min = NSLocalizedString("mr_min", comment: "mr_min")
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
-            return .darkContent
-        }
-        else {
-            return .lightContent
-        }
-    }
-    
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -73,6 +64,15 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
+            return .darkContent
+        }
+        else {
+            return .lightContent
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)

@@ -162,6 +162,8 @@ class ConfigurationsController: UITableViewController {
         nextBtn_1.addTarget(self, action: #selector(nextBtn1_Tapped), for: .touchUpInside)
         /// Category Setting
         nextBtn_2.addTarget(self, action: #selector(nextBtn2_Tapped), for: .touchUpInside)
+        /// Clear all data
+        nextBtn_3.addTarget(self, action: #selector(nextBtn3_Tapped), for: .touchUpInside)
     }
     
     /// Remove Ads
@@ -174,6 +176,10 @@ class ConfigurationsController: UITableViewController {
     @objc func nextBtn2_Tapped() {
         let vc2 = storyboard?.instantiateViewController(identifier: "categorySetting") as! CategorySettingCtrl
         self.navigationController?.pushViewController(vc2, animated: true)
+    }
+    
+    @objc func nextBtn3_Tapped() {
+        createAlert(alertTitle: NSLocalizedString("Clear All Data", comment: "Clear all data Alert - Title"), alertMessage: NSLocalizedString("All this app's data will be deleted permanently. \nDo you want to continue?", comment: ""))
     }
     
     func setupNavBar() {
@@ -280,7 +286,7 @@ class ConfigurationsController: UITableViewController {
             nextBtn2_Tapped()
         case [2, 1]:
             /// remove all data
-            createAlert(alertTitle: NSLocalizedString("Clear All Data", comment: "Clear all data Alert - Title"), alertMessage: NSLocalizedString("All this app's data will be deleted permanently. \nDo you want to continue?", comment: ""))
+            nextBtn3_Tapped()
         case [3, 1]:
             print("d")
         case [3, 2]:

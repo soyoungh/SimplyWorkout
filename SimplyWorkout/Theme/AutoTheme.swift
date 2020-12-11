@@ -12,7 +12,7 @@ class AutoTheme: ThemeProtocol {
     
     var textColor: UIColor = UIColor.black
     
-    var accentColor: UIColor = UIColor.applyColor(AssetsColor.oriole)!
+    var accentColor: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!
     
     var textColorInDarkBg: UIColor = UIColor.white
     
@@ -36,7 +36,7 @@ class AutoTheme: ThemeProtocol {
     
     /// ProgressBar settings
     var baseProgressColor: UIColor = UIColor.applyColor(AssetsColor.baseProgress)!
-    var startColorOfProgress: UIColor = UIColor.applyColor(AssetsColor.oriole)!
+    var startColorOfProgress: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!
     
     /// Calendar settings
     var headerTitleColor: UIColor = UIColor.black
@@ -45,7 +45,7 @@ class AutoTheme: ThemeProtocol {
     
     var dateTextColor: UIColor = UIColor.black
     
-    var selectionColor: UIColor = UIColor.applyColor(AssetsColor.oriole)!
+    var selectionColor: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!
     
     var titleTodayColor: UIColor = UIColor.applyColor(AssetsColor.vivacious)!
     

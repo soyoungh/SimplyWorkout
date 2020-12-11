@@ -64,15 +64,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var selectedDate: String?
     var selectedDataArray = [WorkoutDataCD]()
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
-            return .darkContent
-        }
-        else {
-            return .lightContent
-        }
-    }
-    
     let IAPPurchaseIDs = [["com.soyoungHyun.SimplyWorkout.ncRemoveAds"]]
     let sharedSecret = "c620d1374ee34cd88444245fa7f27e2d"
     
@@ -91,6 +82,15 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var vo_h = NSLocalizedString("v_h", comment: "vc_h")
     var vo_m = NSLocalizedString("v_m", comment: "vc_m")
     var vo_min = NSLocalizedString("v_min", comment: "vc_min")
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
+            return .darkContent
+        }
+        else {
+            return .lightContent
+        }
+    }
     
     /// Make the navigation bar hidden.
     override func viewWillAppear(_ animated: Bool) {
