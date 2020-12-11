@@ -97,6 +97,7 @@
 		F8C7A7722550216C0010B69D /* FontSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeControl.swift; sourceTree = "<group>"; };
 		F8C7A775255021D40010B69D /* DefaultFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFontSize.swift; sourceTree = "<group>"; };
 		F8C7A777255021DF0010B69D /* X3FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X3FontSize.swift; sourceTree = "<group>"; };
+		F8CD763F2581C55800BCC5C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddPopupCtrl.swift; sourceTree = "<group>"; };
 		F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySetViewCell.swift; sourceTree = "<group>"; };
 		F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimplyWorkout v2.xcdatamodel"; sourceTree = "<group>"; };
@@ -458,6 +459,7 @@
 			children = (
 				F8AD190D24B9C34E004298D0 /* Base */,
 				F8916BE7256F486E005B7277 /* ko */,
+				F8CD763F2581C55800BCC5C4 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -597,7 +599,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -617,7 +619,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

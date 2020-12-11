@@ -44,7 +44,7 @@ class AddViewController: UIViewController {
     var effortLabel: String?
     var durationLabel: String?
     var locationLabel: String?
-    let colorTag = [AssetsColor.floraFirma, .bodacious, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .barrierReef, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .raspberries]
+    let colorTag = [AssetsColor.floraFirma, .chiveBlossom, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .deepLake, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .vivacious]
     var colorTagString: String?
     var effortValue: Float?
     

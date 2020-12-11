@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryColorCtrl: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let colorTag = [AssetsColor.floraFirma, .bodacious, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .barrierReef, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .raspberries]
+    let colorTag = [AssetsColor.floraFirma, .chiveBlossom, .sulphurSpring, .pinkLemonade, .summerStorm, .oriole, .deepLake, .citrusSol, .butterRum, .turquoise, .ibizaBlue, .vivacious]
     
     var selectedColor: String?
     

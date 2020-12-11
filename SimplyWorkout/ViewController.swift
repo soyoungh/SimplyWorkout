@@ -552,7 +552,7 @@ extension ViewController: UITableViewDelegate {
         if data.colorTag == "floraFirma" {
             vc.colorTagView.selectItem(at: [0, 0], animated: false, scrollPosition: .init())
         }
-        else if data.colorTag == "bodacious" {
+        else if data.colorTag == "chiveBlossom" {
             vc.colorTagView.selectItem(at: [0, 1], animated: false, scrollPosition: .init())
         }
         else if data.colorTag == "sulphurSpring" {
@@ -567,7 +567,7 @@ extension ViewController: UITableViewDelegate {
         else if data.colorTag == "oriole" {
             vc.colorTagView.selectItem(at: [0, 5], animated: false, scrollPosition: .init())
         }
-        else if data.colorTag == "barrierReef" {
+        else if data.colorTag == "deepLake" {
             vc.colorTagView.selectItem(at: [0, 6], animated: false, scrollPosition: .init())
         }
         else if data.colorTag == "citrusSol" {
@@ -582,7 +582,7 @@ extension ViewController: UITableViewDelegate {
         else if data.colorTag == "ibizaBlue" {
             vc.colorTagView.selectItem(at: [0, 10], animated: false, scrollPosition: .init())
         }
-        else if data.colorTag == "raspberries" {
+        else if data.colorTag == "vivacious" {
             vc.colorTagView.selectItem(at: [0, 11], animated: false, scrollPosition: .init())
         }
         
