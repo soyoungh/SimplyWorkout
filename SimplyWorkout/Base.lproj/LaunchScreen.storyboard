@@ -13,36 +13,65 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController storyboardIdentifier="splashScreen" id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="simplyLogo_256" translatesAutoresizingMaskIntoConstraints="NO" id="2th-U4-mWE">
-                                <rect key="frame" x="147" y="388" width="120" height="120"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCz-K4-CRc">
+                                <rect key="frame" x="102" y="428" width="210" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimplyWorkout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCL-Jp-o0x">
+                                        <rect key="frame" x="50" y="2.5" width="150.5" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="SoX-ye-xoc"/>
+                                            <constraint firstAttribute="height" constant="35" id="cwQ-vn-B60"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" name="LaunchScreen.text"/>
+                                        <color key="highlightedColor" name="LaunchScreen.text"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="simplyLogo_256" translatesAutoresizingMaskIntoConstraints="NO" id="nfC-mZ-q83">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="JpN-TS-x6O"/>
+                                            <constraint firstAttribute="height" constant="40" id="TFS-Sl-XCr"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="rqb-wg-Erf"/>
-                                    <constraint firstAttribute="width" constant="120" id="ulk-9Z-7S4"/>
+                                    <constraint firstItem="aCL-Jp-o0x" firstAttribute="leading" secondItem="nfC-mZ-q83" secondAttribute="trailing" constant="10" id="Dpo-tB-Ut1"/>
+                                    <constraint firstAttribute="width" constant="210" id="OIs-lZ-2Mr"/>
+                                    <constraint firstItem="nfC-mZ-q83" firstAttribute="leading" secondItem="wCz-K4-CRc" secondAttribute="leading" id="Q1r-CU-ikt"/>
+                                    <constraint firstItem="aCL-Jp-o0x" firstAttribute="centerY" secondItem="wCz-K4-CRc" secondAttribute="centerY" id="RsB-Jb-y0X"/>
+                                    <constraint firstItem="nfC-mZ-q83" firstAttribute="centerY" secondItem="wCz-K4-CRc" secondAttribute="centerY" id="Ztl-W9-qCw"/>
+                                    <constraint firstAttribute="height" constant="40" id="kMK-S0-CUk"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="LaunchScreen.bg"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2th-U4-mWE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3lW-ol-AnO"/>
-                            <constraint firstItem="2th-U4-mWE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="eWo-C2-ttE"/>
+                            <constraint firstItem="wCz-K4-CRc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Ex2-H8-pp8"/>
+                            <constraint firstItem="wCz-K4-CRc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kdC-Pk-cGy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2E2-la-jGY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428" y="362"/>
+            <point key="canvasLocation" x="427.536231884058" y="361.60714285714283"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="LaunchScreen.bg"/>
     <resources>
         <image name="simplyLogo_256" width="128" height="128"/>
         <namedColor name="LaunchScreen.bg">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LaunchScreen.text">
+            <color red="0.18431372549019609" green="0.1803921568627451" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
