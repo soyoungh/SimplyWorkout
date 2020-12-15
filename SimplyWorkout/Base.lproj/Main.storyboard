@@ -1031,7 +1031,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="tagCell" translatesAutoresizingMaskIntoConstraints="NO" id="H39-O1-X9w" customClass="ColorTagCell" customModule="SimplyWorkout" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="tagCell" translatesAutoresizingMaskIntoConstraints="NO" id="H39-O1-X9w" customClass="ColorTagCell" customModule="SimplyWorkout" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="C1n-S3-gKZ">
@@ -1049,7 +1049,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EB0-Ms-iba">
                                         <rect key="frame" x="140" y="230" width="40" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="BmE-KB-Xis"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="BmE-KB-Xis"/>
                                             <constraint firstAttribute="height" constant="20" id="suC-H0-1XH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1590,20 +1590,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UFl-7F-Gxp">
-                                        <rect key="frame" x="0.0" y="205" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UFl-7F-Gxp" id="bCj-cZ-Nnq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="ICONS" id="jUa-kM-gpf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9UC-ZJ-P8N">
-                                        <rect key="frame" x="0.0" y="304.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="261" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9UC-ZJ-P8N" id="fYl-9P-NwL">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1772,10 +1764,10 @@
             </objects>
             <point key="canvasLocation" x="2526.0869565217395" y="-589.28571428571422"/>
         </scene>
-        <!--In App Purchase Ctrl-->
+        <!--Controller-->
         <scene sceneID="pO5-qj-pfh">
             <objects>
-                <viewController storyboardIdentifier="removeAds" id="2Pl-wc-pAg" customClass="InAppPurchaseCtrl" customModule="SimplyWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="removeAds" id="2Pl-wc-pAg" customClass="IAPController" customModule="SimplyWorkout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Siq-1a-fOv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1939,20 +1931,20 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="adShieldIcon" destination="A77-pu-0G6" id="ylG-Cy-iHg"/>
-                        <outlet property="cancelBtn" destination="Onh-fk-XQF" id="kh0-b0-Jod"/>
-                        <outlet property="chartIcon" destination="j5T-IB-axV" id="VdH-TJ-Hef"/>
-                        <outlet property="darkmodeIcon" destination="URl-cK-rCJ" id="OHf-YJ-emF"/>
-                        <outlet property="darkmodeTitle" destination="isT-FN-91W" id="FbK-dB-mkx"/>
-                        <outlet property="popupTitle" destination="kLL-Qn-Gm9" id="1fw-vX-BGA"/>
-                        <outlet property="proBox" destination="IjH-DO-AiJ" id="8tF-sO-qA7"/>
-                        <outlet property="removeAdsTitle" destination="dNl-6l-Lg6" id="KSn-y1-KKk"/>
-                        <outlet property="reportTitle" destination="t7F-C7-3I9" id="yeN-Jb-eCw"/>
-                        <outlet property="restoreBtn" destination="eju-we-Chc" id="eje-QG-pTA"/>
-                        <outlet property="subLabel_ads" destination="O3r-Or-50O" id="uOT-pr-ajS"/>
-                        <outlet property="subLabel_darkmode" destination="1jN-Zx-H2K" id="AD3-cM-g36"/>
-                        <outlet property="subLabel_report" destination="ssA-R6-ash" id="ajy-xU-Ldi"/>
-                        <outlet property="upgradeBtn" destination="MqT-a9-GFl" id="d1e-G3-OSz"/>
+                        <outlet property="adShieldIcon" destination="A77-pu-0G6" id="dGy-fL-DVA"/>
+                        <outlet property="cancelBtn" destination="Onh-fk-XQF" id="1Vo-UZ-lsm"/>
+                        <outlet property="chartIcon" destination="j5T-IB-axV" id="iJQ-ac-u69"/>
+                        <outlet property="darkmodeIcon" destination="URl-cK-rCJ" id="MlN-zx-QLS"/>
+                        <outlet property="darkmodeTitle" destination="isT-FN-91W" id="TeS-3q-NfR"/>
+                        <outlet property="popupTitle" destination="kLL-Qn-Gm9" id="fmT-QH-73G"/>
+                        <outlet property="proBox" destination="IjH-DO-AiJ" id="Pw9-pR-484"/>
+                        <outlet property="removeAdsTitle" destination="dNl-6l-Lg6" id="vDG-kQ-DIb"/>
+                        <outlet property="reportTitle" destination="t7F-C7-3I9" id="X79-e4-dze"/>
+                        <outlet property="restoreBtn" destination="eju-we-Chc" id="FM0-Gn-Og1"/>
+                        <outlet property="subLabel_ads" destination="O3r-Or-50O" id="IMW-9F-bV1"/>
+                        <outlet property="subLabel_darkmode" destination="1jN-Zx-H2K" id="LqP-Ye-WIS"/>
+                        <outlet property="subLabel_report" destination="ssA-R6-ash" id="Y83-3O-lO4"/>
+                        <outlet property="upgradeBtn" destination="MqT-a9-GFl" id="hSw-j0-TjL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNI-1g-6nx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1981,7 +1973,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WlF-2e-AAf"/>
         <segue reference="pe9-AG-Iaj"/>
         <segue reference="rdH-cL-670"/>
     </inferredMetricsTieBreakers>

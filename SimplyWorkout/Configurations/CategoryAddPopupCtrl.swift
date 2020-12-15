@@ -23,7 +23,7 @@ class CategoryAddPopupCtrl: UIViewController, UIGestureRecognizerDelegate {
     
     var colorTagCtrl = CategoryColorCtrl()
     var addCategoryDelegate: AddCategory?
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         colorTagView.delegate = colorTagCtrl

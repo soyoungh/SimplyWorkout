@@ -113,8 +113,6 @@ class License: UITableViewController {
             cell.textLabel!.text = "FScalendar"
         case [0, 1]:
             cell.textLabel!.text = "Charts"
-        case [0, 2]:
-            cell.textLabel!.text = "SwiftyStoreKit"
         case [1, 0]:
             cell.textLabel!.text = "Flaticon"
         default:

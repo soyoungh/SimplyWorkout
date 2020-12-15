@@ -58,7 +58,17 @@ class ConfigurationsController: UITableViewController {
         setupNavBar()
         applyTheme()
         
-        verifyPurchase(with: IAPPurchaseIDs[0][0], sharedSecret: sharedSecret)
+        if !UserDefaults.standard.bool(forKey: "removeAds") {
+            // not purchased yet.
+            self.darkModeSwitch.alpha = 0.5
+            self.automaticSwitch.alpha = 0.5
+        }
+        else {
+            // purchased.
+            self.tableView.reloadData()
+            self.darkModeSwitch.alpha = 1.0
+            self.automaticSwitch.alpha = 1.0
+        }
     }
 
     @objc func automaticSwitchDidChange(_ sender: UISwitch) {
@@ -85,7 +95,7 @@ class ConfigurationsController: UITableViewController {
         }
         else {
             sender.isOn = false
-            let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+            let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
             self.present(vc, animated: true)
         }
     }
@@ -98,41 +108,11 @@ class ConfigurationsController: UITableViewController {
         }
         else  {
             sender.isOn = false
-            let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+            let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
             self.present(vc, animated: true)
         }
     }
     
-    func verifyPurchase(with id: String, sharedSecret: String) {
-        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: sharedSecret)
-        SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
-            switch result {
-            case .success(let receipt):
-                let productId = id
-                // Verify the purchase of Consumable or NonConsumable
-                let purchaseResult = SwiftyStoreKit.verifyPurchase(
-                    productId: productId,
-                    inReceipt: receipt)
-                
-                switch purchaseResult {
-                case .purchased:
-                    //                    print("Product is purchased: \(receiptItem)")
-                    self.tableView.reloadData()
-                    self.darkModeSwitch.alpha = 1.0
-                    self.automaticSwitch.alpha = 1.0
-                case .notPurchased:
-                    //                    print("The user has never purchased \(productId)")
-                    self.darkModeSwitch.alpha = 0.5
-                    self.automaticSwitch.alpha = 0.5
-                }
-            case .error:
-                //                print("Receipt verification failed: \(error)")
-                self.darkModeSwitch.alpha = 0.5
-                self.automaticSwitch.alpha = 0.5
-            }
-        }
-    }
-
     func preSetup() {
         settingTable.tableFooterView = UIView()
         settingTable.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -168,7 +148,7 @@ class ConfigurationsController: UITableViewController {
     
     /// Remove Ads
     @objc func nextBtn1_Tapped() {
-        let vc1 = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+        let vc1 = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
         self.present(vc1, animated: true, completion: nil)
     }
     

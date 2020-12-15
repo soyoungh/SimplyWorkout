@@ -115,39 +115,19 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         setupFetchedResultsData()
         
         plusBtnConstraint.constant = 65
-        verifyPurchase(with: IAPPurchaseIDs[0][0], sharedSecret: sharedSecret)
-    }
-    
-    func verifyPurchase(with id: String, sharedSecret: String) {
-        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: sharedSecret)
-        SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
-            switch result {
-            case .success(let receipt):
-                let productId = id
-                // Verify the purchase of Consumable or NonConsumable
-                let purchaseResult = SwiftyStoreKit.verifyPurchase(
-                    productId: productId,
-                    inReceipt: receipt)
-                
-                switch purchaseResult {
-                case .purchased:
-                    //                    print("Product is purchased: \(receiptItem)")
-                    self.reportBtn.alpha = 1.0
-                    
-                case .notPurchased:
-                    //                    print("The user has never purchased \(productId)")
-                    self.reportBtn.alpha = 0.5
-                    self.addBanner(with: self.testID)
-                }
-            case .error:
-                //                print("Receipt verification failed: \(error)")
-                self.reportBtn.alpha = 0.5
-                self.addBanner(with: self.testID)
-            }
+        
+        if !UserDefaults.standard.bool(forKey: "removeAds") {
+            // show ads
+            self.reportBtn.alpha = 0.5
+            addBanner(with: testID)
         }
+        else {
+            // no ads
+            self.reportBtn.alpha = 1.0
+        }
+        
     }
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+   
     func addBanner(with id: String) {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView.adUnitID = id
@@ -208,7 +188,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if self.reportBtn.alpha == 0.5 {
-            let vc2 = storyboard?.instantiateViewController(identifier: "removeAds") as! InAppPurchaseCtrl
+            let vc2 = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
             self.present(vc2, animated: true)
         }
         
@@ -478,17 +458,21 @@ extension ViewController: UITableViewDelegate {
         
         /// update the duration data
         let duration = data.duration!
-        if duration.contains(vo_min) == false {
+        
+        if duration.contains(vo_h) && !duration.contains(vo_min) {
+            /// hour only
             vc.durationPickView.selectRow(0, inComponent: 2, animated: false)
             if duration[1] == vo_h {
-                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 0, animated: false)
+                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
             }
             else if duration[2] == vo_h {
-                vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 0, animated: false)
+                vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 1, animated: false)
             }
         }
-        else if duration.contains(vo_h) == false {
-            vc.durationPickView.selectRow(0, inComponent: 0, animated: false)
+       
+        else if !duration.contains(vo_h) && duration.contains(vo_min) {
+            /// min only
+            vc.durationPickView.selectRow(0, inComponent: 1, animated: false)
             if duration[1] == vo_m {
                 vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 2, animated: false)
             }
@@ -496,25 +480,24 @@ extension ViewController: UITableViewDelegate {
                 vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 2, animated: false)
             }
         }
+       
         else if duration.contains(vo_h) && duration.contains(vo_min) {
-            if duration[1] == vo_h {
-                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 0, animated: false)
-                if duration[4] == vo_m {
-                    vc.durationPickView.selectRow(Int(duration[3])!, inComponent: 2, animated: false)
+            if duration[1] == vo_h && duration[4] == vo_m {
+                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[3])!, inComponent: 2, animated: false)
                 }
-                else {
+            else if duration[1] == vo_h && duration[5] == vo_m {
+                    vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
                     vc.durationPickView.selectRow(Int(duration[3 ..< 5])!, inComponent: 2, animated: false)
                 }
-            }
-            else if duration[2] == vo_h {
-                vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 0, animated: false)
-                if duration[5] == vo_m {
-                    vc.durationPickView.selectRow(Int(duration[4])!, inComponent: 2, animated: false)
+            else if duration[2] == vo_h && duration[5] == vo_m {
+                vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[4])!, inComponent: 2, animated: false)
                 }
-                else {
+            else {
+                    vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 1, animated: false)
                     vc.durationPickView.selectRow(Int(duration[4 ..< 6])!, inComponent: 2, animated: false)
                 }
-            }
         }
         
         /// update the location data
