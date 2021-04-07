@@ -200,7 +200,7 @@ class AddViewController: UIViewController {
                 return
             }
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel ?? lo_moderate, duration: durationLabel!, colorType: colorTagString ?? "floraFirma", location: locationLabel ?? lo_gym, effortValue: effortValue!)
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel ?? lo_moderate, duration: durationLabel ?? "0\(lo_h) 0\(lo_min)", colorType: colorTagString ?? "floraFirma", location: locationLabel ?? lo_gym, effortValue: effortValue!)
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
@@ -224,14 +224,6 @@ class AddViewController: UIViewController {
         }
         else {
             detailLabel = detailField.text
-        }
-        
-        /// check for the Duration Label
-        if durationString == "" {
-            durationLabel = "0\(lo_h) 0\(lo_min)"
-        }
-        else {
-            durationLabel = durationString!
         }
         
         /// check for the Effort Scale Label
@@ -494,11 +486,13 @@ extension AddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             return
         }
         
-        if hour == 1 {
+        if hour == 1  || hour == 0 {
             hourLabel.text = lo_hour
-        } else {
+        }
+        else {
             hourLabel.text = lo_hours
         }
+
         pickerView.reloadAllComponents()
     }
 }

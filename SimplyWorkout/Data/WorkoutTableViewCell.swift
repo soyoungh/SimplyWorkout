@@ -18,19 +18,24 @@ class WorkoutTableViewCell: UITableViewCell {
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
+   
     var workoutData : WorkoutDataCD! {
         didSet {
             activityName.text = workoutData.activityName
             activityName.font = FontSizeControl.currentFontSize.bodyTextSize
             activityName.textColor = Theme.currentTheme.textColor
 
+            let d_font = FontSizeControl.currentFontSize.subTextSize
+            let d_size = CGSize(width: 289, height: CGFloat.greatestFiniteMagnitude)
+            let d_stringSize = NSString(string: workoutData.detail!).boundingRect(with: d_size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: d_font], context: nil).size
+            
             activityDetail.text = workoutData.detail
-            activityDetail.font = FontSizeControl.currentFontSize.subTextSize
+            activityDetail.font = d_font
+//            activityDetail.frame = CGRect(x: 0, y: 0, width: 289, height: CGFloat.greatestFiniteMagnitude)
+            activityDetail.textColor = Theme.currentTheme.textColor
+            activityDetail.frame.size = d_stringSize
             activityDetail.numberOfLines = 0
             activityDetail.sizeToFit()
-            activityDetail.frame = CGRect(x: 0, y: 0, width: 288, height: CGFloat.greatestFiniteMagnitude)
-            activityDetail.textColor = Theme.currentTheme.textColor
             
             intensityLabel.text = workoutData.effortType
             intensityLabel.font = FontSizeControl.currentFontSize.smallestTextSize
@@ -59,7 +64,6 @@ class WorkoutTableViewCell: UITableViewCell {
             dateLabel.text = dateFormatter.string(from: workoutData.created!)
             dateLabel.font = FontSizeControl.currentFontSize.extraTextSize
             dateLabel.textColor = Theme.currentTheme.accentColor
-            
         }
     }
 }

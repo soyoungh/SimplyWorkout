@@ -42,14 +42,14 @@ class IAPController: UIViewController {
         proBox.layer.shadowOpacity = 0.2
         proBox.layer.shadowRadius = 10
         proBox.layer.shadowOffset = .zero
-        proBox.layer.shadowPath = UIBezierPath(rect: proBox.bounds).cgPath
+        proBox.layer.shadowPath = UIBezierPath(rect: proBox.self.bounds).cgPath
         proBox.layer.shouldRasterize = true
         proBox.layer.rasterizationScale = UIScreen.main.scale
         
         removeAdsTitle.textColor = Theme.currentTheme.headerTitleColor
         removeAdsTitle.text = NSLocalizedString("Remove all Ads", comment: "iap_page_removeAdsTitle")
         reportTitle.textColor = Theme.currentTheme.headerTitleColor
-        reportTitle.text = NSLocalizedString("Monthly workout report", comment: "iap_page_reportTitle")
+        reportTitle.text = NSLocalizedString("Monthly Workout Report", comment: "iap_page_reportTitle")
         darkmodeTitle.textColor = Theme.currentTheme.headerTitleColor
         darkmodeTitle.text = NSLocalizedString("Dark Theme", comment: "iap_popup_darkmodeTitle")
         popupTitle.detailPageTitleSet()

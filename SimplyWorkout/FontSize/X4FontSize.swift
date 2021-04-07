@@ -16,7 +16,7 @@ class X4FontSize: FontSizeProtocol {
      /// activity Detail text - 14, light
      var subTextSize: UIFont = UIFont.systemFont(ofSize: 17, weight: .light)
      
-     /// duration, location, dateLabel -13, regular
+     /// duration, location, date Label -13, regular
      var extraTextSize: UIFont = UIFont.systemFont(ofSize: 15, weight: .regular)
      
      /// intensityLabel -12, regular

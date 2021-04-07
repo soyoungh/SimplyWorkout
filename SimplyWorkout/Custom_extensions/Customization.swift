@@ -13,7 +13,7 @@ extension UIButton {
     func customPlusButton() {
         backgroundColor = Theme.currentTheme.accentColor
         tintColor = UIColor.white
-        layer.cornerRadius = frame.width / 2
+        layer.cornerRadius = layer.frame.width / 2
         layer.shadowColor = UIColor.darkGray.cgColor
         layer.shadowRadius = 3
         layer.shadowOpacity = 0.4

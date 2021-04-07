@@ -10,7 +10,6 @@ import UIKit
 import FSCalendar
 import CoreData
 import GoogleMobileAds
-import SwiftyStoreKit
 
 enum Section {
     case main
@@ -26,6 +25,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     @IBOutlet weak var plusBtnConstraint: NSLayoutConstraint!
     @IBOutlet weak var configBtn: UIButton!
     @IBOutlet weak var reportBtn: UIButton!
+   
     var configIcon: UIImage!
     
     var bannerView: GADBannerView!
@@ -397,8 +397,9 @@ extension ViewController {
             cell.selectionStyle = .none
             
             /// get an estimation of the height of the cell base on the detailLabel.text
+            let d_font = FontSizeControl.currentFontSize.subTextSize
             let detailLabelSize = CGSize(width: 289, height: 1000)
-            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
+            let attributes = [NSAttributedString.Key.font: d_font]
             let estimatedFrame = NSString(string: workoutData.detail!).boundingRect(with: detailLabelSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             //            print(estimatedFrame.height)
             

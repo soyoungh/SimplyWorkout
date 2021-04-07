@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		099DA74583D38E2BCAA79A80 /* Pods_SimplyWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */; };
+		08014E27FBE281CFE27C0AD4 /* Pods_SimplyWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6032D3E4538CAD438CBF3A /* Pods_SimplyWorkout.framework */; };
 		F801C0F924BC3BD2006FFF2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190224B9C34B004298D0 /* ViewController.swift */; };
 		F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */; };
 		F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190024B9C34B004298D0 /* SceneDelegate.swift */; };
@@ -58,9 +58,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimplyWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.release.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.release.xcconfig"; sourceTree = "<group>"; };
-		F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.debug.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.debug.xcconfig"; sourceTree = "<group>"; };
+		0D6032D3E4538CAD438CBF3A /* Pods_SimplyWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimplyWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C440CB1A9969825D22C91642 /* Pods-SimplyWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.release.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.release.xcconfig"; sourceTree = "<group>"; };
+		CC66B70339E325D1C8A623F1 /* Pods-SimplyWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.debug.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.debug.xcconfig"; sourceTree = "<group>"; };
 		F801C10624BC9E1A006FFF2E /* Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customization.swift; sourceTree = "<group>"; };
 		F801C10824BD6C8F006FFF2E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCell.swift; sourceTree = "<group>"; };
@@ -94,6 +94,7 @@
 		F8AD192A24BC2F2F004298D0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F8AD192C24BC328E004298D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		F8BE7E8C261D341D002FD4C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F8C7A770255021050010B69D /* FontSizeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeProtocol.swift; sourceTree = "<group>"; };
 		F8C7A7722550216C0010B69D /* FontSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeControl.swift; sourceTree = "<group>"; };
 		F8C7A775255021D40010B69D /* DefaultFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFontSize.swift; sourceTree = "<group>"; };
@@ -125,7 +126,7 @@
 			files = (
 				F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */,
 				F86DDA1F251C1E33009CC633 /* CloudKit.framework in Frameworks */,
-				099DA74583D38E2BCAA79A80 /* Pods_SimplyWorkout.framework in Frameworks */,
+				08014E27FBE281CFE27C0AD4 /* Pods_SimplyWorkout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +138,7 @@
 			children = (
 				F806D8F9254A7C2A007C26E3 /* StoreKit.framework */,
 				F86DDA1E251C1E33009CC633 /* CloudKit.framework */,
-				7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */,
+				0D6032D3E4538CAD438CBF3A /* Pods_SimplyWorkout.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,8 +146,8 @@
 		B66DC6520CB310A74297040F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */,
-				D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */,
+				CC66B70339E325D1C8A623F1 /* Pods-SimplyWorkout.debug.xcconfig */,
+				C440CB1A9969825D22C91642 /* Pods-SimplyWorkout.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -295,11 +296,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8AD191224B9C34E004298D0 /* Build configuration list for PBXNativeTarget "SimplyWorkout" */;
 			buildPhases = (
-				A35B62D282EB3D4453716061 /* [CP] Check Pods Manifest.lock */,
+				EE3085BF8C0396BCCCEF4D8A /* [CP] Check Pods Manifest.lock */,
 				F8AD18F724B9C34B004298D0 /* Sources */,
 				F8AD18F824B9C34B004298D0 /* Frameworks */,
 				F8AD18F924B9C34B004298D0 /* Resources */,
-				BE158FCB1B9C1D48B99BE981 /* [CP] Embed Pods Frameworks */,
+				C509BF55D2D64FF6D1111924 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -360,7 +361,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A35B62D282EB3D4453716061 /* [CP] Check Pods Manifest.lock */ = {
+		C509BF55D2D64FF6D1111924 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE3085BF8C0396BCCCEF4D8A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,23 +398,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BE158FCB1B9C1D48B99BE981 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -466,6 +467,7 @@
 			children = (
 				F8AD190524B9C34B004298D0 /* Base */,
 				F8916BE6256F486E005B7277 /* ko */,
+				F8BE7E8C261D341D002FD4C5 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -601,7 +603,7 @@
 		};
 		F8AD191324B9C34E004298D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */;
+			baseConfigurationReference = CC66B70339E325D1C8A623F1 /* Pods-SimplyWorkout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;
@@ -615,13 +617,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		F8AD191424B9C34E004298D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */;
+			baseConfigurationReference = C440CB1A9969825D22C91642 /* Pods-SimplyWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;
@@ -635,7 +637,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
