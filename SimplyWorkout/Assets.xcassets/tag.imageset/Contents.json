@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "Tag@0.75x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Tag.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tag.png",
+      "filename" : "Tag@1.5x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

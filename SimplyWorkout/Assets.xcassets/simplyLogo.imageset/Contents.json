@@ -1,0 +1,50 @@
+{
+  "images" : [
+    {
+      "filename" : "logo_light.png",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "logo_dark.png",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "logo_light@2x.png",
+      "idiom" : "iphone"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "logo_dark@2x.png",
+      "idiom" : "iphone"
+    },
+    {
+      "filename" : "logo_light@3x.png",
+      "idiom" : "ipad"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "logo_dark@3x.png",
+      "idiom" : "ipad"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

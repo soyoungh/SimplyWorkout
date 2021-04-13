@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "EffortScale@0.75x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "EffortScale.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "meter.png",
+      "filename" : "EffortScale@1.5x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

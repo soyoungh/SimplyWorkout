@@ -29,20 +29,25 @@ class IAPController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presetup()
-        IAPService.shared.getProduct()
+       // IAPService.shared.getProduct()
     }
     
     // MARK: - View Layout setup
     func presetup() {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         
+        chartIcon.imageViewSet()
+        darkmodeIcon.imageViewSet()
+        adShieldIcon.imageViewSet()
+        
+        proBox.layoutIfNeeded()
         proBox.backgroundColor = Theme.currentTheme.lightCellColor
         proBox.layer.cornerRadius = 10
         proBox.layer.shadowColor = UIColor.black.cgColor
+        proBox.layer.shadowPath = UIBezierPath(rect: proBox.bounds).cgPath
         proBox.layer.shadowOpacity = 0.2
-        proBox.layer.shadowRadius = 10
+        proBox.layer.shadowRadius = 8
         proBox.layer.shadowOffset = .zero
-        proBox.layer.shadowPath = UIBezierPath(rect: proBox.self.bounds).cgPath
         proBox.layer.shouldRasterize = true
         proBox.layer.rasterizationScale = UIScreen.main.scale
         

@@ -94,6 +94,15 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
 //        lineChart_maxLabel.isHidden = true
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        let location: CGRect = effortGraphic.bounds
+        gradientLayer = setGradientLayer(rect: location, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 0.0, y: 0.0))
+        
+        effortGraphic.layer.addSublayer(gradientLayer)
+    }
+    
     // MARK: - Button Tap Actions
     @IBAction func preBtnTapped(_ sender: UIButton) {
         headerCalendar.setCurrentPage(getPreviousMonth(date: headerCalendar.currentPage), animated: true)
@@ -334,6 +343,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         let tempImg1 = preIcon.withRenderingMode(.alwaysTemplate)
         prevBtn.setImage(tempImg1, for: .normal)
         prevBtn.transform = prevBtn.transform.rotated(by: .pi)
+        prevBtn.layoutIfNeeded()
         
         nextIcon = UIImage(named: "next")
         let tempImg2 = nextIcon.withRenderingMode(.alwaysTemplate)
@@ -347,12 +357,6 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         workoutsLabel.alpha = 0.5
         hourLabel.alpha = 0.5
         minuteLabel.alpha = 0.5
-        
-        let location: CGRect = effortGraphic.bounds
-        gradientLayer = setGradientLayer(rect: location, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 0.0, y: 0.0))
-        
-        effortGraphic.layer.addSublayer(gradientLayer)
-
     }
     
     func setupNavBar() {
@@ -463,9 +467,9 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     
     // MARK: - TableView Delegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 28))
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 18))
         header.backgroundColor = .clear
-        let headerText = UILabel(frame: CGRect(x: 20, y: 0, width: 290, height: tableView.sectionHeaderHeight))
+        let headerText = UILabel(frame: CGRect(x: 20, y: 0, width: 290, height: 18))
         
         switch section {
         case 0:
@@ -484,19 +488,23 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         headerText.font = FontSizeControl.currentFontSize.headerTextSize
         headerText.alpha = 0.68
         header.addSubview(headerText)
-        header.addBottomBorder(0.5)
+//        header.addBottomBorder(0.5)
         
         return header
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 20))
-        footer.addTopBorder(0.6, view: tableView)
-        return footer
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 20))
+//        footer.addTopBorder(0.6, view: tableView)
+//        footer.backgroundColor = Theme.currentTheme.backgroundColor
+//        return footer
+//    }
+  
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 24
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -514,9 +522,19 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         case [1, 0]:
             return 60
         case [2, 0]:
-            return 280
+            if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
+                return 380
+            }
+            else {
+                return 280
+            }
         case [3, 0]:
-            return 220
+            if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
+                return 360
+            }
+            else {
+                return 220
+            }
         default:
             return 60
         }

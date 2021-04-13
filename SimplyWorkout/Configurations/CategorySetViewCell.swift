@@ -18,7 +18,7 @@ class CategorySetViewCell: UITableViewCell {
             activityName.text = categoryData.activityName_c
             activityName.font = UIFont.systemFont(ofSize: 16, weight: .regular)
             activityName.textColor = Theme.currentTheme.textColor
-            colorTag.layer.cornerRadius = 10
+            colorTag.layer.cornerRadius = colorTag.layer.frame.width / 2
             colorTag.backgroundColor = UIColor(named: categoryData.colorTag_c!)
         }
     }

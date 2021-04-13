@@ -148,6 +148,7 @@ class ConfigurationsController: UITableViewController {
     /// Remove Ads
     @objc func nextBtn1_Tapped() {
         let vc1 = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
+        vc1.modalPresentationStyle = .overCurrentContext
         self.present(vc1, animated: true, completion: nil)
     }
     
