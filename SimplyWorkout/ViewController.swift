@@ -116,15 +116,15 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         plusBtnConstraint.constant = 65
         
-//        if !UserDefaults.standard.bool(forKey: "removeAds") {
-//            // show ads
-//            self.reportBtn.alpha = 0.5
-//            addBanner(with: testID)
-//        }
-//        else {
-//            // no ads
-//            self.reportBtn.alpha = 1.0
-//        }
+        if !UserDefaults.standard.bool(forKey: "removeAds") {
+            // show ads
+            self.reportBtn.alpha = 0.5
+            addBanner(with: adUnitID)
+        }
+        else {
+            // no ads
+            self.reportBtn.alpha = 1.0
+        }
         
     }
    
@@ -187,14 +187,14 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                     self.navigationController?.pushViewController(vc, animated: true)
         
         
-//        if self.reportBtn.alpha == 1.0 {
-//            let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//        else if self.reportBtn.alpha == 0.5 {
-//            let vc2 = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
-//            self.present(vc2, animated: true)
-//        }
+        if self.reportBtn.alpha == 1.0 {
+            let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if self.reportBtn.alpha == 0.5 {
+            let vc2 = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
+            self.present(vc2, animated: true)
+        }
         
     }
     

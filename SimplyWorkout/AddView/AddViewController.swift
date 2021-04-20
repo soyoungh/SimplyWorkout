@@ -200,7 +200,7 @@ class AddViewController: UIViewController {
                 return
             }
             nilValueCheck()
-            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel ?? lo_moderate, duration: durationLabel ?? "0\(lo_h) 0\(lo_min)", colorType: colorTagString ?? "floraFirma", location: locationLabel ?? lo_gym, effortValue: effortValue!)
+            del.addWorkoutData(activity: activityLabel!, detail: detailLabel!, effortType: effortLabel ?? lo_moderate, duration: durationString ?? "0\(lo_h) 0\(lo_min)", colorType: colorTagString ?? "floraFirma", location: locationLabel ?? lo_gym, effortValue: effortValue!)
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
