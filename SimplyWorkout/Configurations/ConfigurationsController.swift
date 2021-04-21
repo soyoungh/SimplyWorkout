@@ -31,6 +31,7 @@ class ConfigurationsController: UITableViewController {
 
     let IAPPurchaseIDs = [["com.soyoungHyun.SimplyWorkout.ncRemoveAds"]]
     let sharedSecret = "c620d1374ee34cd88444245fa7f27e2d"
+    let appstoreURL = "https://apps.apple.com/us/app/simply-workout-workout-log/id1537919212"
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
@@ -143,6 +144,8 @@ class ConfigurationsController: UITableViewController {
         nextBtn_2.addTarget(self, action: #selector(nextBtn2_Tapped), for: .touchUpInside)
         /// Clear all data
         nextBtn_3.addTarget(self, action: #selector(nextBtn3_Tapped), for: .touchUpInside)
+        /// App Review
+        nextBtn_4.addTarget(self, action: #selector(nextBtn4_Tapped), for: .touchUpInside)
     }
     
     /// Remove Ads
@@ -160,6 +163,10 @@ class ConfigurationsController: UITableViewController {
     
     @objc func nextBtn3_Tapped() {
         createAlert(alertTitle: NSLocalizedString("Clear All Data", comment: "Clear all data Alert - Title"), alertMessage: NSLocalizedString("All this app's data will be deleted permanently. \nDo you want to continue?", comment: ""))
+    }
+    
+    @objc func nextBtn4_Tapped() {
+        UIApplication.shared.open(URL(string:appstoreURL)!, options: [:], completionHandler: nil)
     }
     
     func setupNavBar() {

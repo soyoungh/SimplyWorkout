@@ -609,6 +609,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC66B70339E325D1C8A623F1 /* Pods-SimplyWorkout.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8RW29TB5D;
@@ -628,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C440CB1A9969825D22C91642 /* Pods-SimplyWorkout.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8RW29TB5D;
