@@ -122,4 +122,11 @@ extension UIImageView {
         self.tintColor = Theme.currentTheme.addIconTextColor
         transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
     }
+    
+    func iapSet() {
+        let tempImg = self.image?.withRenderingMode(.alwaysTemplate)
+        self.image = tempImg
+        self.tintColor = UIColor.applyColor(AssetsColor.barrierReef)
+        transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+    }
 }

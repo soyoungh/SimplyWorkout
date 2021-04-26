@@ -29,16 +29,16 @@ class IAPController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presetup()
-       // IAPService.shared.getProduct()
+        IAPService.shared.getProduct()
     }
     
     // MARK: - View Layout setup
     func presetup() {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         
-        chartIcon.imageViewSet()
-        darkmodeIcon.imageViewSet()
-        adShieldIcon.imageViewSet()
+        chartIcon.iapSet()
+        darkmodeIcon.iapSet()
+        adShieldIcon.iapSet()
         
         proBox.layoutIfNeeded()
         proBox.backgroundColor = Theme.currentTheme.lightCellColor
@@ -54,7 +54,7 @@ class IAPController: UIViewController {
         removeAdsTitle.textColor = Theme.currentTheme.headerTitleColor
         removeAdsTitle.text = NSLocalizedString("Remove all Ads", comment: "iap_page_removeAdsTitle")
         reportTitle.textColor = Theme.currentTheme.headerTitleColor
-        reportTitle.text = NSLocalizedString("Monthly Workout Report", comment: "iap_page_reportTitle")
+        reportTitle.text = NSLocalizedString("Workout Report", comment: "iap_page_reportTitle")
         darkmodeTitle.textColor = Theme.currentTheme.headerTitleColor
         darkmodeTitle.text = NSLocalizedString("Dark Theme", comment: "iap_popup_darkmodeTitle")
         popupTitle.detailPageTitleSet()
@@ -68,6 +68,11 @@ class IAPController: UIViewController {
         subLabel_darkmode.text = NSLocalizedString("You will get a dark appearance and synchronize the same as your device setting.", comment: "iap_darkmodeText")
         
         cancelBtn.tintColor = Theme.currentTheme.accentColor
+        
+        let cancelIcon = UIImage(named: "xMark")
+        let tempImg = cancelIcon!.withRenderingMode(.alwaysTemplate)
+        cancelBtn.setImage(tempImg, for: .normal)
+        
         cancelBtn.addTarget(self, action: #selector(cancelBtnDidTapped), for: .touchUpInside)
         
         upgradeBtn.roundedCornerBtn()

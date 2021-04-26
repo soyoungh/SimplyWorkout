@@ -47,7 +47,7 @@ class FontSizeController: UIViewController {
         backIcon = UIImage(named: "leftArrow")
         let tempImg = backIcon.withRenderingMode(.alwaysTemplate)
         backBtn.setImage(tempImg, for: .normal)
-        
+        backBtn.addTarget(self, action: #selector(backBtn_tapped), for: .touchUpInside)
         sampleSentence.text = NSLocalizedString("The average font size will adjust to your preferred reading size below.", comment: "font size sample text")
         
         smallA.text = NSLocalizedString("smallA", comment: "font size sample mark")
@@ -101,6 +101,12 @@ class FontSizeController: UIViewController {
             break
         }
       
+    }
+    
+    /// Back Button action
+    @objc func backBtn_tapped() {
+        let vc = storyboard?.instantiateViewController(identifier: "settingPage") as! ConfigurationsController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

@@ -96,6 +96,7 @@ class ConfigurationsController: UITableViewController {
         else {
             sender.isOn = false
             let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
+            vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true)
         }
     }
@@ -109,6 +110,7 @@ class ConfigurationsController: UITableViewController {
         else  {
             sender.isOn = false
             let vc = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
+            vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true)
         }
     }
@@ -146,6 +148,8 @@ class ConfigurationsController: UITableViewController {
         nextBtn_3.addTarget(self, action: #selector(nextBtn3_Tapped), for: .touchUpInside)
         /// App Review
         nextBtn_4.addTarget(self, action: #selector(nextBtn4_Tapped), for: .touchUpInside)
+        /// Font Size
+        nextBtn_6.addTarget(self, action: #selector(nextBtn6_Tapped), for: .touchUpInside)
     }
     
     /// Remove Ads
@@ -167,6 +171,11 @@ class ConfigurationsController: UITableViewController {
     
     @objc func nextBtn4_Tapped() {
         UIApplication.shared.open(URL(string:appstoreURL)!, options: [:], completionHandler: nil)
+    }
+    
+    @objc func nextBtn6_Tapped() {
+        let vc3 = storyboard?.instantiateViewController(identifier: "fontSizeCtrl") as! FontSizeController
+        self.navigationController?.pushViewController(vc3, animated: true)
     }
     
     func setupNavBar() {

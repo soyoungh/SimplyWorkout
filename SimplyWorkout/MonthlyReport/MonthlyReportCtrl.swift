@@ -530,7 +530,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
             }
         case [3, 0]:
             if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
-                return 360
+                return 420
             }
             else {
                 return 220

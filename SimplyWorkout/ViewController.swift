@@ -25,11 +25,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     @IBOutlet weak var plusBtnConstraint: NSLayoutConstraint!
     @IBOutlet weak var configBtn: UIButton!
     @IBOutlet weak var reportBtn: UIButton!
-   
+    
     var configIcon: UIImage!
     
     var bannerView: GADBannerView!
-    let adUnitID = "ca-app-pub-5585665050991980/9398800141"
+    let adUnitID = "ca-app-pub-5585665050991980~8349442359"
+    //  "ca-app-pub-5585665050991980/9398800141"
     let testID = "ca-app-pub-3940256099942544/2934735716"
     
     @IBAction func plusBtnTapped(_ sender: Any) {
@@ -119,7 +120,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         if !UserDefaults.standard.bool(forKey: "removeAds") {
             // show ads
             self.reportBtn.alpha = 0.5
-            addBanner(with: adUnitID)
+            addBanner(with: testID)
         }
         else {
             // no ads
@@ -127,7 +128,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
         
     }
-   
+    
     func addBanner(with id: String) {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView.adUnitID = id
@@ -183,16 +184,14 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     @objc func reportTapped() {
-        let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
-                    self.navigationController?.pushViewController(vc, animated: true)
-        
-        
+
         if self.reportBtn.alpha == 1.0 {
             let vc = storyboard?.instantiateViewController(identifier: "reportPage") as! MonthlyReportCtrl
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if self.reportBtn.alpha == 0.5 {
             let vc2 = storyboard?.instantiateViewController(identifier: "removeAds") as! IAPController
+            vc2.modalPresentationStyle = .overCurrentContext
             self.present(vc2, animated: true)
         }
         
@@ -471,10 +470,18 @@ extension ViewController: UITableViewDelegate {
                 vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
             }
             else if duration[2] == vo_h {
-                vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[0..<2])!, inComponent: 1, animated: false)
+            }
+            /// KOR, 0hh
+            else if duration[1..<3] == vo_h {
+                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
+            }
+            /// KOR, 00hh
+            else if duration[2..<4] == vo_h {
+                vc.durationPickView.selectRow(Int(duration[0..<2])!, inComponent: 1, animated: false)
             }
         }
-       
+        
         else if !duration.contains(vo_h) && duration.contains(vo_min) {
             /// min only
             vc.durationPickView.selectRow(0, inComponent: 1, animated: false)
@@ -485,24 +492,48 @@ extension ViewController: UITableViewDelegate {
                 vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 2, animated: false)
             }
         }
-       
+        
         else if duration.contains(vo_h) && duration.contains(vo_min) {
+            /// 0h 0min
             if duration[1] == vo_h && duration[4] == vo_m {
                 vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
                 vc.durationPickView.selectRow(Int(duration[3])!, inComponent: 2, animated: false)
-                }
+            }
+            /// 0h 00min
             else if duration[1] == vo_h && duration[5] == vo_m {
-                    vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
-                    vc.durationPickView.selectRow(Int(duration[3 ..< 5])!, inComponent: 2, animated: false)
-                }
+                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[3 ..< 5])!, inComponent: 2, animated: false)
+            }
+            /// 00h 0min
             else if duration[2] == vo_h && duration[5] == vo_m {
                 vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 1, animated: false)
                 vc.durationPickView.selectRow(Int(duration[4])!, inComponent: 2, animated: false)
-                }
-            else {
-                    vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 1, animated: false)
-                    vc.durationPickView.selectRow(Int(duration[4 ..< 6])!, inComponent: 2, animated: false)
-                }
+            }
+            /// 00h 00min
+            else if duration[2] == vo_h && duration[6] == vo_m {
+                vc.durationPickView.selectRow(Int(duration[0 ..< 2])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[4 ..< 6])!, inComponent: 2, animated: false)
+            }
+            /// KOR, 0hh om
+            else if duration[1..<3] == vo_h && duration[5] == vo_m {
+                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[4])!, inComponent: 2, animated: false)
+            }
+            /// KOR, 0hh 00m
+            else if duration[1..<3] == vo_h && duration[6] == vo_m {
+                vc.durationPickView.selectRow(Int(duration[0])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[4..<6])!, inComponent: 2, animated: false)
+            }
+            /// KOR, 00hh 0m
+            else if duration[2..<4] == vo_h && duration[6] == vo_m {
+                vc.durationPickView.selectRow(Int(duration[0..<2])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[5])!, inComponent: 2, animated: false)
+            }
+            /// KOR, 00hh 00m
+            else if duration[2..<4] == vo_h && duration[7] == vo_m {
+                vc.durationPickView.selectRow(Int(duration[0..<2])!, inComponent: 1, animated: false)
+                vc.durationPickView.selectRow(Int(duration[5..<7])!, inComponent: 2, animated: false)
+            }
         }
         
         /// update the location data

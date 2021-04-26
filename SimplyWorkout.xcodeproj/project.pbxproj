@@ -79,8 +79,9 @@
 		F8876741261FF8880081551E /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		F887674D261FF89D0081551E /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8916BE3256F47FA005B7277 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F8916BE6256F486E005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		F8916BE8256F486F005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F89E2A522633B4E5003E9D1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		F89E2A532633B4E7003E9D1A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		F8AD18FB24B9C34B004298D0 /* SimplyWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8AD190024B9C34B004298D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		F8AD192A24BC2F2F004298D0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F8AD192C24BC328E004298D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
-		F8BE7E8C261D341D002FD4C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F8C7A770255021050010B69D /* FontSizeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeProtocol.swift; sourceTree = "<group>"; };
 		F8C7A7722550216C0010B69D /* FontSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeControl.swift; sourceTree = "<group>"; };
 		F8C7A775255021D40010B69D /* DefaultFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFontSize.swift; sourceTree = "<group>"; };
@@ -470,8 +470,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				F8AD190524B9C34B004298D0 /* Base */,
-				F8916BE6256F486E005B7277 /* ko */,
-				F8BE7E8C261D341D002FD4C5 /* en */,
+				F89E2A522633B4E5003E9D1A /* en */,
+				F89E2A532633B4E7003E9D1A /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -618,6 +618,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -638,6 +639,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
