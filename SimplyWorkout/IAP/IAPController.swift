@@ -29,7 +29,40 @@ class IAPController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presetup()
+        isDarkModeOrNot()
         IAPService.shared.getProduct()
+    }
+    
+    var isDarkContentBackground = false
+    var basedDeviceSetting = false
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if isDarkContentBackground {
+            return .lightContent
+        }
+        else if basedDeviceSetting {
+            return .default
+        }
+        else {
+            return .darkContent
+        }
+    }
+    
+    func isDarkModeOrNot() {
+        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // lightTheme
+            isDarkContentBackground = false
+        }
+        else {
+            isDarkContentBackground = true
+        }
+
+        if !UserDefaults.standard.bool(forKey: "AutoMode") {
+            basedDeviceSetting = false
+        }
+        else {
+            basedDeviceSetting = true
+        }
     }
     
     // MARK: - View Layout setup

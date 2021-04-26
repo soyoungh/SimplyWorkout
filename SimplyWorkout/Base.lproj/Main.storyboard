@@ -2088,7 +2088,7 @@
                                                 </variation>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eju-we-Chc">
-                                                <rect key="frame" x="119.99999999999999" y="48" width="136.66666666666663" height="32"/>
+                                                <rect key="frame" x="120" y="48" width="136.66666666666663" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="3IP-IT-QqB"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="136.66999999999999" id="Cg6-qY-D7p"/>

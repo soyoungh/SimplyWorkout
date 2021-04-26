@@ -33,12 +33,19 @@ class ConfigurationsController: UITableViewController {
     let sharedSecret = "c620d1374ee34cd88444245fa7f27e2d"
     let appstoreURL = "https://apps.apple.com/us/app/simply-workout-workout-log/id1537919212"
     
+    /// StatusBar Preference Setting
+    var isDarkContentBackground = false
+    var basedDeviceSetting = false
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
-            return .darkContent
+        if isDarkContentBackground {
+            return .lightContent
+        }
+        else if basedDeviceSetting {
+            return .default
         }
         else {
-            return .lightContent
+            return .darkContent
         }
     }
     
@@ -56,7 +63,6 @@ class ConfigurationsController: UITableViewController {
         super.viewDidLoad()
         preSetup()
         setupNavBar()
-        applyTheme()
         
         if !UserDefaults.standard.bool(forKey: "removeAds") {
             // not purchased yet.
@@ -69,8 +75,28 @@ class ConfigurationsController: UITableViewController {
             self.darkModeSwitch.alpha = 1.0
             self.automaticSwitch.alpha = 1.0
         }
+        
+        isDarkModeOrNot()
+        applyTheme()
     }
 
+    func isDarkModeOrNot() {
+        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // lightTheme
+            isDarkContentBackground = false
+        }
+        else {
+            isDarkContentBackground = true
+        }
+
+        if !UserDefaults.standard.bool(forKey: "AutoMode") {
+            basedDeviceSetting = false
+        }
+        else {
+            basedDeviceSetting = true
+        }
+    }
+    
     @objc func automaticSwitchDidChange(_ sender: UISwitch) {
         
         if sender.alpha == 1.0 {
@@ -86,10 +112,12 @@ class ConfigurationsController: UITableViewController {
                 else if UITraitCollection.current.userInterfaceStyle == .dark {
                     Theme.currentTheme = DarkTheme()
                 }
+                basedDeviceSetting = true
             }
             else {
                 darkModeSwitch.isEnabled = true
                 darkModeSwitchDidchange(darkModeSwitch)
+                basedDeviceSetting = false
             }
             applyTheme()
         }
@@ -102,9 +130,12 @@ class ConfigurationsController: UITableViewController {
     }
     
     @objc func darkModeSwitchDidchange(_ sender: UISwitch) {
+
         if sender.alpha == 1.0 {
             Theme.currentTheme = sender.isOn ? DarkTheme() : LightTheme()
             UserDefaults.standard.set(sender.isOn, forKey: "DarkTheme")
+            isDarkContentBackground = sender.isOn ? true : false
+            setNeedsStatusBarAppearanceUpdate()
             applyTheme()
         }
         else  {
@@ -198,6 +229,7 @@ class ConfigurationsController: UITableViewController {
         nextBtn_6.tintColor = Theme.currentTheme.accentColor
         darkModeSwitch.onTintColor = Theme.currentTheme.accentColor
         settingTable.reloadData()
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     // MARK: - TableView Delegate

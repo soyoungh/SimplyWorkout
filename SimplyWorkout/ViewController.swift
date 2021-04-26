@@ -83,13 +83,20 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var vo_h = NSLocalizedString("v_h", comment: "vc_h")
     var vo_m = NSLocalizedString("v_m", comment: "vc_m")
     var vo_min = NSLocalizedString("v_min", comment: "vc_min")
-    
+
+    /// StatusBar Preference Setting
+    var isDarkContentBackground = true
+    var basedDeviceSetting = false
+        
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
-            return .darkContent
+        if isDarkContentBackground {
+            return .lightContent
+        }
+        else if basedDeviceSetting {
+            return .default
         }
         else {
-            return .lightContent
+            return .darkContent
         }
     }
     
@@ -97,7 +104,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.rowHeight = UITableView.automaticDimension
         themeChanged()
     }
     
@@ -111,8 +118,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         configureDataSource()
         preSetUp()
-        themeChanged()
-        tableView.tableFooterView = UIView()
         setupFetchedResultsData()
         
         plusBtnConstraint.constant = 65
@@ -120,13 +125,32 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         if !UserDefaults.standard.bool(forKey: "removeAds") {
             // show ads
             self.reportBtn.alpha = 0.5
-            addBanner(with: testID)
+            addBanner(with: adUnitID)
         }
         else {
             // no ads
             self.reportBtn.alpha = 1.0
         }
         
+        isDarkModeOrNot()
+        themeChanged()
+    }
+    
+    func isDarkModeOrNot() {
+        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // lightTheme
+            isDarkContentBackground = false
+        }
+        else {
+            isDarkContentBackground = true
+        }
+
+        if !UserDefaults.standard.bool(forKey: "AutoMode") {
+            basedDeviceSetting = false
+        }
+        else {
+            basedDeviceSetting = true
+        }
     }
     
     func addBanner(with id: String) {
@@ -174,7 +198,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         viewContainer.addTopBorder(1, view: self.view)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         tableView.separatorColor = Theme.currentTheme.separatorColor
-        
+        tableView.tableFooterView = UIView()
         configIcon = UIImage(named: "setting")
         let tempImage = configIcon.withRenderingMode(.alwaysTemplate)
         configBtn.setImage(tempImage, for: .normal)
@@ -222,6 +246,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         tableView.reloadData()
         calendar.reloadData()
+        
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {

@@ -65,12 +65,19 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    /// StatusBar Preference Setting
+    var isDarkContentBackground = true
+    var basedDeviceSetting = false
+        
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
-            return .darkContent
+        if isDarkContentBackground {
+            return .lightContent
+        }
+        else if basedDeviceSetting {
+            return .default
         }
         else {
-            return .lightContent
+            return .darkContent
         }
     }
     
@@ -86,10 +93,10 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         setupNavBar()
         setupPieChart()
         setupLineChart()
-        applyTheme()
         lineChartView.xAxis.valueFormatter = self
         lineChartView.delegate = self
-        
+        isDarkModeOrNot()
+        applyTheme()
 //        lineChart_lightLabel.isHidden = true
 //        lineChart_maxLabel.isHidden = true
     }
@@ -101,6 +108,23 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         gradientLayer = setGradientLayer(rect: location, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 0.0, y: 0.0))
         
         effortGraphic.layer.addSublayer(gradientLayer)
+    }
+    
+    func isDarkModeOrNot() {
+        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // lightTheme
+            isDarkContentBackground = false
+        }
+        else {
+            isDarkContentBackground = true
+        }
+
+        if !UserDefaults.standard.bool(forKey: "AutoMode") {
+            basedDeviceSetting = false
+        }
+        else {
+            basedDeviceSetting = true
+        }
     }
     
     // MARK: - Button Tap Actions
@@ -385,6 +409,7 @@ class MonthlyReportCtrl: UITableViewController, FSCalendarDelegate, FSCalendarDa
         lineChart_maxLabel.text = NSLocalizedString("mr_maxLabel", comment: "lineChart_maxLabel")
         lineChart_lightLabel.text = NSLocalizedString("mr_minLabel", comment: "lineChart_lightLabel")
         reportTable.reloadData()
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     private func setGradientLayer (rect: CGRect, startPoint: CGPoint, endPoint: CGPoint) -> CAGradientLayer {
