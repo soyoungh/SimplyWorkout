@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import StoreKit
 
 class ConfigurationsController: UITableViewController {
     
@@ -31,7 +32,8 @@ class ConfigurationsController: UITableViewController {
 
     let IAPPurchaseIDs = [["com.soyoungHyun.SimplyWorkout.ncRemoveAds"]]
     let sharedSecret = "c620d1374ee34cd88444245fa7f27e2d"
-    let appstoreURL = "https://apps.apple.com/us/app/simply-workout-workout-log/id1537919212"
+    let appstoreURL = "https://apps.apple.com/app/id1537919212"
+    let appReviewURL = URL(string: "https://apps.apple.com/app/id1537919212")
     
     /// StatusBar Preference Setting
     var isDarkContentBackground = false
@@ -201,7 +203,12 @@ class ConfigurationsController: UITableViewController {
     }
     
     @objc func nextBtn4_Tapped() {
-        UIApplication.shared.open(URL(string:appstoreURL)!, options: [:], completionHandler: nil)
+        //UIApplication.shared.open(URL(string:appstoreURL)!, options: [:], completionHandler: nil)
+        
+        var urlCompo = URLComponents(url: appReviewURL!, resolvingAgainstBaseURL: false)
+        urlCompo?.queryItems = [URLQueryItem(name: "action", value: "write-review")]
+        guard let writeReviewURL = urlCompo?.url else { return }
+        UIApplication.shared.open(writeReviewURL)
     }
     
     @objc func nextBtn6_Tapped() {
@@ -316,7 +323,7 @@ class ConfigurationsController: UITableViewController {
             /// remove all data
             nextBtn3_Tapped()
         case [3, 1]:
-            print("d")
+            nextBtn4_Tapped()
         case [3, 2]:
             /// license
             let vc4 = storyboard?.instantiateViewController(identifier: "licenseCtrl") as! License

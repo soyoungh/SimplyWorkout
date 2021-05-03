@@ -97,11 +97,11 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
 }
 
 extension CategorySettingCtrl: AddCategory {
-    func addCategoryData(activityName: String, ColorTag: String) {
+    func addCategoryData(activityName: String, colorTag: String) {
         
         let categoryData = CategoryCD(context: context)
         categoryData.activityName_c = activityName
-        categoryData.colorTag_c = ColorTag
+        categoryData.colorTag_c = colorTag
         
         /// save the data
         do {

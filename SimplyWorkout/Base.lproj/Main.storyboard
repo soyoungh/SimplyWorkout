@@ -1436,7 +1436,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tagCell" translatesAutoresizingMaskIntoConstraints="NO" id="H39-O1-X9w" customClass="ColorTagCell" customModule="SimplyWorkout" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="tagCell" translatesAutoresizingMaskIntoConstraints="NO" id="H39-O1-X9w" customClass="ColorTagCell" customModule="SimplyWorkout" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="C1n-S3-gKZ">
@@ -2088,7 +2088,7 @@
                                                 </variation>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eju-we-Chc">
-                                                <rect key="frame" x="120" y="48" width="136.66666666666663" height="32"/>
+                                                <rect key="frame" x="119.99999999999999" y="48" width="136.66666666666663" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="3IP-IT-QqB"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="136.66999999999999" id="Cg6-qY-D7p"/>

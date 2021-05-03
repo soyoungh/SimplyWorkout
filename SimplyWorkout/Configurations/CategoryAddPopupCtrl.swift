@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 protocol AddCategory {
-    func addCategoryData (activityName: String, ColorTag: String)
+    func addCategoryData (activityName: String, colorTag: String)
 }
 
 class CategoryAddPopupCtrl: UIViewController, UIGestureRecognizerDelegate {
@@ -62,20 +63,44 @@ class CategoryAddPopupCtrl: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func saveBtnDidTapped() {
-        addNewCategory()
-    }
-    
-    func addNewCategory() {
-        if activityField.text != "" && colorTagCtrl.selectedColor != "" {
-            guard let del = addCategoryDelegate else {
-                return
-            }
-            del.addCategoryData(activityName: activityField.text!, ColorTag: colorTagCtrl.selectedColor!)
+        if activityField.text != "" && colorTagCtrl.selectedColor != nil {
             
-            dismiss(animated: true, completion: nil)
+            let request = CategoryCD.createFetchRequest()
+            
+            do {
+                let dataResults = try (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.fetch(request)
+                let actFilter = dataResults.filter { $0.activityName_c! == activityField.text || $0.colorTag_c! == colorTagCtrl.selectedColor
+                }
+
+                if actFilter.isEmpty == false {
+                    createAlertPopup(alertTitle: NSLocalizedString("Error", comment: "category pop up alert - Title"), alertMessage: NSLocalizedString("alert message", comment: "category pop up alert - Message"))
+                }
+                else {
+                    addNewCategory()
+                }
+            }
+            catch {
+                
+            }
         }
         else {
             dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func addNewCategory() {
+            guard let del = addCategoryDelegate else {
+                return
+            }
+            del.addCategoryData(activityName: activityField.text!, colorTag: colorTagCtrl.selectedColor!)
+            dismiss(animated: true, completion: nil)
+    }
+    
+    func createAlertPopup(alertTitle: String, alertMessage: String){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
+//            print("tapped dismiss")
+        }))
+        present(alert, animated: true)
     }
 }
