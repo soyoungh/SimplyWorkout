@@ -29,8 +29,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var configIcon: UIImage!
     
     var bannerView: GADBannerView!
-    let adUnitID = "ca-app-pub-5585665050991980~8349442359"
-    //  "ca-app-pub-5585665050991980/9398800141"
+    let adUnitID = "ca-app-pub-5585665050991980/9398800141"
     let testID = "ca-app-pub-3940256099942544/2934735716"
     
     @IBAction func plusBtnTapped(_ sender: Any) {
