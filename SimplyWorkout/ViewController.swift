@@ -17,7 +17,7 @@ enum Section {
 
 class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate, NSFetchedResultsControllerDelegate, FSCalendarDelegateAppearance {
     
-    @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var fsCalendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
@@ -47,7 +47,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
         [unowned self] in
-        let panGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
+        let panGesture = UIPanGestureRecognizer(target: self.fsCalendar, action: #selector(self.fsCalendar.handleScopeGesture(_:)))
         panGesture.delegate = self
         panGesture.minimumNumberOfTouches = 1
         panGesture.maximumNumberOfTouches = 2
@@ -109,9 +109,9 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.calendar.select(Date())
-        self.calendar.scope = .month
+
+        fsCalendar.select(Date())
+        fsCalendar.scope = .month
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         
@@ -178,7 +178,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             DispatchQueue.main.async {
                 self.updateSnapshot()
                 self.tableView.reloadData()
-                self.calendar.layoutIfNeeded()
+                self.fsCalendar.layoutIfNeeded()
             }
         }
         catch {
@@ -188,12 +188,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         updateSnapshot()
-        calendar.reloadData()
+        fsCalendar.reloadData()
     }
     
     func preSetUp() {
-        Theme.calendar = calendar
-        self.selectedDate = dateFormatter.string(from: self.calendar.today!)
+        Theme.calendar = fsCalendar
+        self.selectedDate = dateFormatter.string(from: self.fsCalendar.today!)
         viewContainer.addTopBorder(1, view: self.view)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         tableView.separatorColor = Theme.currentTheme.separatorColor
@@ -229,11 +229,11 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         
         self.view.backgroundColor = Theme.currentTheme.backgroundColor
         
-        calendar.backgroundColor = Theme.currentTheme.backgroundColor
-        calendar.appearance.headerTitleColor = Theme.currentTheme.headerTitleColor
-        calendar.appearance.weekdayTextColor = Theme.currentTheme.weekdayTextColor
-        calendar.appearance.titleDefaultColor = Theme.currentTheme.dateTextColor
-        calendar.appearance.selectionColor = Theme.currentTheme.selectionColor
+        fsCalendar.backgroundColor = Theme.currentTheme.backgroundColor
+        fsCalendar.appearance.headerTitleColor = Theme.currentTheme.headerTitleColor
+        fsCalendar.appearance.weekdayTextColor = Theme.currentTheme.weekdayTextColor
+        fsCalendar.appearance.titleDefaultColor = Theme.currentTheme.dateTextColor
+        fsCalendar.appearance.selectionColor = Theme.currentTheme.selectionColor
         
         viewContainer.backgroundColor = Theme.currentTheme.backgroundColor
         
@@ -244,7 +244,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         reportBtn.tintColor = Theme.currentTheme.accentColor
         
         tableView.reloadData()
-        calendar.reloadData()
+        fsCalendar.reloadData()
         
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -270,7 +270,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
         if shouldBegin {
             let velocity = self.scopeGesture.velocity(in: self.viewContainer)
-            switch self.calendar.scope {
+            switch self.fsCalendar.scope {
             case .month:
                 return velocity.y < 0
             case .week:
@@ -372,7 +372,7 @@ extension ViewController: AddData {
             userWorkout.effortValue = effortValue
             
             let eventDate = EventDateCD(context: userWorkout.managedObjectContext!)
-            eventDate.activityDate = dateFormatter.string(from: calendar.selectedDate!)
+            eventDate.activityDate = dateFormatter.string(from: fsCalendar.selectedDate!)
             eventDate.addToToWorkoutData(userWorkout)
         }
         else {
@@ -396,7 +396,7 @@ extension ViewController: AddData {
         
         /// Re-Fetch the data
         setupFetchedResultsData()
-        calendar.reloadData()
+        fsCalendar.reloadData()
     }
 }
 
@@ -461,7 +461,7 @@ extension ViewController: UITableViewDelegate {
             
             /// Re-Fetch the data
             self.setupFetchedResultsData()
-            self.calendar.reloadData()
+            self.fsCalendar.reloadData()
             //            print("the deleted index is \(indexPath.row)"
             completion(true)
         }

@@ -22,12 +22,19 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    /// StatusBar Preference Setting
+    var isDarkContentBackground = true
+    var basedDeviceSetting = false
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
-            return .darkContent
+        if isDarkContentBackground {
+            return .lightContent
+        }
+        else if basedDeviceSetting {
+            return .default
         }
         else {
-            return .lightContent
+            return .darkContent
         }
     }
     
@@ -37,9 +44,28 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         presetup()
         setupNavBar()
+        isDarkModeOrNot()
         applyTheme()
+    }
+    
+    func isDarkModeOrNot() {
+        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // lightTheme
+            isDarkContentBackground = false
+        }
+        else {
+            isDarkContentBackground = true
+        }
+        
+        if !UserDefaults.standard.bool(forKey: "AutoMode") {
+            basedDeviceSetting = false
+        }
+        else {
+            basedDeviceSetting = true
+        }
     }
     
     func presetup() {
@@ -51,6 +77,7 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
         categoryTable.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         plusBtn.addTarget(self, action: #selector(plusBtnDidTapped), for: .touchUpInside)
         categoryTable.dataSource = self
+        categoryTable.delegate = self
     }
     
     @objc func backBtnTapped() {
@@ -71,6 +98,7 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
         plusBtn.tintColor = Theme.currentTheme.accentColor
         navTitle.textColor = Theme.currentTheme.headerTitleColor
         categoryTable.backgroundColor = Theme.currentTheme.backgroundColor
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     func setupNavBar() {
@@ -115,7 +143,7 @@ extension CategorySettingCtrl: AddCategory {
     }
 }
 
-extension CategorySettingCtrl: UITableViewDataSource {
+extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryArray.count
@@ -124,25 +152,88 @@ extension CategorySettingCtrl: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategorySetViewCell
-        
-        cell.categoryData = categoryArray[indexPath.row]
+        let category = categoryArray[indexPath.row]
+        cell.categoryData = category
         cell.backgroundColor = Theme.currentTheme.backgroundColor
         cell.selectionStyle = .none
         
+        cell.alarm_LocalTitle.isHidden = category.isNotified ? false : true
+        cell.alarm_closure_Icon.isHidden = category.isNotified ? false : true
+        cell.repeat_label.isHidden = category.isNotified ? false : true
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let cell = categoryArray[indexPath.row]
-            context.delete(cell)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    //        if editingStyle == .delete {
+    //            let cell = categoryArray[indexPath.row]
+    //            context.delete(cell)
+    //            /// save the data
+    //            do {
+    //                try self.context.save()
+    //            }
+    //            catch {
+    //            }
+    //            fetchAndUpdateData()
+    //        }
+    //    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let notification = notificationAction(at: indexPath)
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [notification, delete])
+    }
+    
+    func notificationAction(at indexPath: IndexPath) -> UIContextualAction {
+        let category = categoryArray[indexPath.row]
+        let action = UIContextualAction(style: .normal, title: "notification") { (action, view, completion) in
+            
+            switch category.isNotified {
+            case true:
+                /// if category.isNotified is true,  open up the pop up window for delete the notification.
+                category.isNotified = false
+                self.categoryTable.reloadData()
+            case false:
+                /// if category.isNorified is false, pop up the settting page of notifications
+                self.didTapAlarmIcon()
+                category.isNotified = true
+                self.categoryTable.reloadData()
+            /// when the slide menu closes, remark the schedule icon next to the category title.
+            }
+            completion(true)
+        }
+        
+        action.image = category.isNotified ? UIImage(systemName: "bell.slash"): UIImage(systemName: "bell")
+        action.backgroundColor = category.isNotified ? .systemGray : .systemGreen
+
+        return action
+    }
+    
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let category = categoryArray[indexPath.row]
+        let action = UIContextualAction(style: .normal, title: "delete") { (action, view, completion) in
+            
+            self.context.delete(category)
             /// save the data
             do {
                 try self.context.save()
             }
             catch {
             }
-            fetchAndUpdateData()
+            self.fetchAndUpdateData()
+            completion(true)
         }
+        action.image = UIImage(systemName: "trash")
+        action.backgroundColor = .systemRed
+        return action
+    }
+    
+    func didTapAlarmIcon() {
+        let vc = storyboard?.instantiateViewController(identifier: "alarmSetting") as! AddAlarmCtrl
+        self.navigationController?.present(vc, animated: true)
+
     }
 }

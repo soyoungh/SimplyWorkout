@@ -46,5 +46,7 @@ class X2FontSize: FontSizeProtocol {
     /// Report Page
     var reportMonthLabel: UIFont = UIFont.systemFont(ofSize: 16, weight: .medium)
     
+    /// AddAlarm Page - frequency , Configuration Page- version info
+    var versionInfoLabel: UIFont = UIFont.systemFont(ofSize: 16, weight: .light)
 }
 

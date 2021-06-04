@@ -46,4 +46,6 @@ class DefaultFontSize: FontSizeProtocol {
     /// Report Page
     var reportMonthLabel: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium)
     
+    /// AddAlarm Page - frequency , Configuration Page- version info
+    var versionInfoLabel: UIFont = UIFont.systemFont(ofSize: 13, weight: .light)
 }

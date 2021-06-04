@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/soyounghyun/Desktop/myFriendSwift/myCode/SimplyWorkout/SimplyWorkout/Data/CategoryCD+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:SimplyWorkout.xcodeproj">
    </FileRef>
    <FileRef

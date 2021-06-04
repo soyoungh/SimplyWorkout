@@ -20,6 +20,8 @@
 		F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */; };
 		F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */; };
 		F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F806D8F9254A7C2A007C26E3 /* StoreKit.framework */; };
+		F80D77322667E94600023F40 /* AddAlarmCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D77312667E94600023F40 /* AddAlarmCtrl.swift */; };
+		F80D77352669B65000023F40 /* CategoryCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D77342669B65000023F40 /* CategoryCD+CoreDataProperties.swift */; };
 		F822A59B255C267900AA8035 /* MonthlyReportCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */; };
 		F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */; };
 		F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84E333524CAB1F3003D320D /* WorkoutData.swift */; };
@@ -45,7 +47,6 @@
 		F8D7E4BB2545C1C50020B3DB /* CategoryAddPopupCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */; };
 		F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */; };
 		F8E801912547C94500395285 /* CategoryCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */; };
-		F8E801922547C94500395285 /* CategoryCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */; };
 		F8EA031524C69864000756E9 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA031424C69864000756E9 /* ProgressBar.swift */; };
 		F8F0B20D251324F400A28241 /* SimplyWorkout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */; };
 		F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */; };
@@ -67,6 +68,8 @@
 		F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCell.swift; sourceTree = "<group>"; };
 		F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColorCtrl.swift; sourceTree = "<group>"; };
 		F806D8F9254A7C2A007C26E3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F80D77312667E94600023F40 /* AddAlarmCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmCtrl.swift; sourceTree = "<group>"; };
+		F80D77342669B65000023F40 /* CategoryCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CategoryCD+CoreDataProperties.swift"; path = "/Users/soyounghyun/Desktop/myFriendSwift/myCode/SimplyWorkout/SimplyWorkout/Data/CategoryCD+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyReportCtrl.swift; sourceTree = "<group>"; };
 		F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffortScalePicker.swift; sourceTree = "<group>"; };
 		F84E333524CAB1F3003D320D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		F854CCF525403FD8006E5103 /* AutoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTheme.swift; sourceTree = "<group>"; };
 		F854CCF725431074006E5103 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		F854CCF9254472B5006E5103 /* CategorySettingCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingCtrl.swift; sourceTree = "<group>"; };
+		F8602EC026660CD50019E639 /* SimplyWorkout v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimplyWorkout v3.xcdatamodel"; sourceTree = "<group>"; };
 		F86DDA1D251B1E29009CC633 /* SimplyWorkout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplyWorkout.entitlements; sourceTree = "<group>"; };
 		F86DDA1E251C1E33009CC633 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F8876741261FF8880081551E /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
@@ -108,7 +112,6 @@
 		F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySetViewCell.swift; sourceTree = "<group>"; };
 		F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimplyWorkout v2.xcdatamodel"; sourceTree = "<group>"; };
 		F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		F8EA031424C69864000756E9 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		F8F0B20F251327CF00A28241 /* EventDateCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -165,6 +168,7 @@
 				F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */,
 				F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */,
 				F8FED85425554949006A16F7 /* FontSizeController.swift */,
+				F80D77312667E94600023F40 /* AddAlarmCtrl.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -180,8 +184,8 @@
 		F866869924D7922A007054E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F80D77342669B65000023F40 /* CategoryCD+CoreDataProperties.swift */,
 				F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */,
-				F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */,
 				F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */,
 				F8F0B20F251327CF00A28241 /* EventDateCD+CoreDataProperties.swift */,
 				F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */,
@@ -421,6 +425,7 @@
 				F854CCFA254472B5006E5103 /* CategorySettingCtrl.swift in Sources */,
 				F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */,
 				F801C0FC24BC3BE0006FFF2E /* Theme.swift in Sources */,
+				F80D77352669B65000023F40 /* CategoryCD+CoreDataProperties.swift in Sources */,
 				F8F0B215251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift in Sources */,
 				F8EA031524C69864000756E9 /* ProgressBar.swift in Sources */,
 				F8D7E4BB2545C1C50020B3DB /* CategoryAddPopupCtrl.swift in Sources */,
@@ -437,9 +442,9 @@
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
 				F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */,
-				F8E801922547C94500395285 /* CategoryCD+CoreDataProperties.swift in Sources */,
 				F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */,
 				F8CD76542588DD0000BCC5C4 /* IAPController.swift in Sources */,
+				F80D77322667E94600023F40 /* AddAlarmCtrl.swift in Sources */,
 				F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */,
 				F8FED85D255A32D7006A16F7 /* X4FontSize.swift in Sources */,
 				F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */,
@@ -539,7 +544,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -595,7 +600,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -618,7 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -639,7 +644,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -674,10 +679,11 @@
 		F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F8602EC026660CD50019E639 /* SimplyWorkout v3.xcdatamodel */,
 				F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */,
 				F8AD190824B9C34B004298D0 /* SimplyWorkout.xcdatamodel */,
 			);
-			currentVersion = F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */;
+			currentVersion = F8602EC026660CD50019E639 /* SimplyWorkout v3.xcdatamodel */;
 			path = SimplyWorkout.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

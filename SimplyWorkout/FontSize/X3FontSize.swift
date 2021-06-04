@@ -45,4 +45,7 @@ class X3FontSize: FontSizeProtocol {
     
     /// Report Page
     var reportMonthLabel: UIFont = UIFont.systemFont(ofSize: 17, weight: .medium)
+    
+    /// AddAlarm Page - frequency , Configuration Page- version info
+    var versionInfoLabel: UIFont = UIFont.systemFont(ofSize: 17, weight: .light)
 }

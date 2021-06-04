@@ -155,6 +155,7 @@ class ConfigurationsController: UITableViewController {
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         versionInfo.text = appVersion
+        versionInfo.font = FontSizeControl.currentFontSize.versionInfoLabel
         darkModeSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchDidchange(_:)), for: .valueChanged)
         automaticSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)

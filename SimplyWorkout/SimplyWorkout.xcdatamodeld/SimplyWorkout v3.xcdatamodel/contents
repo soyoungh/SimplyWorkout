@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H1030" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CategoryCD" representedClassName="CategoryCD" syncable="YES">
+        <attribute name="activityName_c" optional="YES" attributeType="String"/>
+        <attribute name="colorTag_c" optional="YES" attributeType="String"/>
+        <attribute name="frequency" optional="YES" attributeType="String"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isNotified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="preSet_details" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="EventDateCD" representedClassName="EventDateCD" syncable="YES">
+        <attribute name="activityDate" optional="YES" attributeType="String"/>
+        <relationship name="toWorkoutData" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkoutDataCD" inverseName="toEventDate" inverseEntity="WorkoutDataCD"/>
+    </entity>
+    <entity name="WorkoutDataCD" representedClassName="WorkoutDataCD" syncable="YES">
+        <attribute name="activityName" optional="YES" attributeType="String"/>
+        <attribute name="colorTag" optional="YES" attributeType="String"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="effortType" optional="YES" attributeType="String"/>
+        <attribute name="effortValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <relationship name="toEventDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventDateCD" inverseName="toWorkoutData" inverseEntity="EventDateCD"/>
+    </entity>
+    <elements>
+        <element name="CategoryCD" positionX="-54" positionY="54" width="128" height="148"/>
+        <element name="EventDateCD" positionX="-54" positionY="45" width="128" height="73"/>
+        <element name="WorkoutDataCD" positionX="-63" positionY="-18" width="128" height="178"/>
+    </elements>
+</model>

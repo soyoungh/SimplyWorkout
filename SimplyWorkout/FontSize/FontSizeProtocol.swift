@@ -45,4 +45,7 @@ protocol FontSizeProtocol {
     
     /// Report Page
     var reportMonthLabel: UIFont { get }
+    
+    /// AddAlarm Page - frequency , Configuration Page- version info
+    var versionInfoLabel: UIFont { get }
 }

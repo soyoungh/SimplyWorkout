@@ -1,9 +1,8 @@
 //
 //  CategoryCD+CoreDataProperties.swift
-//  SimplyWorkout
+//  
 //
-//  Created by Soyoung Hyun on 2020/10/27.
-//  Copyright © 2020 soyoung hyun. All rights reserved.
+//  Created by Soyoung Hyun on 2021/06/04.
 //
 //
 
@@ -20,4 +19,9 @@ extension CategoryCD {
     @NSManaged public var activityName_c: String?
     @NSManaged public var colorTag_c: String?
     @NSManaged public var index: Int16
+    @NSManaged public var isNotified: Bool
+    @NSManaged public var location: String?
+    @NSManaged public var frequency: String?
+    @NSManaged public var preSet_details: String?
+
 }
