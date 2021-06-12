@@ -31,7 +31,7 @@ class CategorySetViewCell: UITableViewCell {
             alarm_closure_Icon.tintColor = .systemGreen
             alarm_LocalTitle.text = NSLocalizedString("Alarm on", comment: "Alarm Setting")
             alarm_LocalTitle.textColor = Theme.currentTheme.accentColor
-//            repeat_label.text = NSLocalizedString("Mon, Tue, Wed, Thu", comment: "Repeat Label")
+            repeat_label.text = categoryData.frequency
             repeat_label.textColor = Theme.currentTheme.accentColor
         }
     }

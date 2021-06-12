@@ -23,6 +23,7 @@ protocol ThemeProtocol {
     var opacityText: UIColor { get }
     var addIconTextColor: UIColor { get }
     var pickerBorderColor: UIColor { get }
+    var dayOfTheWeekBtnColor: UIColor { get }
     
     /// ProgressBar settings
     var baseProgressColor: UIColor { get }

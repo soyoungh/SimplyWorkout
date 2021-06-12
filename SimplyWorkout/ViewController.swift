@@ -84,7 +84,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var vo_min = NSLocalizedString("v_min", comment: "vc_min")
 
     /// StatusBar Preference Setting
-    var isDarkContentBackground = true
+    var isDarkContentBackground = false
     var basedDeviceSetting = false
         
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -149,6 +149,13 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
         else {
             basedDeviceSetting = true
+            
+            if UITraitCollection.current.userInterfaceStyle == .light {
+                Theme.currentTheme = LightTheme()
+            }
+            else if UITraitCollection.current.userInterfaceStyle == .dark {
+                Theme.currentTheme = DarkTheme()
+            }
         }
     }
     

@@ -21,7 +21,7 @@ class FontSizeController: UIViewController {
     var backIcon: UIImage!
     
     /// StatusBar Preference Setting
-    var isDarkContentBackground = true
+    var isDarkContentBackground = false
     var basedDeviceSetting = false
         
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -34,6 +34,8 @@ class LightTheme: ThemeProtocol {
     
     var pickerBorderColor: UIColor = UIColor.systemGray5
     
+    var dayOfTheWeekBtnColor: UIColor = UIColor.applyColor(AssetsColor.softGrey)!
+    
     /// ProgressBar settings
     var baseProgressColor: UIColor = UIColor.applyColor(AssetsColor.baseProgress)!
     var startColorOfProgress: UIColor = UIColor.applyColor(AssetsColor.paleBrown)!

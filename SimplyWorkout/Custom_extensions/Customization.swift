@@ -31,6 +31,14 @@ extension UIButton {
         tintColor = UIColor.applyColor(AssetsColor.turquoise)
     }
     
+    func dayoftheWeekBtn() {
+        layer.cornerRadius = 5
+        titleLabel!.font = FontSizeControl.currentFontSize.extraTextSize
+        setTitleColor(.white, for: [.normal, .highlighted, .selected])
+        backgroundColor = Theme.currentTheme.dayOfTheWeekBtnColor
+       
+    }
+    
 }
 
 extension UICollectionView {

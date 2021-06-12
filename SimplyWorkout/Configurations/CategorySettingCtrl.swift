@@ -18,12 +18,13 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
     var backIcon: UIImage!
     var categoryAddPopupCtrl = CategoryAddPopupCtrl()
     var categoryArray = [CategoryCD]()
+    var selectedCateArray = [CategoryCD]()
     
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     /// StatusBar Preference Setting
-    var isDarkContentBackground = true
+    var isDarkContentBackground = false
     var basedDeviceSetting = false
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -143,6 +144,31 @@ extension CategorySettingCtrl: AddCategory {
     }
 }
 
+extension CategorySettingCtrl: AddAlarmData {
+    func addAlarmData(alarm_activityTile: String, alarm_location: String, alarm_freqeuncy: String, alarm_detail: String, alarm_isnotified: Bool) {
+
+        /// Update the data array
+            for data in categoryArray {
+                if data.activityName_c == alarm_activityTile {
+                    data.location = alarm_location
+                    data.frequency = alarm_freqeuncy
+                    data.preSet_details = alarm_detail
+                    data.isNotified = alarm_isnotified
+                }
+            }
+
+        /// save the data
+        do {
+            try self.context.save()
+        }
+        catch {
+        }
+        
+        /// Re-Fetch the data
+        fetchAndUpdateData()
+    }
+}
+
 extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -167,20 +193,6 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
         return 44
     }
     
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //            let cell = categoryArray[indexPath.row]
-    //            context.delete(cell)
-    //            /// save the data
-    //            do {
-    //                try self.context.save()
-    //            }
-    //            catch {
-    //            }
-    //            fetchAndUpdateData()
-    //        }
-    //    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let notification = notificationAction(at: indexPath)
         let delete = deleteAction(at: indexPath)
@@ -196,10 +208,14 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
                 /// if category.isNotified is true,  open up the pop up window for delete the notification.
                 category.isNotified = false
                 self.categoryTable.reloadData()
+                
             case false:
                 /// if category.isNorified is false, pop up the settting page of notifications
-                self.didTapAlarmIcon()
-                category.isNotified = true
+                let vc = self.storyboard?.instantiateViewController(identifier: "alarmSetting") as! AddAlarmCtrl
+                vc.addAlarmDataDelegate = self
+                self.navigationController?.present(vc, animated: true)
+                vc.categoryTitle.text = category.activityName_c
+                vc.categoryColorTag.backgroundColor = UIColor(named: category.colorTag_c!)
                 self.categoryTable.reloadData()
             /// when the slide menu closes, remark the schedule icon next to the category title.
             }
@@ -231,9 +247,7 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
         return action
     }
     
-    func didTapAlarmIcon() {
-        let vc = storyboard?.instantiateViewController(identifier: "alarmSetting") as! AddAlarmCtrl
-        self.navigationController?.present(vc, animated: true)
-
+    func removeAlarmIcon() {
+        
     }
 }

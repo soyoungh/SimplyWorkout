@@ -34,6 +34,8 @@ class DarkTheme: ThemeProtocol {
     
     var pickerBorderColor: UIColor = UIColor.applyColor(AssetsColor.c2_darkGrey)!
     
+    var dayOfTheWeekBtnColor: UIColor = UIColor.systemGray3
+    
     /// ProgressBar settings
     var baseProgressColor: UIColor = UIColor.applyColor(AssetsColor.c_darkGrey)!
     

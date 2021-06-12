@@ -65,18 +65,21 @@ class ConfigurationsController: UITableViewController {
         super.viewDidLoad()
         preSetup()
         setupNavBar()
-        
-        if !UserDefaults.standard.bool(forKey: "removeAds") {
-            // not purchased yet.
-            self.darkModeSwitch.alpha = 0.5
-            self.automaticSwitch.alpha = 0.5
-        }
-        else {
-            // purchased.
-            self.tableView.reloadData()
-            self.darkModeSwitch.alpha = 1.0
-            self.automaticSwitch.alpha = 1.0
-        }
+
+        self.darkModeSwitch.alpha = 1.0
+        self.automaticSwitch.alpha = 1.0
+//
+//        if !UserDefaults.standard.bool(forKey: "removeAds") {
+//            // not purchased yet.
+//            self.darkModeSwitch.alpha = 0.5
+//            self.automaticSwitch.alpha = 0.5
+//        }
+//        else {
+//            // purchased.
+//            self.tableView.reloadData()
+//            self.darkModeSwitch.alpha = 1.0
+//            self.automaticSwitch.alpha = 1.0
+//        }
         
         isDarkModeOrNot()
         applyTheme()
@@ -96,6 +99,7 @@ class ConfigurationsController: UITableViewController {
         }
         else {
             basedDeviceSetting = true
+            darkModeSwitch.isEnabled = false
         }
     }
     
