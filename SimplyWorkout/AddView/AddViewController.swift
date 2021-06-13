@@ -313,8 +313,12 @@ extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSourc
             for data in key {
                 if data.colorTag_c == colorTagString {
                     activityField.text = data.activityName_c
+                    detailField.text = data.preSet_details
+                    detailField.textColor = Theme.currentTheme.textColor
+                    locationLabel = data.location
                 }
             }
+            nilValueCheck()
         }
         catch let err {
             print(err)

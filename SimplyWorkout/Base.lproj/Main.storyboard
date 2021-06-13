@@ -1644,6 +1644,9 @@
                                                     <segment title="Home"/>
                                                     <segment title="Outside"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="locationSelected:" destination="V2U-BI-ChE" eventType="valueChanged" id="KeB-4l-XAu"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" name="notWhite"/>

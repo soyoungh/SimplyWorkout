@@ -18,8 +18,7 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
     var backIcon: UIImage!
     var categoryAddPopupCtrl = CategoryAddPopupCtrl()
     var categoryArray = [CategoryCD]()
-    var selectedCateArray = [CategoryCD]()
-    
+
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -146,17 +145,17 @@ extension CategorySettingCtrl: AddCategory {
 
 extension CategorySettingCtrl: AddAlarmData {
     func addAlarmData(alarm_activityTile: String, alarm_location: String, alarm_freqeuncy: String, alarm_detail: String, alarm_isnotified: Bool) {
-
+        
         /// Update the data array
-            for data in categoryArray {
-                if data.activityName_c == alarm_activityTile {
-                    data.location = alarm_location
-                    data.frequency = alarm_freqeuncy
-                    data.preSet_details = alarm_detail
-                    data.isNotified = alarm_isnotified
-                }
+        for data in categoryArray {
+            if data.activityName_c == alarm_activityTile {
+                data.location = alarm_location
+                data.frequency = alarm_freqeuncy
+                data.preSet_details = alarm_detail
+                data.isNotified = alarm_isnotified
             }
-
+        }
+        
         /// save the data
         do {
             try self.context.save()
@@ -206,8 +205,7 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
             switch category.isNotified {
             case true:
                 /// if category.isNotified is true,  open up the pop up window for delete the notification.
-                category.isNotified = false
-                self.categoryTable.reloadData()
+                self.cancelAlarmAction(category.activityName_c!, alertTitle: NSLocalizedString("Delete this scheduled alarm", comment: "al_removeAlarm - title"), alertMessage: NSLocalizedString("The alarm of the catrgory will be deleted. \nDo you want to continue?", comment: "al_removeAlarm - body"), indexPath: indexPath)
                 
             case false:
                 /// if category.isNorified is false, pop up the settting page of notifications
@@ -224,7 +222,7 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
         
         action.image = category.isNotified ? UIImage(systemName: "bell.slash"): UIImage(systemName: "bell")
         action.backgroundColor = category.isNotified ? .systemGray : .systemGreen
-
+        
         return action
     }
     
@@ -247,7 +245,39 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
         return action
     }
     
-    func removeAlarmIcon() {
+    func cancelAlarmAction(_ categoryTitle: String, alertTitle: String, alertMessage: String, indexPath: IndexPath) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
+        let mainTask = UIAlertAction(title: NSLocalizedString("Confirm", comment: "al_removeAlarm - done button"), style: .default) { (_) in
+            /// Cancel the user alarm
+            UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+                for request in requests {
+                    if request.identifier == "UA_" + categoryTitle {
+                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["UA_" + categoryTitle])
+                    }
+                }
+            }
+            let category = self.categoryArray[indexPath.row]
+            category.isNotified = false
+            self.categoryTable.reloadData()
+        }
+        let cancelTask = UIAlertAction(title: NSLocalizedString("al_ra_cancel", comment: "al_removealarm- cancel button"), style: .cancel) { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(mainTask)
+        alert.addAction(cancelTask)
+        present(alert, animated:true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "alarmSetting") as! AddAlarmCtrl
+        let categoryData = categoryArray[indexPath.row]
+        self.present(vc, animated: true, completion: nil)
+        vc.saveBtn.setTitle(NSLocalizedString("al_update", comment: "al_updateBtn_title"), for: .normal)
+        
+        /// update the data
+        vc.al_locationLabel = categoryData.location
+        vc.al_detailField = categoryData.preSet_details!
+        vc.daysOfWeekSelected = categoryData.frequency
     }
 }

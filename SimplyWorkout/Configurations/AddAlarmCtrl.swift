@@ -57,6 +57,7 @@ class AddAlarmCtrl: UIViewController {
     
     /// sending data
     var al_detailLabel: String?
+    var al_locationLabel: String?
     var daysOfWeekSelected: String?
     var repeatationArray = [Int]()
  
@@ -69,11 +70,26 @@ class AddAlarmCtrl: UIViewController {
     @IBAction func saveBtn_Tapped(_ sender: Any) {
         addAlarmData()
     }
+    
+    @IBAction func locationSelected(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            al_locationLabel = lo_gym
+        }
+        else if sender.selectedSegmentIndex == 1 {
+            al_locationLabel = lo_home
+        }
+        else if sender.selectedSegmentIndex == 2 {
+            al_locationLabel = lo_outside
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preSetup()
         isDarkModeOrNot()
         themeChanged()
+        
+        detailField.delegate = self
     }
     
     func preSetup() {
@@ -189,7 +205,7 @@ class AddAlarmCtrl: UIViewController {
     func addAlarmData() {
         guard let del = addAlarmDataDelegate else { return }
         nilValueCheck()
-        del.addAlarmData(alarm_activityTile:categoryTitle.text!, alarm_location: locationLabel.text!, alarm_freqeuncy: daysOfWeekSelected!, alarm_detail: al_detailLabel!, alarm_isnotified: true)
+        del.addAlarmData(alarm_activityTile:categoryTitle.text!, alarm_location: al_locationLabel ?? lo_gym, alarm_freqeuncy: daysOfWeekSelected!, alarm_detail: al_detailLabel!, alarm_isnotified: true)
         setAlarm()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -201,12 +217,18 @@ class AddAlarmCtrl: UIViewController {
         else {
             al_detailLabel = detailField.text
         }
-//        if frequencyLabel == nil {
-//            frequencyLabel = "  "
-//        }
-//        else {
-//            frequencySet()
-//        }
+        
+        /// update the location data
+        if al_locationLabel == lo_gym {
+            locationPickerView.selectedSegmentIndex = 0
+        }
+        else if al_locationLabel == lo_home {
+            locationPickerView.selectedSegmentIndex = 1
+        }
+        else if al_locationLabel == lo_outside {
+            locationPickerView.selectedSegmentIndex = 2
+        }
+        
     }
     
     // MARK:- Set Alarm
@@ -237,7 +259,7 @@ class AddAlarmCtrl: UIViewController {
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
             
             /// 4. Create the request
-            let uuidString = UUID().uuidString
+            let uuidString = "UA_" + "\(categoryTitle.text!)"
             
             let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
             
@@ -319,5 +341,45 @@ class AddAlarmCtrl: UIViewController {
         }
     }
     
+    private func confitureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
 }
 
+// MARK: - UITextField Delegation
+extension AddAlarmCtrl: UITextFieldDelegate, UITextViewDelegate {
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        confitureTapGesture()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        /// Combine the textView text and the replacement text to create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: NSRangeFromString(al_detailField), with: text)
+        /// If updated text view will be empty, add the placeholder and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+            /// Else if the text view's placeholder is showing and the length of the replacement string is greater than 0, set the text color to black then set its text to the replacement string
+        else if textView.textColor == UIColor.systemGray2 && !text.isEmpty {
+            textView.textColor = Theme.currentTheme.textColor
+            textView.text = text
+        }
+        else if textView.textColor == UIColor.darkGray && !text.isEmpty {
+            textView.textColor = Theme.currentTheme.textColor
+            textView.text = text
+        }
+            /// For every other case, the text should change with the usual behavior...
+        else {
+            return true
+        }
+        /// ...otherwise return false since the updates have already been made
+        return false
+    }
+}

@@ -30,7 +30,7 @@ class IAPController: UIViewController {
         super.viewDidLoad()
         presetup()
         isDarkModeOrNot()
-//        IAPService.shared.getProduct()
+        IAPService.shared.getProduct()
     }
     
     var isDarkContentBackground = false

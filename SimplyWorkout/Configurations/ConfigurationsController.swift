@@ -66,20 +66,17 @@ class ConfigurationsController: UITableViewController {
         preSetup()
         setupNavBar()
 
-        self.darkModeSwitch.alpha = 1.0
-        self.automaticSwitch.alpha = 1.0
-//
-//        if !UserDefaults.standard.bool(forKey: "removeAds") {
-//            // not purchased yet.
-//            self.darkModeSwitch.alpha = 0.5
-//            self.automaticSwitch.alpha = 0.5
-//        }
-//        else {
-//            // purchased.
-//            self.tableView.reloadData()
-//            self.darkModeSwitch.alpha = 1.0
-//            self.automaticSwitch.alpha = 1.0
-//        }
+        if !UserDefaults.standard.bool(forKey: "removeAds") {
+            // not purchased yet.
+            self.darkModeSwitch.alpha = 0.5
+            self.automaticSwitch.alpha = 0.5
+        }
+        else {
+            // purchased.
+            self.tableView.reloadData()
+            self.darkModeSwitch.alpha = 1.0
+            self.automaticSwitch.alpha = 1.0
+        }
         
         isDarkModeOrNot()
         applyTheme()
