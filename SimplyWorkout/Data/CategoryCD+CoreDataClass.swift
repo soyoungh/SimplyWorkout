@@ -1,9 +1,8 @@
 //
 //  CategoryCD+CoreDataClass.swift
-//  SimplyWorkout
+//  
 //
-//  Created by Soyoung Hyun on 2020/10/27.
-//  Copyright © 2020 soyoung hyun. All rights reserved.
+//  Created by Soyoung Hyun on 2021/06/13.
 //
 //
 

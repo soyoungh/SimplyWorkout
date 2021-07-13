@@ -11,7 +11,7 @@ import UIKit
 import UserNotifications
 
 protocol AddAlarmData {
-    func addAlarmData (alarm_activityTile: String, alarm_location: String, alarm_freqeuncy: String, alarm_detail: String, alarm_isnotified: Bool)
+    func addAlarmData (alarm_activityTile: String, alarm_location: String, alarm_freqeuncy: String, alarm_detail: String, alarm_isnotified: Bool, alarm_hour: String, alarm_minute: String)
 }
 
 class AddAlarmCtrl: UIViewController {
@@ -60,13 +60,16 @@ class AddAlarmCtrl: UIViewController {
     var al_locationLabel: String?
     var daysOfWeekSelected: String?
     var repeatationArray = [Int]()
- 
+    var al_hour: Int?
+    var al_minute: Int?
+    
     /// StatusBar Preference Setting
     var isDarkContentBackground = true
     var basedDeviceSetting = false
     
     var addAlarmDataDelegate: AddAlarmData?
-    
+    let center = UNUserNotificationCenter.current()
+   
     @IBAction func saveBtn_Tapped(_ sender: Any) {
         addAlarmData()
     }
@@ -92,6 +95,17 @@ class AddAlarmCtrl: UIViewController {
         detailField.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        center.getPendingNotificationRequests { (notifications) in
+            print("Count: \(notifications.count)")
+            for item in notifications {
+                print(item.content)
+            }
+        }
+    }
+    
     func preSetup() {
         addAlarmPopupTitle.text = "Add Alarm"
         addAlarmPopupTitle.font = UIFont.systemFont(ofSize: 17, weight: .regular)
@@ -100,7 +114,7 @@ class AddAlarmCtrl: UIViewController {
         cancelBtn.addTarget(self, action: #selector(cancelBtn_Tapped), for: .touchUpInside)
         
         saveBtn.setTitle("Save", for: .normal)
-
+        
         categoryTitle.font = FontSizeControl.currentFontSize.cellTextSize
         
         timeLabel.font = FontSizeControl.currentFontSize.cellTextSize
@@ -161,7 +175,7 @@ class AddAlarmCtrl: UIViewController {
         timeLabel.textColor = Theme.currentTheme.headerTitleColor
         repeatLabel.textColor = Theme.currentTheme.headerTitleColor
         locationLabel.textColor = Theme.currentTheme.headerTitleColor
-
+        
         categoryColorTag.layer.cornerRadius = categoryColorTag.layer.frame.width / 2
         
         detailField.textColor = Theme.currentTheme.opacityText
@@ -205,7 +219,7 @@ class AddAlarmCtrl: UIViewController {
     func addAlarmData() {
         guard let del = addAlarmDataDelegate else { return }
         nilValueCheck()
-        del.addAlarmData(alarm_activityTile:categoryTitle.text!, alarm_location: al_locationLabel ?? lo_gym, alarm_freqeuncy: daysOfWeekSelected!, alarm_detail: al_detailLabel!, alarm_isnotified: true)
+        del.addAlarmData(alarm_activityTile:categoryTitle.text!, alarm_location: al_locationLabel ?? lo_gym, alarm_freqeuncy: daysOfWeekSelected!, alarm_detail: al_detailLabel!, alarm_isnotified: true, alarm_hour: "\(al_hour!)", alarm_minute: "\(al_minute!)")
         setAlarm()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -217,49 +231,45 @@ class AddAlarmCtrl: UIViewController {
         else {
             al_detailLabel = detailField.text
         }
+        //       print(al_locationLabel!)
         
-        /// update the location data
-        if al_locationLabel == lo_gym {
-            locationPickerView.selectedSegmentIndex = 0
-        }
-        else if al_locationLabel == lo_home {
-            locationPickerView.selectedSegmentIndex = 1
-        }
-        else if al_locationLabel == lo_outside {
-            locationPickerView.selectedSegmentIndex = 2
-        }
+        /// update the clock
+        let date = timePicker.date
+        let components = Calendar.current.dateComponents([.weekday, .hour, .minute], from: date)
         
+        al_hour = components.hour
+        al_minute = components.minute
+        
+        //        print("\(al_hour!) \(al_minute!)")
     }
     
     // MARK:- Set Alarm
     func setAlarm() {
         /// 1. Ask the user for permission
-        let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
         }
-        
+
         /// 2. Create the notification content
         let content = UNMutableNotificationContent()
         content.title = categoryTitle.text!
         content.body = al_detailLabel!
+//        content.sound = UNNotificationSound.default
         
         /// 3.Create the notification trigger
         let date = timePicker.date
         let components = Calendar.current.dateComponents([.weekday, .hour, .minute], from: date)
-       
+        var dateComponents = DateComponents()
+        
         for i in repeatationArray {
-            
-            var dateComponents = DateComponents()
+            /// Sunday = 1, Monday = 2, Tuesday = 3, Wednesday = 4, thursday = 5, Friday = 6, Saturday = 7
+            dateComponents.weekday = i
             dateComponents.hour = components.hour
             dateComponents.minute = components.minute
             
-            /// Sunday = 1, Monday = 2, Tuesday = 3, Wednesday = 4, thursday = 5, Friday = 6, Saturday = 7
-            dateComponents.weekday = i
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
             /// 4. Create the request
-            let uuidString = "UA_" + "\(categoryTitle.text!)"
+            let uuidString = "\(content.title)_\(i)"
             
             let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
             
@@ -267,9 +277,10 @@ class AddAlarmCtrl: UIViewController {
             center.add(request) { (error) in
                 /// Check the error parameter and handle any errors
             }
+            print("Set alarm's id: " + uuidString)
         }
     }
-
+    
     @objc func cancelBtn_Tapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -286,18 +297,28 @@ class AddAlarmCtrl: UIViewController {
                 daysOfWeekSelected!.append(", " + sender.titleLabel!.text!)
             }
             repeatationArray.append(frequencyChecks(sender))
-//            print(daysOfWeekSelected!)
-//            print(repeatationArray)
+            print(daysOfWeekSelected!)
+            print(repeatationArray)
         }
         else if !sender.isHighlighted && sender.isSelected {
             sender.backgroundColor = Theme.currentTheme.accentColor
+            repeatationArray.append(frequencyChecks(sender))
+            print("This button is Selected. But not highlighted.")
         }
         else if sender.isHighlighted && !sender.isSelected {
             sender.backgroundColor = Theme.currentTheme.dayOfTheWeekBtnColor
+            
             if daysOfWeekSelected!.contains(",") {
-                daysOfWeekSelected = daysOfWeekSelected!
-                    .replacingOccurrences(of: ", " + sender.titleLabel!.text!, with: "")
-                    }
+                let words = daysOfWeekSelected?.byWords
+                if words!.first! == sender.titleLabel!.text! {
+                    daysOfWeekSelected = daysOfWeekSelected!.replacingOccurrences(of: sender.titleLabel!.text! + ", ", with: "")
+                }
+                else {
+                    daysOfWeekSelected = daysOfWeekSelected!
+                        .replacingOccurrences(of: ", " + sender.titleLabel!.text!, with: "")
+                }
+            }
+            
             else {
                 daysOfWeekSelected = daysOfWeekSelected!
                     .replacingOccurrences(of: sender.titleLabel!.text!, with: "")
@@ -306,14 +327,15 @@ class AddAlarmCtrl: UIViewController {
             if let index = repeatationArray.firstIndex(of: frequencyChecks(sender)) {
                 repeatationArray.remove(at: index)
             }
-//            print(daysOfWeekSelected!)
-//            print(repeatationArray)
+            print(daysOfWeekSelected!)
+            print(repeatationArray)
         }
         else {
             sender.backgroundColor = Theme.currentTheme.dayOfTheWeekBtnColor
+            print("what's going on?")
         }
     }
- 
+    
     func frequencyChecks(_ sender: UIButton) -> Int {
         if sender.titleLabel!.text?.contains(mon) == true {
             return 2
@@ -366,7 +388,7 @@ extension AddAlarmCtrl: UITextFieldDelegate, UITextViewDelegate {
         if updatedText.isEmpty {
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
-            /// Else if the text view's placeholder is showing and the length of the replacement string is greater than 0, set the text color to black then set its text to the replacement string
+        /// Else if the text view's placeholder is showing and the length of the replacement string is greater than 0, set the text color to black then set its text to the replacement string
         else if textView.textColor == UIColor.systemGray2 && !text.isEmpty {
             textView.textColor = Theme.currentTheme.textColor
             textView.text = text
@@ -375,7 +397,7 @@ extension AddAlarmCtrl: UITextFieldDelegate, UITextViewDelegate {
             textView.textColor = Theme.currentTheme.textColor
             textView.text = text
         }
-            /// For every other case, the text should change with the usual behavior...
+        /// For every other case, the text should change with the usual behavior...
         else {
             return true
         }

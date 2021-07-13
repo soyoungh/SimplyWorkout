@@ -18,7 +18,22 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
     var backIcon: UIImage!
     var categoryAddPopupCtrl = CategoryAddPopupCtrl()
     var categoryArray = [CategoryCD]()
-
+    var selectedCategoryArray = [CategoryCD]()
+    
+    /// Localization Labels
+    var co_gym = NSLocalizedString("co_Gym", comment: "cateSet_locationLabel")
+    var co_home = NSLocalizedString("co_Home", comment: "cateSet_locationLabel")
+    var co_outside = NSLocalizedString("co_Outside", comment: "cateSet_locationLabel")
+    
+    /// day of the week
+    var cateSetmon = NSLocalizedString("cateSet_mon", comment: "cateSet_mon")
+    var cateSettue = NSLocalizedString("cateSet_tue", comment: "cateSet_tue")
+    var cateSetwed = NSLocalizedString("cateSet_wed", comment: "cateSet_wed")
+    var cateSetthu = NSLocalizedString("cateSet_thu", comment: "cateSet_thu")
+    var cateSetfri = NSLocalizedString("cateSet_fri", comment: "cateSet_fri")
+    var cateSetsat = NSLocalizedString("cateSet_sat", comment: "cateSet_sat")
+    var cateSetsun = NSLocalizedString("cateSet_sun", comment: "cateSet_sun")
+    
     /// CoreData Stack
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -114,6 +129,7 @@ class CategorySettingCtrl: UIViewController, NSFetchedResultsControllerDelegate 
         
         do {
             categoryArray = try context.fetch(request)
+            selectedCategoryArray.removeAll()
             DispatchQueue.main.async {
                 self.categoryTable.reloadData()
             }
@@ -144,17 +160,34 @@ extension CategorySettingCtrl: AddCategory {
 }
 
 extension CategorySettingCtrl: AddAlarmData {
-    func addAlarmData(alarm_activityTile: String, alarm_location: String, alarm_freqeuncy: String, alarm_detail: String, alarm_isnotified: Bool) {
+    func addAlarmData(alarm_activityTile: String, alarm_location: String, alarm_freqeuncy: String, alarm_detail: String, alarm_isnotified: Bool, alarm_hour: String, alarm_minute: String) {
         
-        /// Update the data array
-        for data in categoryArray {
-            if data.activityName_c == alarm_activityTile {
-                data.location = alarm_location
-                data.frequency = alarm_freqeuncy
-                data.preSet_details = alarm_detail
-                data.isNotified = alarm_isnotified
+        if selectedCategoryArray.isEmpty == true {
+            for data in categoryArray {
+                if data.activityName_c == alarm_activityTile {
+                    data.location = alarm_location
+                    data.frequency = alarm_freqeuncy
+                    data.preSet_details = alarm_detail
+                    data.isNotified = alarm_isnotified
+                    data.alarm_hour = alarm_hour
+                    data.alarm_minute = alarm_minute
+                }
             }
         }
+        else {
+            /// Update the data array
+            for data in selectedCategoryArray {
+                if data.activityName_c == alarm_activityTile {
+                    data.location = alarm_location
+                    data.frequency = alarm_freqeuncy
+                    data.preSet_details = alarm_detail
+                    data.isNotified = alarm_isnotified
+                    data.alarm_hour = alarm_hour
+                    data.alarm_minute = alarm_minute
+                }
+            }
+        }
+        
         
         /// save the data
         do {
@@ -167,6 +200,7 @@ extension CategorySettingCtrl: AddAlarmData {
         fetchAndUpdateData()
     }
 }
+
 
 extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
     
@@ -231,6 +265,10 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
         let action = UIContextualAction(style: .normal, title: "delete") { (action, view, completion) in
             
             self.context.delete(category)
+            
+            /// delete the local norification, if it set
+            self.removeAlarm(uuidString: category.activityName_c)
+            
             /// save the data
             do {
                 try self.context.save()
@@ -238,7 +276,6 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
             catch {
             }
             self.fetchAndUpdateData()
-            completion(true)
         }
         action.image = UIImage(systemName: "trash")
         action.backgroundColor = .systemRed
@@ -249,35 +286,123 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
         let mainTask = UIAlertAction(title: NSLocalizedString("Confirm", comment: "al_removeAlarm - done button"), style: .default) { (_) in
-            /// Cancel the user alarm
-            UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
-                for request in requests {
-                    if request.identifier == "UA_" + categoryTitle {
-                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["UA_" + categoryTitle])
-                    }
-                }
-            }
+            
             let category = self.categoryArray[indexPath.row]
             category.isNotified = false
-            self.categoryTable.reloadData()
+            
+            /// delete the local norification, if it set
+            self.removeAlarm(uuidString: category.activityName_c)
+            
+            /// save the data
+            do {
+                try self.context.save()
+            }
+            catch {
+            }
+            self.fetchAndUpdateData()
         }
         let cancelTask = UIAlertAction(title: NSLocalizedString("al_ra_cancel", comment: "al_removealarm- cancel button"), style: .cancel) { (_) in
             alert.dismiss(animated: true, completion: nil)
         }
+        
         alert.addAction(mainTask)
         alert.addAction(cancelTask)
         present(alert, animated:true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let vc = storyboard?.instantiateViewController(identifier: "alarmSetting") as! AddAlarmCtrl
         let categoryData = categoryArray[indexPath.row]
-        self.present(vc, animated: true, completion: nil)
-        vc.saveBtn.setTitle(NSLocalizedString("al_update", comment: "al_updateBtn_title"), for: .normal)
         
-        /// update the data
-        vc.al_locationLabel = categoryData.location
-        vc.al_detailField = categoryData.preSet_details!
-        vc.daysOfWeekSelected = categoryData.frequency
+        if categoryData.isNotified {
+            
+            selectedCategoryArray.append(categoryData)
+            self.present(vc, animated: true, completion: nil)
+            vc.saveBtn.setTitle(NSLocalizedString("al_update", comment: "al_updateBtn_title"), for: .normal)
+            
+            /// update the data
+            vc.categoryTitle.text = categoryData.activityName_c
+            vc.categoryColorTag.backgroundColor = UIColor(named: categoryData.colorTag_c!)
+            vc.al_locationLabel = categoryData.location
+            vc.detailField.text = categoryData.preSet_details!
+            vc.detailField.textColor! = Theme.currentTheme.textColor
+            vc.daysOfWeekSelected = categoryData.frequency
+            vc.al_hour = Int(categoryData.alarm_hour!)
+            vc.al_minute = Int(categoryData.alarm_minute!)
+            
+            /// update the clock
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            if let date = dateFormatter.date(from: "\(categoryData.alarm_hour!):\(categoryData.alarm_minute!)") {
+                vc.timePicker.date = date
+            }
+            
+            /// update the location
+            if categoryData.location == co_gym {
+                vc.locationPickerView.selectedSegmentIndex = 0
+            }
+            else if categoryData.location == co_home {
+                vc.locationPickerView.selectedSegmentIndex = 1
+            }
+            else if categoryData.location == co_outside {
+                vc.locationPickerView.selectedSegmentIndex = 2
+            }
+            
+            /// update the frequency
+            let frequency = categoryData.frequency?.byWords
+            
+            for i in frequency! {
+                switch i {
+                case cateSetmon:
+                    vc.toggleAction(vc.monBtn)
+                case cateSettue:
+                    vc.toggleAction(vc.tueBtn)
+                case cateSetwed:
+                    vc.toggleAction(vc.wedBtn)
+                case cateSetthu:
+                    vc.toggleAction(vc.thuBtn)
+                case cateSetfri:
+                    vc.toggleAction(vc.friBtn)
+                case cateSetsat:
+                    vc.toggleAction(vc.satBtn)
+                case cateSetsun:
+                    vc.toggleAction(vc.sunBtn)
+                default:
+                    break
+                }
+            }
+            
+            vc.addAlarmDataDelegate = self
+        }
+    }
+    
+    func removeAlarm(uuidString: String?) {
+        
+        let center = UNUserNotificationCenter.current()
+        center.getPendingNotificationRequests { (notifications) in
+            for item in notifications {
+                if let uuidID = uuidString {
+                    if item.identifier.contains(uuidID) {
+                        
+                        center.removeDeliveredNotifications(withIdentifiers: [item.identifier])
+                        center.removePendingNotificationRequests(withIdentifiers: [item.identifier])
+                    }
+                }
+                print("Remove the pending alarm's id: " + item.identifier)
+            }
+        }
+        
+        center.getDeliveredNotifications { (notifications) in
+            for item in notifications {
+                if let uuidID = uuidString {
+                    if item.request.identifier.contains(uuidID) {
+                        center.removeDeliveredNotifications(withIdentifiers: [item.request.identifier])
+                        center.removePendingNotificationRequests(withIdentifiers: [item.request.identifier])
+                    }
+                }
+                print("Remove the delivered alarm's id: " + item.request.identifier)
+            }
+        }
     }
 }
