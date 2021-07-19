@@ -17,12 +17,19 @@ class License: UITableViewController {
     var backIcon: UIImage!
     var disclosureIcon: UIImage!
     
+    /// StatusBar Preference Setting
+    var isDarkContentBackground = false
+    var basedDeviceSetting = false
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if Theme.currentTheme.accentColor == UIColor.applyColor(AssetsColor.paleBrown) {
-            return .darkContent
+        if isDarkContentBackground {
+            return .lightContent
+        }
+        else if basedDeviceSetting {
+            return .default
         }
         else {
-            return .lightContent
+            return .darkContent
         }
     }
     
@@ -33,7 +40,25 @@ class License: UITableViewController {
     override func viewDidLoad() {
         presetup()
         setupNavBar()
+        isDarkModeOrNot()
         applyTheme()
+    }
+    
+    func isDarkModeOrNot() {
+        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // lightTheme
+            isDarkContentBackground = false
+        }
+        else {
+            isDarkContentBackground = true
+        }
+        
+        if !UserDefaults.standard.bool(forKey: "AutoMode") {
+            basedDeviceSetting = false
+        }
+        else {
+            basedDeviceSetting = true
+        }
     }
     
     func presetup() {

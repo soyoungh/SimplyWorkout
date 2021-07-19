@@ -187,8 +187,7 @@ extension CategorySettingCtrl: AddAlarmData {
                 }
             }
         }
-        
-        
+
         /// save the data
         do {
             try self.context.save()
@@ -389,7 +388,7 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
                         center.removePendingNotificationRequests(withIdentifiers: [item.identifier])
                     }
                 }
-                print("Remove the pending alarm's id: " + item.identifier)
+//                print("Remove the pending alarm's id: " + item.identifier)
             }
         }
         
@@ -401,7 +400,7 @@ extension CategorySettingCtrl: UITableViewDataSource, UITableViewDelegate {
                         center.removePendingNotificationRequests(withIdentifiers: [item.request.identifier])
                     }
                 }
-                print("Remove the delivered alarm's id: " + item.request.identifier)
+//                print("Remove the delivered alarm's id: " + item.request.identifier)
             }
         }
     }

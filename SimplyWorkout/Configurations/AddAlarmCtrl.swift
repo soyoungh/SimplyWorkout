@@ -69,7 +69,7 @@ class AddAlarmCtrl: UIViewController {
     
     var addAlarmDataDelegate: AddAlarmData?
     let center = UNUserNotificationCenter.current()
-   
+    
     @IBAction func saveBtn_Tapped(_ sender: Any) {
         addAlarmData()
     }
@@ -95,16 +95,16 @@ class AddAlarmCtrl: UIViewController {
         detailField.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        center.getPendingNotificationRequests { (notifications) in
-            print("Count: \(notifications.count)")
-            for item in notifications {
-                print(item.content)
-            }
-        }
-    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //
+    //        center.getPendingNotificationRequests { (notifications) in
+    //            print("Count: \(notifications.count)")
+    //            for item in notifications {
+    //                print(item.content)
+    //            }
+    //        }
+    //    }
     
     func preSetup() {
         addAlarmPopupTitle.text = "Add Alarm"
@@ -217,11 +217,22 @@ class AddAlarmCtrl: UIViewController {
     
     // MARK:- AddAlarm Data
     func addAlarmData() {
-        guard let del = addAlarmDataDelegate else { return }
-        nilValueCheck()
-        del.addAlarmData(alarm_activityTile:categoryTitle.text!, alarm_location: al_locationLabel ?? lo_gym, alarm_freqeuncy: daysOfWeekSelected!, alarm_detail: al_detailLabel!, alarm_isnotified: true, alarm_hour: "\(al_hour!)", alarm_minute: "\(al_minute!)")
-        setAlarm()
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        /// Nil check!
+        if daysOfWeekSelected != nil {
+            guard let del = addAlarmDataDelegate else { return }
+            nilValueCheck()
+            del.addAlarmData(alarm_activityTile:categoryTitle.text!, alarm_location: al_locationLabel ?? lo_gym, alarm_freqeuncy: daysOfWeekSelected!, alarm_detail: al_detailLabel!, alarm_isnotified: true, alarm_hour: "\(al_hour!)", alarm_minute: "\(al_minute!)")
+            setAlarm()
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+        else {
+            guard let del = addAlarmDataDelegate else { return }
+            nilValueCheck()
+            del.addAlarmData(alarm_activityTile:categoryTitle.text!, alarm_location: al_locationLabel ?? lo_gym, alarm_freqeuncy: daysOfWeekSelected ?? "", alarm_detail: al_detailLabel!, alarm_isnotified: true, alarm_hour: "\(al_hour!)", alarm_minute: "\(al_minute!)")
+            setAlarmOnce()
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     func nilValueCheck() {
@@ -248,12 +259,12 @@ class AddAlarmCtrl: UIViewController {
         /// 1. Ask the user for permission
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
         }
-
+        
         /// 2. Create the notification content
         let content = UNMutableNotificationContent()
         content.title = categoryTitle.text!
         content.body = al_detailLabel!
-//        content.sound = UNNotificationSound.default
+        //        content.sound = UNNotificationSound.default
         
         /// 3.Create the notification trigger
         let date = timePicker.date
@@ -277,7 +288,38 @@ class AddAlarmCtrl: UIViewController {
             center.add(request) { (error) in
                 /// Check the error parameter and handle any errors
             }
-            print("Set alarm's id: " + uuidString)
+            //            print("Set alarm's id: " + uuidString)
+        }
+    }
+    
+    func setAlarmOnce() {
+        /// 1. Ask the user for permission
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        }
+        
+        /// 2. Create the notification content
+        let content = UNMutableNotificationContent()
+        content.title = categoryTitle.text!
+        content.body = al_detailLabel!
+        
+        /// 3.Create the notification trigger
+        let date = timePicker.date
+        let components = Calendar.current.dateComponents([ .hour, .minute], from: date)
+        var dateComponents = DateComponents()
+        
+        dateComponents.hour = components.hour
+        dateComponents.minute = components.minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        /// 4. Create the request
+        let uuidString = "\(content.title)" + UUID().uuidString
+        
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        /// 5. Register the request
+        center.add(request) { (error) in
+            /// Check the error parameter and handle any errors
         }
     }
     
@@ -303,7 +345,7 @@ class AddAlarmCtrl: UIViewController {
         else if !sender.isHighlighted && sender.isSelected {
             sender.backgroundColor = Theme.currentTheme.accentColor
             repeatationArray.append(frequencyChecks(sender))
-            print("This button is Selected. But not highlighted.")
+            //            print("This button is Selected. But not highlighted.")
         }
         else if sender.isHighlighted && !sender.isSelected {
             sender.backgroundColor = Theme.currentTheme.dayOfTheWeekBtnColor
@@ -332,7 +374,7 @@ class AddAlarmCtrl: UIViewController {
         }
         else {
             sender.backgroundColor = Theme.currentTheme.dayOfTheWeekBtnColor
-            print("what's going on?")
+            //            print("what's going on?")
         }
     }
     

@@ -25,6 +25,9 @@ class CategorySetViewCell: UITableViewCell {
     var cellsat = NSLocalizedString("cell_sat", comment: "cell_sat")
     var cellsun = NSLocalizedString("cell_sun", comment: "cell_sun")
     
+    var cellWeekdays = NSLocalizedString("cell_weekdays", comment: "cell_weekdays")
+    var cellWeekends = NSLocalizedString("cell_weekends", comment: "cell_weekends")
+    var cellRepeat = NSLocalizedString("cell_Repeat", comment: "cell_Repeat")
     
     var nextIcon: UIImage!
     var categoryData: CategoryCD! {
@@ -46,17 +49,20 @@ class CategorySetViewCell: UITableViewCell {
             if categoryData.frequency != nil {
                 if [cellmon, celltue, cellwed, cellthu, cellfri
                 ].allSatisfy(categoryData.frequency!.contains) {
-                    repeat_label.text = "Weekdays"
+                    repeat_label.text = cellWeekdays
                 }
                 else if [cellsat, cellsun].allSatisfy(categoryData.frequency!.contains) {
-                    repeat_label.text = "Weekends"
+                    repeat_label.text = cellWeekends
+                }
+                else if categoryData.frequency == "" {
+                    repeat_label.text = cellRepeat
                 }
                 else {
                     repeat_label.text = categoryData.frequency
                 }
             }
             else {
-                repeat_label.text = categoryData.frequency
+                repeat_label.text = cellRepeat
             }
             
             repeat_label.textColor = Theme.currentTheme.accentColor
