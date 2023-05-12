@@ -12,7 +12,7 @@ class ColorTagCell: UICollectionViewCell {
     
     @IBOutlet weak var cellView: UIView!
     
-    var tagName = AssetsColor(rawValue: "floralFirma")
+    var tagName = AssetsColor(rawValue: "floraFirma")
     
     let firstLayer = CALayer()
     let secondLayer = CALayer()
@@ -31,11 +31,12 @@ class ColorTagCell: UICollectionViewCell {
     
     func selectCell() {
         
-        secondLayer.frame.size = cellView.frame.size
+        secondLayer.frame.size = CGSize(width: 32, height: 32)
         secondLayer.cornerRadius = secondLayer.bounds.width / 2
         secondLayer.backgroundColor = UIColor.clear.cgColor
-        secondLayer.borderColor = UIColor.darkGray.cgColor
+        secondLayer.borderColor = Theme.currentTheme.headerTitleColor.cgColor
         secondLayer.borderWidth = 1.3
+        secondLayer.opacity = 0.6
         
         layer.addSublayer(secondLayer)
         
@@ -46,4 +47,14 @@ class ColorTagCell: UICollectionViewCell {
         secondLayer.removeFromSuperlayer()
     }
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                selectCell()
+            }
+            else {
+                deselectCell()
+            }
+        }
+    }
 }

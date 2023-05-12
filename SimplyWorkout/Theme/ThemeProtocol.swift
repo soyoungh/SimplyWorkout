@@ -10,15 +10,30 @@ import UIKit
 
 protocol ThemeProtocol {
     
-    // General settings
+    /// General settings
     var textColor: UIColor { get }
+    var accentColor: UIColor { get }
+    var textColorInDarkBg: UIColor { get }
+    var lightCellColor: UIColor { get }
     var backgroundColor: UIColor { get }
+    var cancelBtnColor: UIColor { get }
+    var separatorColor: UIColor { get }
+    var tagCellColor: UIColor { get }
+    var segmentColor: UIColor { get }
+    var opacityText: UIColor { get }
+    var addIconTextColor: UIColor { get }
+    var pickerBorderColor: UIColor { get }
     
-    // Calendar settings
+    /// ProgressBar settings
+    var baseProgressColor: UIColor { get }
+    var startColorOfProgress: UIColor { get }
+    
+    /// Calendar settings
     var headerTitleColor: UIColor { get }
     var weekdayTextColor: UIColor { get }
+    var dateTextColor: UIColor { get }
     var selectionColor: UIColor { get }
-  
+    var titleTodayColor: UIColor { get }
 }
 
 

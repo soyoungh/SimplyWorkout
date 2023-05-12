@@ -16,14 +16,21 @@ class ProgressBar: UIView {
     private var endColor: CGColor!
     public var progress: Float = 0
     
+    var p_veryLight = NSLocalizedString("p_Very Light", comment: "pb_effortLabel")
+    var p_light = NSLocalizedString("p_Light", comment: "pb_effortLabel")
+    var p_moderate = NSLocalizedString("p_Moderate", comment: "pb_effortLabel")
+    var p_vigorous = NSLocalizedString("p_Vigorous", comment: "pb_effortLabel")
+    var p_hard = NSLocalizedString("p_Hard", comment: "pb_effortLabel")
+    var p_max = NSLocalizedString("p_Max", comment: "pb_effortLabel")
+    
     override func draw(_ rect: CGRect) {
         
         let width = rect.width
         let height = rect.height
         let lineWidth = 0.2 * min(width, height)
         
-        bgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.systemGray5.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
-        fgLayer = setCircularLayer(rect: rect, strokeColor: UIColor.red.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
+        bgLayer = setCircularLayer(rect: rect, strokeColor: Theme.currentTheme.baseProgressColor.cgColor, fillColor: Theme.currentTheme.backgroundColor.cgColor, lineWidth: lineWidth)
+        fgLayer = setCircularLayer(rect: rect, strokeColor: Theme.currentTheme.baseProgressColor.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: lineWidth)
         
         fgLayer.strokeEnd = CGFloat(progress)
         
@@ -38,22 +45,22 @@ class ProgressBar: UIView {
     }
     
     func drawProgress(selectedType: String) {
-        if selectedType == "Very Light" {
+        if selectedType == p_veryLight {
             progress = 0.1
         }
-        else if selectedType == "Light" {
+        else if selectedType == p_light {
             progress = 0.2
         }
-        else if selectedType == "Moderate" {
+        else if selectedType == p_moderate {
             progress = 0.4
         }
-        else if selectedType == "Vigorous" {
+        else if selectedType == p_vigorous {
             progress = 0.6
         }
-        else if selectedType == "Hard" {
+        else if selectedType == p_hard {
             progress = 0.8
         }
-        else {
+        else if selectedType == p_max {
             progress = 1.0
         }
         setNeedsDisplay()
@@ -104,7 +111,7 @@ class ProgressBar: UIView {
     private func setGradientLayer (rect: CGRect, startPoint: CGPoint, endPoint: CGPoint) -> CAGradientLayer {
         
         let gradientLayer = CAGradientLayer()
-        let startColor = UIColor.applyColor(AssetsColor.paleBrown)!.cgColor
+        let startColor = Theme.currentTheme.startColorOfProgress.cgColor
         
         gradientLayer.type = .conic
         

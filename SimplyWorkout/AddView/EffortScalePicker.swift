@@ -12,7 +12,7 @@ class EffortScalePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource 
     
     var userEffortScale: String?
   
-    let effortScale: [String] = ["Very Light", "Light", "Moderate", "Vigorous", "Hard", "Max"]
+    let effortScale: [String] = [NSLocalizedString("Very Light", comment: "effortPicker"), NSLocalizedString("Light", comment: "effortPicker"), NSLocalizedString("Moderate", comment: "effortPicker"), NSLocalizedString("Vigorous", comment: "effortPicker"), NSLocalizedString("Hard", comment: "effortPicker"), NSLocalizedString("Max", comment: "effortPicker")]
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -28,7 +28,8 @@ class EffortScalePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource 
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        pickerLabel.font = FontSizeControl.currentFontSize.pickerTextSize
+        pickerLabel.textColor = Theme.currentTheme.textColor
         pickerLabel.textAlignment = .center
         pickerLabel.text = effortScale[row]
         return pickerLabel

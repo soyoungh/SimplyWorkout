@@ -2,7 +2,7 @@
 //  EventDateCD+CoreDataProperties.swift
 //  SimplyWorkout
 //
-//  Created by Soyoung Hyun on 2020/09/01.
+//  Created by Soyoung Hyun on 2020/11/21.
 //  Copyright © 2020 soyoung hyun. All rights reserved.
 //
 //
@@ -36,5 +36,9 @@ extension EventDateCD {
 
     @objc(removeToWorkoutData:)
     @NSManaged public func removeFromToWorkoutData(_ values: NSSet)
+
+}
+
+extension EventDateCD : Identifiable {
 
 }

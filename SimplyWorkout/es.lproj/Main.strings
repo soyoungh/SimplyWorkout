@@ -1,0 +1,249 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "0K0-Bw-yLR"; */
+"0K0-Bw-yLR.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Remove all Ads"; ObjectID = "15l-cC-spL"; */
+"15l-cC-spL.text" = "Remove all Ads";
+
+/* Class = "UILabel"; text = "LOCATION"; ObjectID = "1HA-fa-iKi"; */
+"1HA-fa-iKi.text" = "LOCATION";
+
+/* Class = "UILabel"; text = "hours"; ObjectID = "1Qv-0F-kWO"; */
+"1Qv-0F-kWO.text" = "hours";
+
+/* Class = "UITextField"; placeholder = "Type of exercise"; ObjectID = "1TX-E9-PTw"; */
+"1TX-E9-PTw.placeholder" = "Type of exercise";
+
+/* Class = "UILabel"; text = "You will get a dark appearance and synchronize the same as your device setting."; ObjectID = "1jN-Zx-H2K"; */
+"1jN-Zx-H2K.text" = "You will get a dark appearance and synchronize the same as your device setting.";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2Ss-zO-S5m"; */
+"2Ss-zO-S5m.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "53P-SI-4a8"; */
+"53P-SI-4a8.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6u2-AS-fPb"; */
+"6u2-AS-fPb.normalTitle" = "Button";
+
+/* Class = "UITableViewSection"; headerTitle = "Data Management"; ObjectID = "7G5-w4-N1N"; */
+"7G5-w4-N1N.headerTitle" = "Data Management";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "8iA-ZK-2yl"; */
+"8iA-ZK-2yl.text" = "12";
+
+/* Class = "UILabel"; text = "Details..."; ObjectID = "8yB-ob-cSQ"; */
+"8yB-ob-cSQ.text" = "Details...";
+
+/* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "8zb-hS-BJf"; */
+"8zb-hS-BJf.normalTitle" = "Upgrade";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9K0-eJ-n4m"; */
+"9K0-eJ-n4m.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "(Default Font Size)"; ObjectID = "9ff-r2-1G3"; */
+"9ff-r2-1G3.text" = "(Default Font Size)";
+
+/* Class = "UILabel"; text = "Activity"; ObjectID = "AX1-0O-SfD"; */
+"AX1-0O-SfD.text" = "Activity";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Akx-Fr-39v"; */
+"Akx-Fr-39v.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "TYPE OF ACTIVITY"; ObjectID = "BRw-Eb-gFO"; */
+"BRw-Eb-gFO.text" = "TYPE OF ACTIVITY";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "CWM-tM-tHV"; */
+"CWM-tM-tHV.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "EB0-Ms-iba"; */
+"EB0-Ms-iba.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "COLOR TAG"; ObjectID = "EUM-d7-y3R"; */
+"EUM-d7-y3R.text" = "COLOR TAG";
+
+/* Class = "UILabel"; text = "Monthly Workout Report"; ObjectID = "EyZ-yN-rra"; */
+"EyZ-yN-rra.text" = "Monthly Workout Report";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "F34-Y6-vJ5"; */
+"F34-Y6-vJ5.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "Feq-vS-Rj4"; */
+"Feq-vS-Rj4.text" = "A";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ghf-iX-vR2"; */
+"Ghf-iX-vR2.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "I2b-hQ-8kd"; */
+"I2b-hQ-8kd.normalTitle" = "Done";
+
+/* Class = "UISegmentedControl"; I2l-QA-f1Y.segmentTitles[0] = "Gym"; ObjectID = "I2l-QA-f1Y"; */
+"I2l-QA-f1Y.segmentTitles[0]" = "Gym";
+
+/* Class = "UISegmentedControl"; I2l-QA-f1Y.segmentTitles[1] = "Home"; ObjectID = "I2l-QA-f1Y"; */
+"I2l-QA-f1Y.segmentTitles[1]" = "Home";
+
+/* Class = "UISegmentedControl"; I2l-QA-f1Y.segmentTitles[2] = "Outside"; ObjectID = "I2l-QA-f1Y"; */
+"I2l-QA-f1Y.segmentTitles[2]" = "Outside";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "JBb-qJ-KeI"; */
+"JBb-qJ-KeI.normalTitle" = "Button";
+
+/* Class = "UITableViewSection"; headerTitle = "Logged This Month"; ObjectID = "JXX-ZH-w11"; */
+"JXX-ZH-w11.headerTitle" = "Logged This Month";
+
+/* Class = "UILabel"; text = "version number"; ObjectID = "K6n-YB-I3s"; */
+"K6n-YB-I3s.text" = "version number";
+
+/* Class = "UILabel"; text = "44"; ObjectID = "K6u-6U-ppK"; */
+"K6u-6U-ppK.text" = "44";
+
+/* Class = "UILabel"; text = "1h 20min"; ObjectID = "KVj-Gu-LHs"; */
+"KVj-Gu-LHs.text" = "1h 20min";
+
+/* Class = "UIButton"; normalTitle = "Upgrade for $1.99"; ObjectID = "MqT-a9-GFl"; */
+"MqT-a9-GFl.normalTitle" = "Upgrade for $1.99";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NT9-BJ-T2a"; */
+"NT9-BJ-T2a.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Enjoy your app without annoying ads!"; ObjectID = "O3r-Or-50O"; */
+"O3r-Or-50O.text" = "Enjoy your app without annoying ads!";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "QkW-rj-fqm"; */
+"QkW-rj-fqm.text" = "Settings";
+
+/* Class = "UILabel"; text = "2020-08-23 14:23:00"; ObjectID = "RSe-MN-BSY"; */
+"RSe-MN-BSY.text" = "2020-08-23 14:23:00";
+
+/* Class = "UILabel"; text = "Outside"; ObjectID = "Rnj-wp-bgD"; */
+"Rnj-wp-bgD.text" = "Outside";
+
+/* Class = "UITableViewSection"; headerTitle = "Logged This Month"; ObjectID = "Stw-7m-rOd"; */
+"Stw-7m-rOd.headerTitle" = "Logged This Month";
+
+/* Class = "UITableViewSection"; headerTitle = "OPEN SOURCE"; ObjectID = "Sye-6P-AZF"; */
+"Sye-6P-AZF.headerTitle" = "OPEN SOURCE";
+
+/* Class = "UILabel"; text = "Intensity"; ObjectID = "Udc-Wo-apx"; */
+"Udc-Wo-apx.text" = "Intensity";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WB7-a9-St9"; */
+"WB7-a9-St9.text" = "Label";
+
+/* Class = "UILabel"; text = "minutes"; ObjectID = "X8T-EC-fgF"; */
+"X8T-EC-fgF.text" = "minutes";
+
+/* Class = "UILabel"; text = "The average font size will adjust to your preferred reading size below."; ObjectID = "YLx-Y1-XUe"; */
+"YLx-Y1-XUe.text" = "The average font size will adjust to your preferred reading size below.";
+
+/* Class = "UILabel"; text = "Max"; ObjectID = "YVG-Pt-SeF"; */
+"YVG-Pt-SeF.text" = "Max";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Yxy-RV-h7m"; */
+"Yxy-RV-h7m.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Light"; ObjectID = "aBd-Yx-xVC"; */
+"aBd-Yx-xVC.text" = "Light";
+
+/* Class = "UITableViewSection"; headerTitle = "Learn more"; ObjectID = "aqa-7a-gGR"; */
+"aqa-7a-gGR.headerTitle" = "Learn more";
+
+/* Class = "UILabel"; text = "Remove all Ads"; ObjectID = "dNl-6l-Lg6"; */
+"dNl-6l-Lg6.text" = "Remove all Ads";
+
+/* Class = "UITableViewSection"; headerTitle = "Logged This Month"; ObjectID = "eFc-3u-h38"; */
+"eFc-3u-h38.headerTitle" = "Logged This Month";
+
+/* Class = "UILabel"; text = "DURATION"; ObjectID = "eeY-VP-OAj"; */
+"eeY-VP-OAj.text" = "DURATION";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "ei8-fU-iAO"; */
+"ei8-fU-iAO.text" = "A";
+
+/* Class = "UIButton"; normalTitle = "Restore purchase"; ObjectID = "eju-we-Chc"; */
+"eju-we-Chc.normalTitle" = "Restore purchase";
+
+/* Class = "UITableViewSection"; headerTitle = "Logged This Month"; ObjectID = "gMA-Ou-NC4"; */
+"gMA-Ou-NC4.headerTitle" = "Logged This Month";
+
+/* Class = "UILabel"; text = "EXERCISE / ACTIVITY"; ObjectID = "i45-Vr-M6q"; */
+"i45-Vr-M6q.text" = "EXERCISE / ACTIVITY";
+
+/* Class = "UILabel"; text = "Dark Theme"; ObjectID = "isT-FN-91W"; */
+"isT-FN-91W.text" = "Dark Theme";
+
+/* Class = "UILabel"; text = "Enjoy your app without annoying ads!"; ObjectID = "ith-6I-0Ld"; */
+"ith-6I-0Ld.text" = "Enjoy your app without annoying ads!";
+
+/* Class = "UILabel"; text = "minute"; ObjectID = "jMb-mq-vwu"; */
+"jMb-mq-vwu.text" = "minute";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jPt-gZ-m75"; */
+"jPt-gZ-m75.normalTitle" = "Button";
+
+/* Class = "UITableViewSection"; headerTitle = "ICONS"; ObjectID = "jUa-kM-gpf"; */
+"jUa-kM-gpf.headerTitle" = "ICONS";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "jdA-wV-59i"; */
+"jdA-wV-59i.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "hours"; ObjectID = "k9Q-LI-SKe"; */
+"k9Q-LI-SKe.text" = "hours";
+
+/* Class = "UILabel"; text = "SIMPLY WORKOUT PRO"; ObjectID = "kLL-Qn-Gm9"; */
+"kLL-Qn-Gm9.text" = "SIMPLY WORKOUT PRO";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kgv-8o-aeO"; */
+"kgv-8o-aeO.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Workouts"; ObjectID = "lSG-Pb-xqg"; */
+"lSG-Pb-xqg.text" = "Workouts";
+
+/* Class = "UILabel"; text = "SIMPLY WORKOUT PRO"; ObjectID = "lxe-C2-dll"; */
+"lxe-C2-dll.text" = "SIMPLY WORKOUT PRO";
+
+/* Class = "UILabel"; text = "INTENSITY / EFFORT SCALE"; ObjectID = "mdb-CQ-RNV"; */
+"mdb-CQ-RNV.text" = "INTENSITY / EFFORT SCALE";
+
+/* Class = "UITableViewSection"; headerTitle = "Display theme"; ObjectID = "n6s-NA-PCx"; */
+"n6s-NA-PCx.headerTitle" = "Display theme";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ntQ-mU-6rb"; */
+"ntQ-mU-6rb.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "oKX-gY-l1i"; */
+"oKX-gY-l1i.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ofc-Vo-chQ"; */
+"ofc-Vo-chQ.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qkd-mE-Qy9"; */
+"qkd-mE-Qy9.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "s1H-f6-Kg0"; */
+"s1H-f6-Kg0.text" = "Label";
+
+/* Class = "UILabel"; text = "You will get the monthly statistics of your activity."; ObjectID = "ssA-R6-ash"; */
+"ssA-R6-ash.text" = "You will get the monthly statistics of your activity.";
+
+/* Class = "UILabel"; text = "Monthly workout report"; ObjectID = "t7F-C7-3I9"; */
+"t7F-C7-3I9.text" = "Monthly workout report";
+
+/* Class = "UILabel"; text = "COLOR TAG"; ObjectID = "vcu-U3-ckA"; */
+"vcu-U3-ckA.text" = "COLOR TAG";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "vdD-qJ-ep3"; */
+"vdD-qJ-ep3.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "wOH-Ja-MmU"; */
+"wOH-Ja-MmU.text" = "3";
+
+/* Class = "UITextField"; placeholder = "Add an activity title here."; ObjectID = "y7l-Mu-HNt"; */
+"y7l-Mu-HNt.placeholder" = "Add an activity title here.";
+
+/* Class = "UILabel"; text = "Pro version for $1.99"; ObjectID = "zHa-2b-FnA"; */
+"zHa-2b-FnA.text" = "Pro version for $1.99";
+
+/* Class = "UITableViewSection"; headerTitle = "Simply Workout Pro"; ObjectID = "zNn-2g-o2W"; */
+"zNn-2g-o2W.headerTitle" = "Simply Workout Pro";

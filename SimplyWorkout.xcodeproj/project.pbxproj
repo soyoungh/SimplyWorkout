@@ -7,49 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D3F652230BB5C59D5820B1DC /* Pods_SimplyWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745BC04E64AE3E545E14AEF /* Pods_SimplyWorkout.framework */; };
+		099DA74583D38E2BCAA79A80 /* Pods_SimplyWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */; };
 		F801C0F924BC3BD2006FFF2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190224B9C34B004298D0 /* ViewController.swift */; };
 		F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */; };
 		F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190024B9C34B004298D0 /* SceneDelegate.swift */; };
 		F801C0FC24BC3BE0006FFF2E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD192A24BC2F2F004298D0 /* Theme.swift */; };
 		F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD192524BBE19A004298D0 /* ThemeProtocol.swift */; };
 		F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD192824BC2BE9004298D0 /* LightTheme.swift */; };
-		F801C0FF24BC3BE9006FFF2E /* ConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD191F24BAA382004298D0 /* ConfigurationController.swift */; };
 		F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD192124BAFF00004298D0 /* ColorAssets.swift */; };
 		F801C10724BC9E1A006FFF2E /* Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F801C10624BC9E1A006FFF2E /* Customization.swift */; };
 		F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F801C10824BD6C8F006FFF2E /* AddViewController.swift */; };
-		F804DC6524C52F9D00C3F67E /* ColorTagCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */; };
 		F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */; };
+		F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */; };
+		F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F806D8F9254A7C2A007C26E3 /* StoreKit.framework */; };
+		F822A59B255C267900AA8035 /* MonthlyReportCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */; };
 		F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */; };
 		F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84E333524CAB1F3003D320D /* WorkoutData.swift */; };
-		F872188424FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188024FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift */; };
-		F872188524FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188124FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift */; };
-		F872188624FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188224FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift */; };
-		F872188724FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872188324FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift */; };
-		F872188824FE04FF002BF29C /* SimplyWorkout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */; };
+		F854CCF225232DB0006E5103 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF125232DB0006E5103 /* DarkTheme.swift */; };
+		F854CCF625403FD8006E5103 /* AutoTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF525403FD8006E5103 /* AutoTheme.swift */; };
+		F854CCF825431074006E5103 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF725431074006E5103 /* License.swift */; };
+		F854CCFA254472B5006E5103 /* CategorySettingCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F854CCF9254472B5006E5103 /* CategorySettingCtrl.swift */; };
+		F86DDA1F251C1E33009CC633 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86DDA1E251C1E33009CC633 /* CloudKit.framework */; };
+		F8916BE2256F47FA005B7277 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8916BE4256F47FA005B7277 /* Localizable.strings */; };
 		F8AD190624B9C34B004298D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190424B9C34B004298D0 /* Main.storyboard */; };
 		F8AD190E24B9C34E004298D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AD190C24B9C34E004298D0 /* LaunchScreen.storyboard */; };
 		F8AD192424BBD814004298D0 /* colorPalatte.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192324BBD814004298D0 /* colorPalatte.xcassets */; };
 		F8AD192D24BC328E004298D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AD192C24BC328E004298D0 /* Assets.xcassets */; };
 		F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */; };
+		F8C7A771255021050010B69D /* FontSizeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A770255021050010B69D /* FontSizeProtocol.swift */; };
+		F8C7A7732550216C0010B69D /* FontSizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A7722550216C0010B69D /* FontSizeControl.swift */; };
+		F8C7A776255021D40010B69D /* DefaultFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A775255021D40010B69D /* DefaultFontSize.swift */; };
+		F8C7A778255021DF0010B69D /* X3FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7A777255021DF0010B69D /* X3FontSize.swift */; };
+		F8CD764D2588DB5100BCC5C4 /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD764C2588DB5100BCC5C4 /* IAPProduct.swift */; };
+		F8CD76512588DBFA00BCC5C4 /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD76502588DBFA00BCC5C4 /* IAPService.swift */; };
+		F8CD76542588DD0000BCC5C4 /* IAPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD76532588DD0000BCC5C4 /* IAPController.swift */; };
+		F8D7E4BB2545C1C50020B3DB /* CategoryAddPopupCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */; };
+		F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */; };
+		F8E801912547C94500395285 /* CategoryCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */; };
+		F8E801922547C94500395285 /* CategoryCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */; };
 		F8EA031524C69864000756E9 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA031424C69864000756E9 /* ProgressBar.swift */; };
-		F8F0B2022506762B00A28241 /* PersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B2012506762B00A28241 /* PersistentStorage.swift */; };
+		F8F0B20D251324F400A28241 /* SimplyWorkout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */; };
+		F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */; };
+		F8F0B213251327CF00A28241 /* EventDateCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B20F251327CF00A28241 /* EventDateCD+CoreDataProperties.swift */; };
+		F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */; };
+		F8F0B215251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */; };
+		F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */; };
+		F8FED85525554949006A16F7 /* FontSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85425554949006A16F7 /* FontSizeController.swift */; };
+		F8FED85925554E92006A16F7 /* X2FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85825554E92006A16F7 /* X2FontSize.swift */; };
+		F8FED85D255A32D7006A16F7 /* X4FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FED85C255A32D7006A16F7 /* X4FontSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D1A94F917188CF98D3C07DC /* Pods-SimplyWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.debug.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.debug.xcconfig"; sourceTree = "<group>"; };
-		8745BC04E64AE3E545E14AEF /* Pods_SimplyWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimplyWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5DC7A69A9558B90A3D20AA5 /* Pods-SimplyWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.release.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.release.xcconfig"; sourceTree = "<group>"; };
+		7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimplyWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.release.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.release.xcconfig"; sourceTree = "<group>"; };
+		F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplyWorkout.debug.xcconfig"; path = "Target Support Files/Pods-SimplyWorkout/Pods-SimplyWorkout.debug.xcconfig"; sourceTree = "<group>"; };
 		F801C10624BC9E1A006FFF2E /* Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customization.swift; sourceTree = "<group>"; };
 		F801C10824BD6C8F006FFF2E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCtrl.swift; sourceTree = "<group>"; };
 		F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagCell.swift; sourceTree = "<group>"; };
+		F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColorCtrl.swift; sourceTree = "<group>"; };
+		F806D8F9254A7C2A007C26E3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyReportCtrl.swift; sourceTree = "<group>"; };
 		F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffortScalePicker.swift; sourceTree = "<group>"; };
 		F84E333524CAB1F3003D320D /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
-		F872188024FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		F872188124FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		F872188224FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		F872188324FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		F854CCF125232DB0006E5103 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
+		F854CCF525403FD8006E5103 /* AutoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTheme.swift; sourceTree = "<group>"; };
+		F854CCF725431074006E5103 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		F854CCF9254472B5006E5103 /* CategorySettingCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingCtrl.swift; sourceTree = "<group>"; };
+		F86DDA1D251B1E29009CC633 /* SimplyWorkout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplyWorkout.entitlements; sourceTree = "<group>"; };
+		F86DDA1E251C1E33009CC633 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F8916BE3256F47FA005B7277 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F8916BE6256F486E005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		F8916BE7256F486E005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F8916BE8256F486F005B7277 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F8AD18FB24B9C34B004298D0 /* SimplyWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8AD190024B9C34B004298D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +87,6 @@
 		F8AD190824B9C34B004298D0 /* SimplyWorkout.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimplyWorkout.xcdatamodel; sourceTree = "<group>"; };
 		F8AD190D24B9C34E004298D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8AD190F24B9C34E004298D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8AD191F24BAA382004298D0 /* ConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationController.swift; sourceTree = "<group>"; };
 		F8AD192124BAFF00004298D0 /* ColorAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAssets.swift; sourceTree = "<group>"; };
 		F8AD192324BBD814004298D0 /* colorPalatte.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colorPalatte.xcassets; sourceTree = "<group>"; };
 		F8AD192524BBE19A004298D0 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
@@ -66,8 +94,28 @@
 		F8AD192A24BC2F2F004298D0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F8AD192C24BC328E004298D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		F8C7A770255021050010B69D /* FontSizeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeProtocol.swift; sourceTree = "<group>"; };
+		F8C7A7722550216C0010B69D /* FontSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeControl.swift; sourceTree = "<group>"; };
+		F8C7A775255021D40010B69D /* DefaultFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFontSize.swift; sourceTree = "<group>"; };
+		F8C7A777255021DF0010B69D /* X3FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X3FontSize.swift; sourceTree = "<group>"; };
+		F8CD763F2581C55800BCC5C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F8CD764C2588DB5100BCC5C4 /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		F8CD76502588DBFA00BCC5C4 /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
+		F8CD76532588DD0000BCC5C4 /* IAPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPController.swift; sourceTree = "<group>"; };
+		F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddPopupCtrl.swift; sourceTree = "<group>"; };
+		F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySetViewCell.swift; sourceTree = "<group>"; };
+		F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimplyWorkout v2.xcdatamodel"; sourceTree = "<group>"; };
+		F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		F8EA031424C69864000756E9 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		F8F0B2012506762B00A28241 /* PersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStorage.swift; sourceTree = "<group>"; };
+		F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F8F0B20F251327CF00A28241 /* EventDateCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventDateCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutDataCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsController.swift; sourceTree = "<group>"; };
+		F8FED85425554949006A16F7 /* FontSizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeController.swift; sourceTree = "<group>"; };
+		F8FED85825554E92006A16F7 /* X2FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X2FontSize.swift; sourceTree = "<group>"; };
+		F8FED85C255A32D7006A16F7 /* X4FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X4FontSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +123,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3F652230BB5C59D5820B1DC /* Pods_SimplyWorkout.framework in Frameworks */,
+				F806D8FA254A7C2A007C26E3 /* StoreKit.framework in Frameworks */,
+				F86DDA1F251C1E33009CC633 /* CloudKit.framework in Frameworks */,
+				099DA74583D38E2BCAA79A80 /* Pods_SimplyWorkout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +135,9 @@
 		854E372F12EE4554A1D40795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8745BC04E64AE3E545E14AEF /* Pods_SimplyWorkout.framework */,
+				F806D8F9254A7C2A007C26E3 /* StoreKit.framework */,
+				F86DDA1E251C1E33009CC633 /* CloudKit.framework */,
+				7C84A791317F05876325038B /* Pods_SimplyWorkout.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -93,8 +145,8 @@
 		B66DC6520CB310A74297040F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1D1A94F917188CF98D3C07DC /* Pods-SimplyWorkout.debug.xcconfig */,
-				B5DC7A69A9558B90A3D20AA5 /* Pods-SimplyWorkout.release.xcconfig */,
+				F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */,
+				D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -102,18 +154,33 @@
 		F801C10324BC4285006FFF2E /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				F8AD191F24BAA382004298D0 /* ConfigurationController.swift */,
+				F8F0B218251A1D5700A28241 /* ConfigurationsController.swift */,
+				F854CCF725431074006E5103 /* License.swift */,
+				F854CCF9254472B5006E5103 /* CategorySettingCtrl.swift */,
+				F8D7E4BA2545C1C50020B3DB /* CategoryAddPopupCtrl.swift */,
+				F8D7E4BC25468DA20020B3DB /* CategorySetViewCell.swift */,
+				F8FED85425554949006A16F7 /* FontSizeController.swift */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		F822A599255C263600AA8035 /* MonthlyReport */ = {
+			isa = PBXGroup;
+			children = (
+				F822A59A255C267900AA8035 /* MonthlyReportCtrl.swift */,
+			);
+			path = MonthlyReport;
 			sourceTree = "<group>";
 		};
 		F866869924D7922A007054E6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				F872188024FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift */,
-				F872188124FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift */,
-				F872188224FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift */,
-				F872188324FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift */,
+				F8E8018F2547C94500395285 /* CategoryCD+CoreDataClass.swift */,
+				F8E801902547C94500395285 /* CategoryCD+CoreDataProperties.swift */,
+				F8F0B20E251327CF00A28241 /* EventDateCD+CoreDataClass.swift */,
+				F8F0B20F251327CF00A28241 /* EventDateCD+CoreDataProperties.swift */,
+				F8F0B210251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift */,
+				F8F0B211251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift */,
 				F8B6AE5C24D11333009EDD89 /* WorkoutTableViewCell.swift */,
 				F84E333524CAB1F3003D320D /* WorkoutData.swift */,
 			);
@@ -141,14 +208,18 @@
 		F8AD18FD24B9C34B004298D0 /* SimplyWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				F8CD764B2588DB1D00BCC5C4 /* IAP */,
+				F86DDA1D251B1E29009CC633 /* SimplyWorkout.entitlements */,
 				F866869924D7922A007054E6 /* Data */,
 				F8EA031624C7BDD3000756E9 /* AddView */,
 				F8AD18FE24B9C34B004298D0 /* AppDelegate.swift */,
-				F8F0B2012506762B00A28241 /* PersistentStorage.swift */,
 				F8AD190024B9C34B004298D0 /* SceneDelegate.swift */,
 				F8AD190224B9C34B004298D0 /* ViewController.swift */,
+				F8916BE4256F47FA005B7277 /* Localizable.strings */,
 				F8AD192724BC2857004298D0 /* Theme */,
+				F8C7A774255021B20010B69D /* FontSize */,
 				F801C10324BC4285006FFF2E /* Configurations */,
+				F822A599255C263600AA8035 /* MonthlyReport */,
 				F8AD192F24BC3472004298D0 /* Custom_extensions */,
 				F8AD190424B9C34B004298D0 /* Main.storyboard */,
 				F8AD192C24BC328E004298D0 /* Assets.xcassets */,
@@ -166,6 +237,8 @@
 				F8AD192A24BC2F2F004298D0 /* Theme.swift */,
 				F8AD192524BBE19A004298D0 /* ThemeProtocol.swift */,
 				F8AD192824BC2BE9004298D0 /* LightTheme.swift */,
+				F854CCF125232DB0006E5103 /* DarkTheme.swift */,
+				F854CCF525403FD8006E5103 /* AutoTheme.swift */,
 			);
 			name = Theme;
 			path = SimplyWorkout/Theme;
@@ -180,12 +253,35 @@
 			path = Custom_extensions;
 			sourceTree = "<group>";
 		};
+		F8C7A774255021B20010B69D /* FontSize */ = {
+			isa = PBXGroup;
+			children = (
+				F8C7A770255021050010B69D /* FontSizeProtocol.swift */,
+				F8C7A7722550216C0010B69D /* FontSizeControl.swift */,
+				F8C7A775255021D40010B69D /* DefaultFontSize.swift */,
+				F8FED85825554E92006A16F7 /* X2FontSize.swift */,
+				F8C7A777255021DF0010B69D /* X3FontSize.swift */,
+				F8FED85C255A32D7006A16F7 /* X4FontSize.swift */,
+			);
+			path = FontSize;
+			sourceTree = "<group>";
+		};
+		F8CD764B2588DB1D00BCC5C4 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				F8CD764C2588DB5100BCC5C4 /* IAPProduct.swift */,
+				F8CD76502588DBFA00BCC5C4 /* IAPService.swift */,
+				F8CD76532588DD0000BCC5C4 /* IAPController.swift */,
+			);
+			path = IAP;
+			sourceTree = "<group>";
+		};
 		F8EA031624C7BDD3000756E9 /* AddView */ = {
 			isa = PBXGroup;
 			children = (
 				F801C10824BD6C8F006FFF2E /* AddViewController.swift */,
 				F83E91BB24BF37FD008FF337 /* EffortScalePicker.swift */,
-				F804DC6424C52F9D00C3F67E /* ColorTagCtrl.swift */,
+				F806D8F725481B06007C26E3 /* CategoryColorCtrl.swift */,
 				F804DC6A24C5634A00C3F67E /* ColorTagCell.swift */,
 				F8EA031424C69864000756E9 /* ProgressBar.swift */,
 			);
@@ -199,11 +295,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8AD191224B9C34E004298D0 /* Build configuration list for PBXNativeTarget "SimplyWorkout" */;
 			buildPhases = (
-				63222E798B0ACD29557291F1 /* [CP] Check Pods Manifest.lock */,
+				A35B62D282EB3D4453716061 /* [CP] Check Pods Manifest.lock */,
 				F8AD18F724B9C34B004298D0 /* Sources */,
 				F8AD18F824B9C34B004298D0 /* Frameworks */,
 				F8AD18F924B9C34B004298D0 /* Resources */,
-				B00466F98ADF06649A76B656 /* [CP] Embed Pods Frameworks */,
+				BE158FCB1B9C1D48B99BE981 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,6 +332,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = F8AD18F224B9C34B004298D0;
 			productRefGroup = F8AD18FC24B9C34B004298D0 /* Products */;
@@ -252,6 +349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8916BE2256F47FA005B7277 /* Localizable.strings in Resources */,
 				F8AD190E24B9C34E004298D0 /* LaunchScreen.storyboard in Resources */,
 				F8AD190624B9C34B004298D0 /* Main.storyboard in Resources */,
 				F8AD192D24BC328E004298D0 /* Assets.xcassets in Resources */,
@@ -262,7 +360,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		63222E798B0ACD29557291F1 /* [CP] Check Pods Manifest.lock */ = {
+		A35B62D282EB3D4453716061 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -284,7 +382,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B00466F98ADF06649A76B656 /* [CP] Embed Pods Frameworks */ = {
+		BE158FCB1B9C1D48B99BE981 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -308,38 +406,66 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F854CCF625403FD8006E5103 /* AutoTheme.swift in Sources */,
+				F8F0B20D251324F400A28241 /* SimplyWorkout.xcdatamodeld in Sources */,
+				F8C7A776255021D40010B69D /* DefaultFontSize.swift in Sources */,
 				F801C10924BD6C8F006FFF2E /* AddViewController.swift in Sources */,
 				F801C0FD24BC3BE3006FFF2E /* ThemeProtocol.swift in Sources */,
 				F83E91BC24BF37FD008FF337 /* EffortScalePicker.swift in Sources */,
-				F872188624FDFCC4002BF29C /* EventDateCD+CoreDataClass.swift in Sources */,
+				F8CD76512588DBFA00BCC5C4 /* IAPService.swift in Sources */,
+				F854CCFA254472B5006E5103 /* CategorySettingCtrl.swift in Sources */,
 				F801C0FA24BC3BD8006FFF2E /* AppDelegate.swift in Sources */,
-				F804DC6524C52F9D00C3F67E /* ColorTagCtrl.swift in Sources */,
 				F801C0FC24BC3BE0006FFF2E /* Theme.swift in Sources */,
+				F8F0B215251327CF00A28241 /* WorkoutDataCD+CoreDataProperties.swift in Sources */,
 				F8EA031524C69864000756E9 /* ProgressBar.swift in Sources */,
+				F8D7E4BB2545C1C50020B3DB /* CategoryAddPopupCtrl.swift in Sources */,
+				F854CCF225232DB0006E5103 /* DarkTheme.swift in Sources */,
+				F854CCF825431074006E5103 /* License.swift in Sources */,
 				F801C0F924BC3BD2006FFF2E /* ViewController.swift in Sources */,
-				F801C0FF24BC3BE9006FFF2E /* ConfigurationController.swift in Sources */,
+				F8F0B213251327CF00A28241 /* EventDateCD+CoreDataProperties.swift in Sources */,
+				F8FED85925554E92006A16F7 /* X2FontSize.swift in Sources */,
+				F806D8F825481B06007C26E3 /* CategoryColorCtrl.swift in Sources */,
 				F801C0FE24BC3BE6006FFF2E /* LightTheme.swift in Sources */,
+				F8C7A7732550216C0010B69D /* FontSizeControl.swift in Sources */,
+				F822A59B255C267900AA8035 /* MonthlyReportCtrl.swift in Sources */,
+				F8F0B214251327CF00A28241 /* WorkoutDataCD+CoreDataClass.swift in Sources */,
 				F804DC6B24C5634A00C3F67E /* ColorTagCell.swift in Sources */,
-				F872188824FE04FF002BF29C /* SimplyWorkout.xcdatamodeld in Sources */,
 				F8B6AE5D24D11333009EDD89 /* WorkoutTableViewCell.swift in Sources */,
-				F872188724FDFCC4002BF29C /* EventDateCD+CoreDataProperties.swift in Sources */,
+				F8F0B219251A1D5700A28241 /* ConfigurationsController.swift in Sources */,
+				F8E801922547C94500395285 /* CategoryCD+CoreDataProperties.swift in Sources */,
+				F8F0B212251327CF00A28241 /* EventDateCD+CoreDataClass.swift in Sources */,
+				F8CD76542588DD0000BCC5C4 /* IAPController.swift in Sources */,
 				F801C10024BC3BEF006FFF2E /* ColorAssets.swift in Sources */,
+				F8FED85D255A32D7006A16F7 /* X4FontSize.swift in Sources */,
+				F8D7E4BD25468DA20020B3DB /* CategorySetViewCell.swift in Sources */,
 				F801C10724BC9E1A006FFF2E /* Customization.swift in Sources */,
+				F8C7A778255021DF0010B69D /* X3FontSize.swift in Sources */,
+				F8FED85525554949006A16F7 /* FontSizeController.swift in Sources */,
 				F84E333624CAB1F3003D320D /* WorkoutData.swift in Sources */,
-				F872188424FDFCC4002BF29C /* WorkoutDataCD+CoreDataClass.swift in Sources */,
-				F872188524FDFCC4002BF29C /* WorkoutDataCD+CoreDataProperties.swift in Sources */,
-				F8F0B2022506762B00A28241 /* PersistentStorage.swift in Sources */,
 				F801C0FB24BC3BDB006FFF2E /* SceneDelegate.swift in Sources */,
+				F8CD764D2588DB5100BCC5C4 /* IAPProduct.swift in Sources */,
+				F8E801912547C94500395285 /* CategoryCD+CoreDataClass.swift in Sources */,
+				F8C7A771255021050010B69D /* FontSizeProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F8916BE4256F47FA005B7277 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8916BE3256F47FA005B7277 /* en */,
+				F8916BE8256F486F005B7277 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F8AD190424B9C34B004298D0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F8AD190524B9C34B004298D0 /* Base */,
+				F8916BE6256F486E005B7277 /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -348,6 +474,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				F8AD190D24B9C34E004298D0 /* Base */,
+				F8916BE7256F486E005B7277 /* ko */,
+				F8CD763F2581C55800BCC5C4 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -359,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -419,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -471,9 +601,10 @@
 		};
 		F8AD191324B9C34E004298D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D1A94F917188CF98D3C07DC /* Pods-SimplyWorkout.debug.xcconfig */;
+			baseConfigurationReference = F090E727F706AF82711357F6 /* Pods-SimplyWorkout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8RW29TB5D;
 				INFOPLIST_FILE = SimplyWorkout/Info.plist;
@@ -484,15 +615,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F8AD191424B9C34E004298D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5DC7A69A9558B90A3D20AA5 /* Pods-SimplyWorkout.release.xcconfig */;
+			baseConfigurationReference = D7CBE61017093A10256D410E /* Pods-SimplyWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimplyWorkout/SimplyWorkout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8RW29TB5D;
 				INFOPLIST_FILE = SimplyWorkout/Info.plist;
@@ -503,7 +635,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soyoungHyun.SimplyWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -534,9 +666,10 @@
 		F8AD190724B9C34B004298D0 /* SimplyWorkout.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */,
 				F8AD190824B9C34B004298D0 /* SimplyWorkout.xcdatamodel */,
 			);
-			currentVersion = F8AD190824B9C34B004298D0 /* SimplyWorkout.xcdatamodel */;
+			currentVersion = F8E8018E2547C46000395285 /* SimplyWorkout v2.xcdatamodel */;
 			path = SimplyWorkout.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
